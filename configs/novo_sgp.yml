@@ -1,0 +1,13 @@
+project_id: novo_sgp
+name: Novo SGP
+repo_url: https://github.com/prefeiturasp/SME-NovoSGP.git
+local_path: repos/novo_sgp
+branch: development
+freeze_sha: c7c06015d2be880c1f5c854cad0c080c4508343a
+start_year: 2020
+end_year: 2026
+extensions: [.cs]
+exclude_paths: [node_modules, vendor, dist, build, bin, obj, teste]
+exclude_tests: true
+test_markers: [test, tests, teste, testes, spec, specs]
+exclude_migrations: false

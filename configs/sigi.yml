@@ -1,0 +1,13 @@
+project_id: sigi
+name: SIGI
+repo_url: https://github.com/interlegis/sigi.git
+local_path: repos/sigi
+branch: master
+freeze_sha: 129a9dc1225e09d304cbbc9001c48d47aff11b5e
+start_year: 2020
+end_year: 2026
+extensions: [.py]
+exclude_paths: [node_modules, vendor, static/vendor, dist, build]
+exclude_tests: true
+test_markers: [test, tests, teste, testes, spec, specs]
+exclude_migrations: true

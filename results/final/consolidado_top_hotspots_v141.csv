@@ -1,0 +1,51 @@
+project_id,name,language,file_id,path,snapshots,first_year,last_year,h_median,h_iqr,nloc_median
+novo_sgp,Novo SGP,CSharp,71261a9d39d697cd,src/SME.SGP.Aplicacao/CasosDeUso/ConselhoClasse/ObterNotasFrequenciaUseCase.cs,7,2020,2026,0.9993687593251463,0.00561527677467466,603.0
+novo_sgp,Novo SGP,CSharp,473acad15c891997,src/SME.SGP.Aplicacao/Integracoes/ServicoEOL.cs,3,2020,2022,0.9978932584269663,0.0008731996517885587,869.0
+novo_sgp,Novo SGP,CSharp,541e5385f3719f66,src/SME.SGP.Dados/Repositorios/RepositorioTurmaConsulta.cs,5,2022,2026,0.9975728155339806,0.012143176437575454,1002.0
+novo_sgp,Novo SGP,CSharp,ba2b2d921c70fc42,src/SME.SGP.Dados/Repositorios/RepositorioAulaConsulta.cs,5,2022,2026,0.9970985057304512,0.019709485408860306,1115.0
+novo_sgp,Novo SGP,CSharp,d9bcd6c021fb4304,src/SME.SGP.Dominio.Servicos/ServicoFechamentoTurmaDisciplina.cs,7,2020,2026,0.9968398876404494,0.25123192674231065,590.0
+novo_sgp,Novo SGP,CSharp,3a15a4cb4e05585e,src/SME.SGP.Dados/Repositorios/RepositorioFrequenciaConsulta.cs,5,2022,2026,0.9958293230670516,0.003934083897807361,809.0
+novo_sgp,Novo SGP,CSharp,7aa4e3d525774c8e,src/SME.SGP.Aplicacao/Commands/Fechamento/SalvarFechamento/SalvarFechamentoCommandHandler.cs,5,2022,2026,0.9958108573396075,0.06895555534790421,560.0
+novo_sgp,Novo SGP,CSharp,7bd64ebe741bfcf5,src/SME.SGP.Dados/Repositorios/RepositorioAbrangencia.cs,7,2020,2026,0.9952125344552445,0.006542470274661705,853.0
+novo_sgp,Novo SGP,CSharp,d73b0225ba203d56,src/SME.SGP.Aplicacao/CasosDeUso/Nota/ObterNotasParaAvaliacoesUseCase.cs,6,2021,2026,0.9949880002228406,0.004072340004962149,521.5
+novo_sgp,Novo SGP,CSharp,774df2de9b2c1489,src/SME.SGP.Aplicacao/Consultas/ConsultasFrequencia.cs,2,2020,2021,0.9944333721157566,0.00022691144159925347,260.0
+sapl,SAPL,Python,c4bec0aa3f27a78d,sapl/sessao/views.py,7,2020,2026,0.9877450980392157,0.00693447795545965,4223.0
+sapl,SAPL,Python,11b2afe97076f159,sapl/materia/views.py,7,2020,2026,0.9698492462311558,0.027481694262552203,2333.0
+sapl,SAPL,Python,2b1ea23ae76b50cb,sapl/base/views.py,7,2020,2026,0.9597989949748744,0.26875447778482653,1227.0
+sapl,SAPL,Python,710c9fb76ba1bbc3,sapl/relatorios/views.py,7,2020,2026,0.9538461538461539,0.03952415157971978,2095.0
+sapl,SAPL,Python,b38f2cf8d9bb2f72,sapl/utils.py,7,2020,2026,0.95260663507109,0.03718623127643006,872.0
+sapl,SAPL,Python,fab4a7e6fcc30889,sapl/parlamentares/views.py,7,2020,2026,0.943127962085308,0.10250544748243329,1116.0
+sapl,SAPL,Python,94f38869fdb3fba6,sapl/materia/forms.py,7,2020,2026,0.9387254901960784,0.05142045889669422,2335.0
+sapl,SAPL,Python,3eba1379d2383eb6,sapl/base/forms.py,7,2020,2026,0.9384615384615385,0.2446818155445749,977.0
+sapl,SAPL,Python,41d990dabc9a4e77,sapl/materia/models.py,7,2020,2026,0.907035175879397,0.00929098242601567,1024.0
+sapl,SAPL,Python,b829f1d7044d28a3,sapl/crud/base.py,7,2020,2026,0.8672985781990521,0.07697562016689163,1190.0
+siga,SIGA,Java,6737edbb6d9184af,siga-ex/src/main/java/br/gov/jfrj/siga/ex/bl/ExBL.java,6,2020,2025,0.9997513674788663,0.0006820753086580478,6721.5
+siga,SIGA,Java,2c6a4d56c0f57b71,sigaex/src/main/java/br/gov/jfrj/siga/vraptor/ExMovimentacaoController.java,6,2020,2025,0.9976257178744996,0.0012674619630779205,4798.5
+siga,SIGA,Java,d2348e058cbd5378,sigaex/src/main/java/br/gov/jfrj/siga/vraptor/ExDocumentoController.java,6,2020,2025,0.9972332531963206,0.37342576247857273,2502.5
+siga,SIGA,Java,c8ff150541242122,siga-ex/src/main/java/br/gov/jfrj/siga/hibernate/ExDao.java,6,2020,2025,0.9957689534768657,0.003554581621139752,2182.0
+siga,SIGA,Java,7165f24b4d590bf6,siga-cp/src/main/java/br/gov/jfrj/siga/dp/dao/CpDao.java,6,2020,2025,0.9950345704590217,0.018334926627536996,2591.0
+siga,SIGA,Java,90d7225ea976bdf8,siga-ex/src/main/java/br/gov/jfrj/siga/ex/ExMobil.java,6,2020,2025,0.9936320055965158,0.011857831744742642,1476.0
+siga,SIGA,Java,3e580085ccaf7766,siga-ex/src/main/java/br/gov/jfrj/siga/ex/ExDocumento.java,6,2020,2025,0.992330036385755,0.0158013669611462,2230.5
+siga,SIGA,Java,b5b3da6b66ded8b4,siga-cp/src/main/java/br/gov/jfrj/siga/cp/bl/CpBL.java,6,2020,2025,0.9903134360952134,0.37512709372382114,2281.0
+siga,SIGA,Java,381216bdcdf82df1,siga-ex/src/main/java/br/gov/jfrj/siga/ex/bl/ExMarcadorBL.java,6,2020,2025,0.9871474276770507,0.010222696695509792,672.0
+siga,SIGA,Java,569c5475a42c69a3,siga-ex/src/main/java/br/gov/jfrj/siga/ex/vo/ExMobilVO.java,6,2020,2025,0.9806355081755354,0.005682084449869618,577.5
+sigi,SIGI,Python,c85b8fe8f692c4d7,sigi/apps/convenios/models.py,7,2020,2026,0.9730392156862745,0.014812860644094372,866.0
+sigi,SIGI,Python,ce44b53bba4681d0,sigi/apps/eventos/admin.py,7,2020,2026,0.9681647940074907,0.23393005205558604,1580.0
+sigi,SIGI,Python,e8c4484217913e4f,sigi/apps/casas/views.py,7,2020,2026,0.9635036496350365,0.03335770509135694,597.0
+sigi,SIGI,Python,1cf477cc6f7c09f9,sigi/apps/casas/admin.py,7,2020,2026,0.9598540145985401,0.009218226323800538,509.0
+sigi,SIGI,Python,b3c7cc81c03f8e3d,sigi/apps/servicos/dashboards.py,2,2025,2026,0.9478776529338326,0.0034332084893883286,394.5
+sigi,SIGI,Python,8fbbf6d3f95d7b81,sigi/apps/eventos/views.py,7,2020,2026,0.946078431372549,0.02115437248039731,343.0
+sigi,SIGI,Python,419970de88378335,sigi/apps/eventos/models.py,7,2020,2026,0.9444444444444444,0.11258180757758085,1010.0
+sigi,SIGI,Python,b2c4c1c0368dd2fb,sigi/apps/ocorrencias/views.py,7,2020,2026,0.9213483146067416,0.15514388593392892,974.0
+sigi,SIGI,Python,1fc983b8df7bd048,sigi/apps/home/views.py,7,2020,2026,0.912751677852349,0.1418946625008779,1209.0
+sigi,SIGI,Python,c8b1914885fb82b1,sigi/apps/casas/models.py,7,2020,2026,0.8995098039215687,0.09700166779620689,299.0
+painel_esus,Painel e-SUS APS,Python,da570d75951ed5f5,painel-esus/src/main/adapters/nominal_list_adapter.py,2,2024,2025,0.9943219794344473,0.001821979434447396,677.5
+painel_esus,Painel e-SUS APS,Python,e5d28d9ea87767ac,painel-esus/src/infra/db/repositories/demographics_info_v2.py,2,2024,2025,0.9430960796915167,0.009346079691516684,220.0
+painel_esus,Painel e-SUS APS,Python,39907dcbbf48218f,painel-esus/src/infra/db/repositories/children/children_repository.py,2,2024,2025,0.9418460796915167,0.010596079691516658,148.5
+painel_esus,Painel e-SUS APS,Python,5fd0be5fb1eca80a,painel-esus/src/main/adapters/records_adapter.py,2,2024,2025,0.9403486503856041,0.005901349614396034,111.0
+painel_esus,Painel e-SUS APS,Python,979a57312809af6d,painel-esus/src/infra/db/repositories/disease/nominal_list/diabetes_nominal_list_repository.py,2,2024,2025,0.9341339974293059,0.0028839974293060067,142.5
+painel_esus,Painel e-SUS APS,Python,521fef56645acfe8,painel-esus/src/infra/db/repositories/elderly/elderly_repository.py,2,2024,2025,0.9340986503856041,0.0003486503856041656,173.0
+painel_esus,Painel e-SUS APS,Python,de67faa0a4dc1c3f,painel-esus/src/infra/db/repositories/disease/nominal_list/hypertension_nominal_list_repository.py,2,2024,2025,0.9322059768637532,0.0009559768637531496,146.0
+painel_esus,Painel e-SUS APS,Python,e29ee2eb9912b1bc,painel-esus/src/infra/db/repositories/cadastro/records_repository.py,2,2024,2025,0.9081619537275064,0.041838046272493434,143.0
+painel_esus,Painel e-SUS APS,Python,87ef6c9bbee711fb,painel-esus/src/main/adapters/children_adapter.py,2,2024,2025,0.9000369537275064,0.03371304627249361,107.0
+painel_esus,Painel e-SUS APS,Python,9835466e0b1d8fab,painel-esus/src/main/adapters/elderly_adapter.py,2,2024,2025,0.8563351542416453,0.07741484575835467,145.5

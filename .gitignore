@@ -1,0 +1,31 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python generated
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local clones and heavy generated outputs
+repos/
+outputs/
+outputs_*/
+logs/
+validation/
+freeze_quantitativo_*/
+.cache/
+
+# Local temporary artifacts
+*.zip
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

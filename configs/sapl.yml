@@ -1,0 +1,13 @@
+project_id: sapl
+name: SAPL
+repo_url: https://github.com/interlegis/sapl.git
+local_path: repos/sapl
+branch: 3.1.x
+freeze_sha: 55f02aa6397bc613ad5b471b799519e02e53dde5
+start_year: 2020
+end_year: 2026
+extensions: [.py]
+exclude_paths: [node_modules, vendor, static/vendor, dist, build]
+exclude_tests: true
+test_markers: [test, tests, teste, testes, spec, specs]
+exclude_migrations: true

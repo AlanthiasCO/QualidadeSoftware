@@ -1,0 +1,14 @@
+﻿Congelamento quantitativo v1.4.1
+Data: 2026-09-22 00:55:19 -03:00
+Diretorio raiz: C:\Users\alan.mathias\Downloads\public-software-hotspots-python
+
+Python: Python 3.12.7
+Git: git version 2.51.0.windows.2
+pydriller: 2.12
+lizard: 1.24.0
+pandas: 3.0.6
+numpy: 2.5.3
+scipy: 1.18.1
+PyYAML: 6.0.3
+matplotlib: 3.11.2
+pytest: 9.1.1

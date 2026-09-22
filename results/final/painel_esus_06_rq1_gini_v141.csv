@@ -1,0 +1,7 @@
+project_id,year,metric,gini
+painel_esus,2024,nmod,0.49184014821017197
+painel_esus,2024,churn,0.8899973838722994
+painel_esus,2024,ccn,0.7134708123018032
+painel_esus,2025,nmod,0.4666363636363635
+painel_esus,2025,churn,0.8621981805713408
+painel_esus,2025,ccn,0.7321454794932201

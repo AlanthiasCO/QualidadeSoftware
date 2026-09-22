@@ -1,0 +1,227 @@
+﻿Software ID,Software,Campo,Valor observado,Nível de evidência,Tipo de fonte,Fonte / URL,Data da coleta,Observação
+SW001,SAPL - Sistema de Apoio ao Processo Legislativo,Aplicação,Sim,A,Repositório primário,https://github.com/interlegis/sapl,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW001,SAPL - Sistema de Apoio ao Processo Legislativo,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/interlegis,2026-09-02,
+SW001,SAPL - Sistema de Apoio ao Processo Legislativo,Licença,GPL-3.0,A,Arquivo/metadata do repositório,https://github.com/interlegis/sapl,2026-09-02,
+SW001,SAPL - Sistema de Apoio ao Processo Legislativo,Atividade >= 2020,2026-08,A,Repositório primário,https://github.com/interlegis/sapl,2026-09-02,
+SW001,SAPL - Sistema de Apoio ao Processo Legislativo,Commits,5863,A,Repositório primário,https://github.com/interlegis/sapl,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW001,SAPL - Sistema de Apoio ao Processo Legislativo,Triangulação externa,Convergente,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW002,SIGI - Sistema de Informações Gerenciais do Interlegis,Aplicação,Sim,A,Repositório primário,https://github.com/interlegis/sigi,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW002,SIGI - Sistema de Informações Gerenciais do Interlegis,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/interlegis,2026-09-02,
+SW002,SIGI - Sistema de Informações Gerenciais do Interlegis,Licença,GPL-2.0,A,Arquivo/metadata do repositório,https://github.com/interlegis/sigi,2026-09-02,
+SW002,SIGI - Sistema de Informações Gerenciais do Interlegis,Atividade >= 2020,2026-08,A,Repositório primário,https://github.com/interlegis/sigi,2026-09-02,
+SW002,SIGI - Sistema de Informações Gerenciais do Interlegis,Commits,1554,A,Repositório primário,https://github.com/interlegis/sigi,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW002,SIGI - Sistema de Informações Gerenciais do Interlegis,Triangulação externa,Convergente; licença agora confirmada diretamente,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW003,SAAP - Sistema de Apoio à Atividade Parlamentar,Aplicação,Sim,A,Repositório primário,https://github.com/interlegis/saap,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW003,SAAP - Sistema de Apoio à Atividade Parlamentar,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/interlegis,2026-09-02,
+SW003,SAAP - Sistema de Apoio à Atividade Parlamentar,Licença,GPL-3.0,A,Arquivo/metadata do repositório,https://github.com/interlegis/saap,2026-09-02,
+SW003,SAAP - Sistema de Apoio à Atividade Parlamentar,Atividade >= 2020,2024-06,A,Repositório primário,https://github.com/interlegis/saap,2026-09-02,
+SW003,SAAP - Sistema de Apoio à Atividade Parlamentar,Commits,161,A,Repositório primário,https://github.com/interlegis/saap,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW003,SAAP - Sistema de Apoio à Atividade Parlamentar,Triangulação externa,Convergente com correção: licença não é presumida; foi verificada diretamente,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW004,SIGA - Sistema de Gestão Administrativa,Aplicação,Sim,A,Repositório primário,https://github.com/projeto-siga/siga,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW004,SIGA - Sistema de Gestão Administrativa,Vínculo institucional,Institucional verificável,B,Repositório/organização ou fonte institucional,https://github.com/projeto-siga,2026-09-02,
+SW004,SIGA - Sistema de Gestão Administrativa,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/projeto-siga/siga,2026-09-02,
+SW004,SIGA - Sistema de Gestão Administrativa,Atividade >= 2020,2023-05,A,Repositório primário,https://github.com/projeto-siga/siga,2026-09-02,
+SW004,SIGA - Sistema de Gestão Administrativa,Commits,15412,A,Repositório primário,https://github.com/projeto-siga/siga,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW005,PBdoc,Aplicação,Sim,A,Repositório primário,https://github.com/codata-gedes/pbdoc,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW005,PBdoc,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/codata-gedes,2026-09-02,
+SW005,PBdoc,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/codata-gedes/pbdoc,2026-09-02,
+SW005,PBdoc,Atividade >= 2020,2026-05,A,Repositório primário,https://github.com/codata-gedes/pbdoc,2026-09-02,
+SW005,PBdoc,Commits,11594,A,Repositório primário,https://github.com/codata-gedes/pbdoc,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW006,e-Cidade,Aplicação,Sim,A,Repositório primário,https://github.com/e-cidade/e-cidade,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW006,e-Cidade,Vínculo institucional,Origem e forja institucional; manutenção também comunitária,B,Repositório/organização ou fonte institucional,https://softwarepublico.gov.br,2026-09-02,
+SW006,e-Cidade,Licença,GPL-2.0,A,Arquivo/metadata do repositório,https://softwarepublico.gov.br/social/e-cidade,2026-09-02,
+SW006,e-Cidade,Atividade >= 2020,2026 (comunidade); 2025-08 (forja SPB),A,Repositório primário,https://softwarepublico.gov.br/social/e-cidade,2026-09-02,
+SW006,e-Cidade,Triangulação externa,Convergente; V2 fechou melhor licença/forja,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW007,Mapas Culturais - MinC,Aplicação,Sim,A,Repositório primário,https://github.com/culturagovbr/mapasculturais-minc,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW007,Mapas Culturais - MinC,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/culturagovbr,2026-09-02,
+SW007,Mapas Culturais - MinC,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/culturagovbr/mapasculturais-minc,2026-09-02,
+SW007,Mapas Culturais - MinC,Atividade >= 2020,2026,A,Repositório primário,https://github.com/culturagovbr/mapasculturais-minc,2026-09-02,
+SW007,Mapas Culturais - MinC,Commits,23878,A,Repositório primário,https://github.com/culturagovbr/mapasculturais-minc,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW008,Mapas Culturais - Ceará,Aplicação,Sim,A,Repositório primário,https://github.com/secultce/mapasculturais-v5,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW008,Mapas Culturais - Ceará,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/secultce,2026-09-02,
+SW008,Mapas Culturais - Ceará,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/secultce/mapasculturais-v5,2026-09-02,
+SW008,Mapas Culturais - Ceará,Atividade >= 2020,2026-04,A,Repositório primário,https://github.com/secultce/mapasculturais-v5,2026-09-02,
+SW008,Mapas Culturais - Ceará,Commits,11123,A,Repositório primário,https://github.com/secultce/mapasculturais-v5,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW009,Painel e-SUS APS,Aplicação,Sim,A,Repositório primário,https://github.com/CampusVirtualFiocruz/painel-esus,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW009,Painel e-SUS APS,Vínculo institucional,Institucional direta em parceria,A,Repositório/organização ou fonte institucional,https://github.com/CampusVirtualFiocruz,2026-09-02,
+SW009,Painel e-SUS APS,Licença,GPL-2.0,A,Arquivo/metadata do repositório,https://github.com/CampusVirtualFiocruz/painel-esus,2026-09-02,
+SW009,Painel e-SUS APS,Atividade >= 2020,2025-12,A,Repositório primário,https://github.com/CampusVirtualFiocruz/painel-esus,2026-09-02,
+SW009,Painel e-SUS APS,Commits,552,A,Repositório primário,https://github.com/CampusVirtualFiocruz/painel-esus,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW010,VLibras Web Browsers,Aplicação,Sim,A,Repositório primário,https://github.com/spbgovbr-vlibras/vlibras-web-browsers,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW010,VLibras Web Browsers,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/spbgovbr-vlibras,2026-09-02,
+SW010,VLibras Web Browsers,Licença,LGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/spbgovbr-vlibras/vlibras-web-browsers,2026-09-02,
+SW010,VLibras Web Browsers,Atividade >= 2020,2026,A,Repositório primário,https://github.com/spbgovbr-vlibras/vlibras-web-browsers,2026-09-02,
+SW010,VLibras Web Browsers,Commits,1164,A,Repositório primário,https://github.com/spbgovbr-vlibras/vlibras-web-browsers,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW011,Novo SGP,Aplicação,Sim,A,Repositório primário,https://github.com/prefeiturasp/SME-NovoSGP,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW011,Novo SGP,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeiturasp,2026-09-02,
+SW011,Novo SGP,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/prefeiturasp/SME-NovoSGP,2026-09-02,
+SW011,Novo SGP,Atividade >= 2020,2026,A,Repositório primário,https://github.com/prefeiturasp/SME-NovoSGP,2026-09-02,
+SW011,Novo SGP,Commits,33222,A,Repositório primário,https://github.com/prefeiturasp/SME-NovoSGP,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW011,Novo SGP,Triangulação externa,Convergente,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW012,SigEscola / PTRF,Aplicação,Sim,A,Repositório primário,https://github.com/prefeiturasp/SME-PTRF,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW012,SigEscola / PTRF,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeiturasp,2026-09-02,
+SW012,SigEscola / PTRF,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/prefeiturasp/SME-PTRF,2026-09-02,
+SW012,SigEscola / PTRF,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/prefeiturasp/SME-PTRF,2026-09-02,
+SW013,SIGPAE,Aplicação,Sim,A,Repositório primário,https://github.com/prefeiturasp/SME-SIGPAE-API,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW013,SIGPAE,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeiturasp,2026-09-02,
+SW013,SIGPAE,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/prefeiturasp/SME-SIGPAE-API,2026-09-02,
+SW013,SIGPAE,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/prefeiturasp/SME-SIGPAE-API,2026-09-02,
+SW014,Conecta Formação,Aplicação,Sim,A,Repositório primário,https://github.com/prefeiturasp/SME-Conecta-Formacao-WebClient,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW014,Conecta Formação,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeiturasp,2026-09-02,
+SW014,Conecta Formação,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/prefeiturasp/SME-Conecta-Formacao-WebClient,2026-09-02,
+SW014,Conecta Formação,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/prefeiturasp/SME-Conecta-Formacao-WebClient,2026-09-02,
+SW015,SMAE - Sistema de Monitoramento e Acompanhamento Estratégico,Aplicação,Sim,A,Repositório primário,https://github.com/sepep-pmsp/smae,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW015,SMAE - Sistema de Monitoramento e Acompanhamento Estratégico,Vínculo institucional,Institucional direta em fork de parceria FGV,A,Repositório/organização ou fonte institucional,https://github.com/sepep-pmsp,2026-09-02,
+SW015,SMAE - Sistema de Monitoramento e Acompanhamento Estratégico,Licença,AGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/sepep-pmsp/smae,2026-09-02,
+SW015,SMAE - Sistema de Monitoramento e Acompanhamento Estratégico,Atividade >= 2020,2026-08,A,Repositório primário,https://github.com/sepep-pmsp/smae,2026-09-02,
+SW015,SMAE - Sistema de Monitoramento e Acompanhamento Estratégico,Commits,15759,A,Repositório primário,https://github.com/sepep-pmsp/smae,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW016,In Loco,Aplicação,Sim,A,Repositório primário,https://github.com/MinisterioPublicoRJ/inloco,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW016,In Loco,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/MinisterioPublicoRJ,2026-09-02,
+SW016,In Loco,Licença,MIT,A,Arquivo/metadata do repositório,https://github.com/MinisterioPublicoRJ/inloco,2026-09-02,
+SW016,In Loco,Atividade >= 2020,2023-03,A,Repositório primário,https://github.com/MinisterioPublicoRJ/inloco,2026-09-02,
+SW016,In Loco,Commits,1110,A,Repositório primário,https://github.com/MinisterioPublicoRJ/inloco,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW017,SINARC,Aplicação,Sim,A,Repositório primário,https://github.com/controlecidadao/sinarc,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW017,SINARC,Vínculo institucional,Proveniência institucional explícita no README,C,Repositório/organização ou fonte institucional,https://github.com/controlecidadao/sinarc,2026-09-02,
+SW017,SINARC,Licença,MIT,A,Arquivo/metadata do repositório,https://github.com/controlecidadao/sinarc,2026-09-02,
+SW017,SINARC,Atividade >= 2020,2026,A,Repositório primário,https://github.com/controlecidadao/sinarc,2026-09-02,
+SW017,SINARC,Commits,1952,A,Repositório primário,https://github.com/controlecidadao/sinarc,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW018,PortalCMJ,Aplicação,Sim,A,Repositório primário,https://github.com/cmjatai/cmj,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW018,PortalCMJ,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/cmjatai,2026-09-02,
+SW018,PortalCMJ,Licença,GPL-3.0,A,Arquivo/metadata do repositório,https://github.com/cmjatai/cmj,2026-09-02,
+SW018,PortalCMJ,Atividade >= 2020,2026-08,A,Repositório primário,https://github.com/cmjatai/cmj,2026-09-02,
+SW018,PortalCMJ,Commits,3970,A,Repositório primário,https://github.com/cmjatai/cmj,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW019,Extranet CMC,Aplicação,Sim,A,Repositório primário,https://github.com/CMCuritiba/extranet-cmc,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW019,Extranet CMC,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/CMCuritiba,2026-09-02,
+SW019,Extranet CMC,Licença,GPL-3.0,A,Arquivo/metadata do repositório,https://github.com/CMCuritiba/extranet-cmc,2026-09-02,
+SW019,Extranet CMC,Atividade >= 2020,2025-09,A,Repositório primário,https://github.com/CMCuritiba/extranet-cmc,2026-09-02,
+SW019,Extranet CMC,Commits,191,A,Repositório primário,https://github.com/CMCuritiba/extranet-cmc,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW020,VPR - Votação de Prioridades,Aplicação,Sim,A,Repositório primário,https://github.com/procergs/vpr,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW020,VPR - Votação de Prioridades,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/procergs,2026-09-02,
+SW020,VPR - Votação de Prioridades,Licença,MIT,A,Arquivo/metadata do repositório,https://github.com/procergs/vpr,2026-09-02,
+SW020,VPR - Votação de Prioridades,Atividade >= 2020,2022-03,A,Repositório primário,https://github.com/procergs/vpr,2026-09-02,
+SW020,VPR - Votação de Prioridades,Commits,1018,A,Repositório primário,https://github.com/procergs/vpr,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW020,VPR - Votação de Prioridades,Triangulação externa,Convergente com correção do nome/expansão da sigla no relatório paralelo,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW021,Programa de Metas 2025-2028,Aplicação,Sim,A,Repositório primário,https://github.com/sepep-pmsp/site-pdm-vfinal-25-28,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW021,Programa de Metas 2025-2028,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/sepep-pmsp,2026-09-02,
+SW021,Programa de Metas 2025-2028,Licença,Conflito interno: GitHub detecta GPL-3.0; README afirma MIT,D,Pendente/conflitante,https://github.com/sepep-pmsp/site-pdm-vfinal-25-28,2026-09-02,
+SW021,Programa de Metas 2025-2028,Atividade >= 2020,2026-06,A,Repositório primário,https://github.com/sepep-pmsp/site-pdm-vfinal-25-28,2026-09-02,
+SW021,Programa de Metas 2025-2028,Commits,197,A,Repositório primário,https://github.com/sepep-pmsp/site-pdm-vfinal-25-28,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW022,PGD Petrvs,Aplicação,Sim,A,Repositório primário,https://github.com/gestaogovbr/pgd-petrvs-publico,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW022,PGD Petrvs,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/gestaogovbr,2026-09-02,
+SW022,PGD Petrvs,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/gestaogovbr/pgd-petrvs-publico,2026-09-02,
+SW022,PGD Petrvs,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/gestaogovbr/pgd-petrvs-publico,2026-09-02,
+SW022,PGD Petrvs,Commits,8803,A,Repositório primário,https://github.com/gestaogovbr/pgd-petrvs-publico,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW022,PGD Petrvs,Triangulação externa,Convergente; licença continua pendente,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW023,ANTAQ Pro,Aplicação,Sim,A,Repositório primário,https://github.com/ANTAQGovBr/antaq-pro,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW023,ANTAQ Pro,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/ANTAQGovBr,2026-09-02,
+SW023,ANTAQ Pro,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/ANTAQGovBr/antaq-pro,2026-09-02,
+SW023,ANTAQ Pro,Atividade >= 2020,2024-07,A,Repositório primário,https://github.com/ANTAQGovBr/antaq-pro,2026-09-02,
+SW023,ANTAQ Pro,Commits,734,A,Repositório primário,https://github.com/ANTAQGovBr/antaq-pro,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW024,SuperApp / PrefRio,Aplicação,Sim,A,Repositório primário,https://github.com/prefeitura-rio/superapp,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW024,SuperApp / PrefRio,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeitura-rio,2026-09-02,
+SW024,SuperApp / PrefRio,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/prefeitura-rio/superapp,2026-09-02,
+SW024,SuperApp / PrefRio,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/prefeitura-rio/superapp,2026-09-02,
+SW024,SuperApp / PrefRio,Commits,2286,A,Repositório primário,https://github.com/prefeitura-rio/superapp,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW025,CIVITAS,Aplicação,Sim,A,Repositório primário,https://github.com/prefeitura-rio/civitas-app,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW025,CIVITAS,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeitura-rio,2026-09-02,
+SW025,CIVITAS,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/prefeitura-rio/civitas-app,2026-09-02,
+SW025,CIVITAS,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/prefeitura-rio/civitas-app,2026-09-02,
+SW025,CIVITAS,Commits,931,A,Repositório primário,https://github.com/prefeitura-rio/civitas-app,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW026,Parquet Digital,Aplicação,Sim,A,Repositório primário,https://github.com/MinisterioPublicoRJ/parquet-digital-web,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW026,Parquet Digital,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/MinisterioPublicoRJ,2026-09-02,
+SW026,Parquet Digital,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/MinisterioPublicoRJ/parquet-digital-web,2026-09-02,
+SW026,Parquet Digital,Atividade >= 2020,2023-12,A,Repositório primário,https://github.com/MinisterioPublicoRJ/parquet-digital-web,2026-09-02,
+SW026,Parquet Digital,Commits,2829,A,Repositório primário,https://github.com/MinisterioPublicoRJ/parquet-digital-web,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW027,ROPC,Aplicação,Sim,A,Repositório primário,https://github.com/MinisterioPublicoRJ/ropc,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW027,ROPC,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/MinisterioPublicoRJ,2026-09-02,
+SW027,ROPC,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/MinisterioPublicoRJ/ropc,2026-09-02,
+SW027,ROPC,Atividade >= 2020,2025-07,A,Repositório primário,https://github.com/MinisterioPublicoRJ/ropc,2026-09-02,
+SW028,SISPG - Sistema do Programa de Gestão da Susep,Aplicação,Sim,A,Repositório primário,https://github.com/spbgovbr/Sistema_Programa_de_Gestao_Susep,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW028,SISPG - Sistema do Programa de Gestão da Susep,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/spbgovbr,2026-09-02,
+SW028,SISPG - Sistema do Programa de Gestão da Susep,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/spbgovbr/Sistema_Programa_de_Gestao_Susep,2026-09-02,
+SW028,SISPG - Sistema do Programa de Gestão da Susep,Atividade >= 2020,2023-08,A,Repositório primário,https://github.com/spbgovbr/Sistema_Programa_de_Gestao_Susep,2026-09-02,
+SW028,SISPG - Sistema do Programa de Gestão da Susep,Commits,97,A,Repositório primário,https://github.com/spbgovbr/Sistema_Programa_de_Gestao_Susep,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW029,Aplicativo Coronavírus SUS,Aplicação,Sim,A,Repositório primário,https://github.com/spbgovbr/aplicativo-coronavirus-sus,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW029,Aplicativo Coronavírus SUS,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/spbgovbr,2026-09-02,
+SW029,Aplicativo Coronavírus SUS,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/spbgovbr/aplicativo-coronavirus-sus,2026-09-02,
+SW029,Aplicativo Coronavírus SUS,Atividade >= 2020,2020-2023 (intervalo; data exata a confirmar),A,Repositório primário,https://github.com/spbgovbr/aplicativo-coronavirus-sus,2026-09-02,
+SW030,VLibras Mobile Cross Platform,Aplicação,Sim,A,Repositório primário,https://github.com/spbgovbr-vlibras/vlibras-mobile-cross-platform,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW030,VLibras Mobile Cross Platform,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/spbgovbr-vlibras,2026-09-02,
+SW030,VLibras Mobile Cross Platform,Licença,LGPL-3.0,A,Arquivo/metadata do repositório,https://github.com/spbgovbr-vlibras/vlibras-mobile-cross-platform,2026-09-02,
+SW030,VLibras Mobile Cross Platform,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/spbgovbr-vlibras/vlibras-mobile-cross-platform,2026-09-02,
+SW030,VLibras Mobile Cross Platform,Commits,217,A,Repositório primário,https://github.com/spbgovbr-vlibras/vlibras-mobile-cross-platform,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW031,Plataforma Anísio Teixeira / Ambiente Educacional Web,Aplicação,Sim,A,Repositório primário,https://github.com/nikoz84/plataforma-anisio-teixeira,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW031,Plataforma Anísio Teixeira / Ambiente Educacional Web,Vínculo institucional,Vínculo institucional declarado; owner pessoal,C,Repositório/organização ou fonte institucional,http://pat.educacao.ba.gov.br,2026-09-02,
+SW031,Plataforma Anísio Teixeira / Ambiente Educacional Web,Licença,GPL-3.0,A,Arquivo/metadata do repositório,https://github.com/nikoz84/plataforma-anisio-teixeira,2026-09-02,
+SW031,Plataforma Anísio Teixeira / Ambiente Educacional Web,Atividade >= 2020,n/d,D,Repositório primário,https://github.com/nikoz84/plataforma-anisio-teixeira,2026-09-02,
+SW031,Plataforma Anísio Teixeira / Ambiente Educacional Web,Commits,1483,A,Repositório primário,https://github.com/nikoz84/plataforma-anisio-teixeira,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW032,Sistema de Votação da CMC,Aplicação,Sim,A,Repositório primário,https://github.com/CMCuritiba/votacao-monorepo,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW032,Sistema de Votação da CMC,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/CMCuritiba,2026-09-02,
+SW032,Sistema de Votação da CMC,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/CMCuritiba/votacao-monorepo,2026-09-02,
+SW032,Sistema de Votação da CMC,Atividade >= 2020,2025-08,A,Repositório primário,https://github.com/CMCuritiba/votacao-monorepo,2026-09-02,
+SW033,Vaga na Creche,Aplicação,Sim,A,Repositório primário,https://github.com/prefeiturasp/SME-VagasNaCreche,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW033,Vaga na Creche,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeiturasp,2026-09-02,
+SW033,Vaga na Creche,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/prefeiturasp/SME-VagasNaCreche,2026-09-02,
+SW033,Vaga na Creche,Atividade >= 2020,n/d,D,Repositório primário,https://github.com/prefeiturasp/SME-VagasNaCreche,2026-09-02,
+SW034,Plataforma Clima,Aplicação,Sim,A,Repositório primário,https://github.com/prefeitura-rio/plataforma-clima,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW034,Plataforma Clima,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeitura-rio,2026-09-02,
+SW034,Plataforma Clima,Licença,MIT,A,Arquivo/metadata do repositório,https://github.com/prefeitura-rio/plataforma-clima,2026-09-02,
+SW034,Plataforma Clima,Atividade >= 2020,n/d,D,Repositório primário,https://github.com/prefeitura-rio/plataforma-clima,2026-09-02,
+SW034,Plataforma Clima,Commits,160,A,Repositório primário,https://github.com/prefeitura-rio/plataforma-clima,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW035,LibrasKê Web,Aplicação,Sim,A,Repositório primário,https://github.com/spbgovbr-vlibras/libraske-web,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW035,LibrasKê Web,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/spbgovbr-vlibras,2026-09-02,
+SW035,LibrasKê Web,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/spbgovbr-vlibras/libraske-web,2026-09-02,
+SW035,LibrasKê Web,Atividade >= 2020,2026-03,A,Repositório primário,https://github.com/spbgovbr-vlibras/libraske-web,2026-09-02,
+SW036,eSocial-JT,Aplicação,Parcial/serviço com GUI,D,Repositório primário,https://github.com/tst-labs/esocial,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW036,eSocial-JT,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/tst-labs,2026-09-02,
+SW036,eSocial-JT,Licença,BSD-3-Clause,A,Arquivo/metadata do repositório,https://github.com/tst-labs/esocial,2026-09-02,
+SW036,eSocial-JT,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/tst-labs/esocial,2026-09-02,
+SW036,eSocial-JT,Commits,547,A,Repositório primário,https://github.com/tst-labs/esocial,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW037,AssinaLegis,Aplicação,Sim,A,Repositório primário,https://github.com/cmjatai/AssinaLegis,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW037,AssinaLegis,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/cmjatai,2026-09-02,
+SW037,AssinaLegis,Licença,GPL-3.0,A,Arquivo/metadata do repositório,https://github.com/cmjatai/AssinaLegis,2026-09-02,
+SW037,AssinaLegis,Atividade >= 2020,2026,A,Repositório primário,https://github.com/cmjatai/AssinaLegis,2026-09-02,
+SW037,AssinaLegis,Commits,29,A,Repositório primário,https://github.com/cmjatai/AssinaLegis,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW038,e-Fomento,Aplicação,Sim,A,Repositório primário,https://github.com/secultce/efomento,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW038,e-Fomento,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/secultce,2026-09-02,
+SW038,e-Fomento,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/secultce/efomento,2026-09-02,
+SW038,e-Fomento,Atividade >= 2020,2026-07,A,Repositório primário,https://github.com/secultce/efomento,2026-09-02,
+SW038,e-Fomento,Commits,7,A,Repositório primário,https://github.com/secultce/efomento,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW039,Prato Aberto,Aplicação,Sim,A,Repositório primário,https://github.com/prefeiturasp/SME-PratoAberto-Frontend,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW039,Prato Aberto,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeiturasp,2026-09-02,
+SW039,Prato Aberto,Licença,LICENSE presente; tipo a confirmar,D,Pendente/conflitante,https://github.com/prefeiturasp/SME-PratoAberto-Frontend,2026-09-02,
+SW039,Prato Aberto,Atividade >= 2020,n/d,D,Repositório primário,https://github.com/prefeiturasp/SME-PratoAberto-Frontend,2026-09-02,
+SW039,Prato Aberto,Commits,171,A,Repositório primário,https://github.com/prefeiturasp/SME-PratoAberto-Frontend,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW039,Prato Aberto,Triangulação externa,"Convergente como candidato, ainda fora do núcleo",C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW040,Escola Aberta,Aplicação,Sim (solução possui frontend),D,Repositório primário,https://github.com/prefeiturasp/SME-Escola-Aberta-API,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW040,Escola Aberta,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/prefeiturasp,2026-09-02,
+SW040,Escola Aberta,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/prefeiturasp/SME-Escola-Aberta-API,2026-09-02,
+SW040,Escola Aberta,Atividade >= 2020,n/d,D,Repositório primário,https://github.com/prefeiturasp/SME-Escola-Aberta-API,2026-09-02,
+SW040,Escola Aberta,Commits,154,A,Repositório primário,https://github.com/prefeiturasp/SME-Escola-Aberta-API,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW041,GEPNet,Aplicação,Sim,A,Repositório primário,https://github.com/spbgovbr/gepnet,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW041,GEPNet,Vínculo institucional,Institucional/mirror SPB,B,Repositório/organização ou fonte institucional,https://github.com/spbgovbr,2026-09-02,
+SW041,GEPNet,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/spbgovbr/gepnet,2026-09-02,
+SW041,GEPNet,Atividade >= 2020,2023-01,A,Repositório primário,https://github.com/spbgovbr/gepnet,2026-09-02,
+SW041,GEPNet,Commits,13,A,Repositório primário,https://github.com/spbgovbr/gepnet,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW042,i-Educar,Aplicação,Sim,A,Repositório primário,https://github.com/portabilis/i-educar,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW042,i-Educar,Vínculo institucional,Origem governamental; mantenedor atual não governamental,C,Repositório/organização ou fonte institucional,https://softwarepublico.gov.br,2026-09-02,
+SW042,i-Educar,Licença,GPL-2.0,A,Arquivo/metadata do repositório,https://github.com/portabilis/i-educar,2026-09-02,
+SW042,i-Educar,Atividade >= 2020,2026,A,Repositório primário,https://github.com/portabilis/i-educar,2026-09-02,
+SW042,i-Educar,Commits,32982,A,Repositório primário,https://github.com/portabilis/i-educar,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+SW042,i-Educar,Triangulação externa,Convergente tecnicamente; V2 mantém fora do núcleo por manutenção atual não governamental,C,Relatório secundário independente,Arquivo anexado: Markdown.md colado,2026-09-02,Relatório usado como fonte secundária; não substitui fonte primária.
+SW043,Portal Modelo,Aplicação,Sim,A,Repositório primário,https://github.com/interlegis/portalmodelo,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW043,Portal Modelo,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/interlegis,2026-09-02,
+SW043,Portal Modelo,Licença,Não confirmada nesta triagem,D,Pendente/conflitante,https://github.com/interlegis/portalmodelo,2026-09-02,
+SW043,Portal Modelo,Atividade >= 2020,n/d,D,Repositório primário,https://github.com/interlegis/portalmodelo,2026-09-02,
+SW044,Exame Front CGE-RJ,Aplicação,Parcial (frontend),D,Repositório primário,https://github.com/cge-rj/exame-front-cge,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW044,Exame Front CGE-RJ,Vínculo institucional,Institucional direta,A,Repositório/organização ou fonte institucional,https://github.com/cge-rj,2026-09-02,
+SW044,Exame Front CGE-RJ,Licença,Não confirmada na triagem,D,Pendente/conflitante,https://github.com/cge-rj/exame-front-cge,2026-09-02,
+SW044,Exame Front CGE-RJ,Atividade >= 2020,2023-09,A,Repositório primário,https://github.com/cge-rj/exame-front-cge,2026-09-02,
+SW045,Helios - fork institucional UFMA/IFSC,Aplicação,Sim,A,Repositório primário,https://github.com/STI-UFMA/helios-server-main,2026-09-02,Classificação baseada em README/estrutura e triagem manual.
+SW045,Helios - fork institucional UFMA/IFSC,Vínculo institucional,"Institucional direta, porém fork importado",A,Repositório/organização ou fonte institucional,https://github.com/STI-UFMA,2026-09-02,
+SW045,Helios - fork institucional UFMA/IFSC,Licença,Apache-2.0,A,Arquivo/metadata do repositório,https://github.com/STI-UFMA/helios-server-main,2026-09-02,
+SW045,Helios - fork institucional UFMA/IFSC,Atividade >= 2020,n/d,D,Repositório primário,https://github.com/STI-UFMA/helios-server-main,2026-09-02,
+SW045,Helios - fork institucional UFMA/IFSC,Commits,3,A,Repositório primário,https://github.com/STI-UFMA/helios-server-main,2026-09-02,Snapshot; métricas mudam ao longo do tempo.
+N/A,SEI,Licenciamento,Não é software livre nem software público; compartilhado apenas com setor público por acordo,B,Fonte institucional oficial,https://www.gov.br/gestao/pt-br/assuntos/gestaoeinovacao/informacoes-sistemas-e-servicos-de-gestao/processo-eletronico-nacional/destaques/faq/sei/,2026-09-02,Motivo para exclusão do corpus aberto.
+N/A,Ro-dou,Tipo de artefato,Gerador de DAGs no Apache Airflow para clipping,A,Repositório primário,https://github.com/gestaogovbr/Ro-dou,2026-09-02,Excluído do corpus estrito por enquadrar-se melhor como workflow/orquestração.
+N/A,Programa de Metas 2025-2028,Licença,GitHub detecta GPL-3.0; README afirma MIT,A,Repositório primário,https://github.com/sepep-pmsp/site-pdm-vfinal-25-28,2026-09-02,Conflito interno não resolvido; permanece B.

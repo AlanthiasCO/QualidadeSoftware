@@ -1,0 +1,6 @@
+project_id,name,unique_files_before,residual_test_files_removed,unique_files_after,observations_after,removed_paths
+novo_sgp,Novo SGP,9637,0,9637,50840,
+sapl,SAPL,239,0,239,1411,
+siga,SIGA,2116,1,2115,10895,sigatp/src/main/java/testeCurrency.java
+sigi,SIGI,300,1,299,1516,sigi/testutils.py
+painel_esus,Painel e-SUS APS,600,1,599,906,paineis-v2-front/src/services/demographicParse.spec.ts

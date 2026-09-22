@@ -1,0 +1,13 @@
+project_id: siga
+name: SIGA
+repo_url: https://github.com/projeto-siga/siga.git
+local_path: repos/siga
+branch: develop
+freeze_sha: c65f287e84f1a0626c79310da0245bc8abb3175c
+start_year: 2020
+end_year: 2026
+extensions: [.java]
+exclude_paths: [node_modules, vendor, dist, build, target]
+exclude_tests: true
+test_markers: [test, tests, teste, testes, spec, specs]
+exclude_migrations: false

@@ -1,0 +1,13 @@
+project_id: painel_esus
+name: Painel e-SUS APS
+repo_url: https://github.com/CampusVirtualFiocruz/painel-esus.git
+local_path: repos/painel_esus
+branch: main
+freeze_sha: d21fe44562fd73c4ae46261a40496079b6e94f15
+start_year: 2020
+end_year: 2026
+extensions: [.py, .js, .ts]
+exclude_paths: [node_modules, vendor, dist, build]
+exclude_tests: true
+test_markers: [test, tests, teste, testes, spec, specs]
+exclude_migrations: false

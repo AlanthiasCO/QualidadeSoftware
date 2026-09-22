@@ -1,0 +1,7 @@
+project_id,type,detail
+siga,RQ2_indefinida,2025 nmod_vs_ccn: constant_input:nmod
+siga,RQ2_indefinida,2025 churn_vs_ccn: constant_input:churn
+siga,filtro_residual_corrigido,1 arquivo(s) removido(s) no pos-processamento v1.4.1: sigatp/src/main/java/testeCurrency.java
+sigi,filtro_residual_corrigido,1 arquivo(s) removido(s) no pos-processamento v1.4.1: sigi/testutils.py
+painel_esus,filtro_residual_corrigido,1 arquivo(s) removido(s) no pos-processamento v1.4.1: paineis-v2-front/src/services/demographicParse.spec.ts
+painel_esus,serie_curta,Apenas 2 snapshots validos (2024-2025); RQ3 possui uma unica transicao.

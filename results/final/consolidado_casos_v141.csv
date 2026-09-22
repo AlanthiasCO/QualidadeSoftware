@@ -1,0 +1,6 @@
+project_id,name,branch,freeze_sha,freeze_date,commits_since_start_year,authors_since_start_year,files_at_freeze,included_first_party_files_at_freeze,included_file_pct,extensions,snapshots,first_snapshot,last_snapshot,unique_files_after,observations_after,residual_test_files_removed
+novo_sgp,Novo SGP,development,c7c06015d2be880c1f5c854cad0c080c4508343a,2026-02-09T14:04:41-03:00,29331,120,12838,9364,72.93971023523913,.cs,7,2020,2026,9637,50840,0
+sapl,SAPL,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,2026-09-01T18:43:34-03:00,791,28,1598,207,12.95369211514393,.py,7,2020,2026,239,1411,0
+siga,SIGA,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,2025-11-04T17:28:34-03:00,6665,74,13347,2018,15.119502509927324,.java,6,2020,2025,2115,10895,1
+sigi,SIGI,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,2026-09-17T11:05:57-03:00,730,8,906,262,28.91832229580574,.py,7,2020,2026,299,1516,1
+painel_esus,Painel e-SUS APS,main,d21fe44562fd73c4ae46261a40496079b6e94f15,2025-11-26T17:21:47-03:00,552,13,1175,496,42.212765957446805,.py;.js;.ts,2,2024,2025,599,906,1
