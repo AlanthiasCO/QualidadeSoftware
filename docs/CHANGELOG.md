@@ -1,3 +1,16 @@
+# v1.4.3 - retomada segura de execuções interrompidas
+
+- Corrige o deadlock da extração estática ao criar o `ProcessPoolExecutor` com
+  contexto `spawn`, impedindo que workers herdem os pipes do processo persistente
+  `git cat-file --batch`.
+- Encerra o `git cat-file` defensivamente: fecha a entrada, aguarda com timeout e,
+  se necessário, aplica `terminate` e `kill`, fechando também a saída.
+- Grava `pipeline_manifest.json` atomicamente no início com status `running` e só
+  muda para `completed` após todas as etapas concluírem.
+- Mantém `CACHE_SCHEMA = v1.4.2`, pois formato e semântica dos dados não mudaram.
+- Adiciona `--resume` para retomar checkpoints compatíveis e `--recover` para
+  recuperar, após validação explícita, execuções antigas interrompidas sem manifesto.
+
 # v1.4.2 - correções do piloto SAPL
 
 Correção da duplicação de eventos nos limites anuais, mapa completo de identidades, manifesto versionado automaticamente, testes próprios e RQ4 alinhada ao limite de até 15 hotspots.
@@ -108,4 +121,3 @@ hotspots run --config configs/novo_sgp.yml --output outputs
 ## Impacto nos dados SAPL ja gerados
 
 Nenhuma alteracao na pipeline principal de coleta foi necessaria. Os outputs SAPL ja produzidos permanecem validos. Basta executar novamente o validador atualizado para regenerar `validation/sapl/`.
-

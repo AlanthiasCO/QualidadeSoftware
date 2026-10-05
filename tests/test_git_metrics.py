@@ -65,6 +65,14 @@ def test_identical_event_at_annual_boundary_is_not_counted_twice(
         "_load_or_mine_window",
         fake_load_or_mine_window,
     )
+    monkeypatch.setattr(
+        git_metrics,
+        "_snapshot_paths",
+        lambda cfg, current_snapshots: {
+            "2020:a": {"src/example.py"},
+            "2021:b": {"src/example.py"},
+        },
+    )
 
     cfg = SimpleNamespace(
         project_id="test-project",

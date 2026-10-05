@@ -5,6 +5,35 @@ import pandas as pd
 IDENTITY_COLUMNS = ["project_id", "path", "canonical_path", "file_id"]
 
 
+class IdentityCollisionError(RuntimeError):
+    """Raised when a snapshot contains ambiguous longitudinal identities."""
+
+
+def validate_snapshot_file_id_uniqueness(
+    data: pd.DataFrame,
+    label: str,
+) -> None:
+    """Require one row per project/year/file identity in a snapshot table."""
+    if data is None or data.empty:
+        return
+    required = ["project_id", "year", "file_id"]
+    missing = [column for column in required if column not in data.columns]
+    if missing:
+        raise IdentityCollisionError(
+            f"{label}: colunas ausentes para validar identidades: {missing}"
+        )
+    duplicate = data.duplicated(subset=required, keep=False)
+    if not duplicate.any():
+        return
+    sample_columns = required + (["path"] if "path" in data.columns else [])
+    sample = data.loc[duplicate, sample_columns].sort_values(required).head(10)
+    raise IdentityCollisionError(
+        f"{label}: {int(duplicate.sum())} linhas violam a unicidade de "
+        "project_id/year/file_id; caminhos distintos no mesmo snapshot não podem "
+        f"compartilhar identidade. Amostra: {sample.to_dict(orient='records')}"
+    )
+
+
 class UnionFind:
     def __init__(self) -> None:
         self.parent: dict[str, str] = {}

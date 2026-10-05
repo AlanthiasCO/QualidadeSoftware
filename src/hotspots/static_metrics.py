@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
+import multiprocessing
 import os
 import subprocess
 import time
@@ -10,6 +11,7 @@ import pandas as pd
 
 from .config import ProjectConfig
 from .filtering import include_path
+from .identity import validate_snapshot_file_id_uniqueness
 from .utils import run_git, stable_id, ensure_dir
 
 
@@ -75,7 +77,7 @@ def _cat_blobs(repo: Path, object_ids: list[str]):
         ["git", "-C", str(repo), "cat-file", "--batch"],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
     )
     assert proc.stdin is not None and proc.stdout is not None
     try:
@@ -102,7 +104,17 @@ def _cat_blobs(repo: Path, object_ids: list[str]):
                 proc.stdin.close()
             except Exception:
                 pass
-        proc.wait()
+        try:
+            proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            proc.terminate()
+            try:
+                proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                proc.wait()
+        if proc.stdout and not proc.stdout.closed:
+            proc.stdout.close()
 
 
 def _analyze_job(job: tuple[str, str, str, str, int]) -> dict | None:
@@ -121,6 +133,16 @@ def _analyze_job(job: tuple[str, str, str, str, int]) -> dict | None:
         }
     except Exception:
         return None
+
+
+def _create_executor(workers: int) -> ProcessPoolExecutor | None:
+    """Use spawn so workers never inherit the persistent git cat-file pipes."""
+    if workers <= 1:
+        return None
+    return ProcessPoolExecutor(
+        max_workers=workers,
+        mp_context=multiprocessing.get_context("spawn"),
+    )
 
 
 def _snapshot_cache(cache_dir: Path, year: int, sha: str) -> Path:
@@ -185,7 +207,7 @@ def _extract_one_snapshot(
     # Keep only a small batch of source texts in memory at once. This is important
     # for very large snapshots such as Novo SGP.
     batch: list[tuple[str, str, str, str, int]] = []
-    executor = ProcessPoolExecutor(max_workers=workers) if workers > 1 else None
+    executor = _create_executor(workers)
     try:
         for oid, blob in _cat_blobs(cfg.repo_path, list(by_oid)):
             if blob is None:
@@ -268,6 +290,7 @@ def extract_static_metrics(
     result = pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
     if not result.empty:
         result = result.sort_values(["year", "path", "file_id"]).reset_index(drop=True)
+        validate_snapshot_file_id_uniqueness(result, "métricas estáticas")
     print(
         f"[PROGRESS] stage=static files={grand_total} total={grand_total} pct=100.00 "
         f"rate=0.00 eta=00:00:00 workers={workers}",

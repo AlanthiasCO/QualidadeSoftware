@@ -49,6 +49,13 @@ def _read_csv_if(path: Path, resume: bool) -> pd.DataFrame | None:
     return None
 
 
+def _write_manifest(path: Path, manifest: dict) -> None:
+    """Atomically persist the incremental pipeline state."""
+    temporary = path.with_name(f"{path.name}.tmp")
+    temporary.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    temporary.replace(path)
+
+
 def run_project(
     config_path: str,
     output_root: str = "outputs",
@@ -56,26 +63,37 @@ def run_project(
     resume: bool = True,
 ) -> Path:
     cfg = load_config(config_path)
-    clone_or_update(cfg)
     out = ensure_dir(Path(output_root) / cfg.project_id)
     current_fp = _config_fingerprint(cfg)
     manifest_path = out / "pipeline_manifest.json"
-    if resume and any(out.glob("*.csv")):
-        if not manifest_path.exists():
+    if resume:
+        if manifest_path.exists():
+            try:
+                old_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except Exception as exc:
+                raise RuntimeError(f"Manifesto inválido em {manifest_path}: {exc}") from exc
+            old_fp = old_manifest.get("config_fingerprint")
+            if old_fp != current_fp:
+                raise RuntimeError(
+                    f"Configuração/filtro mudou para {cfg.project_id} (fingerprint {old_fp} -> {current_fp}). "
+                    "Não é seguro reutilizar outputs antigos. Rode com --no-resume."
+                )
+        elif any(out.glob("*.csv")):
             raise RuntimeError(
                 f"Outputs existentes para {cfg.project_id} sem manifesto compatível. "
-                "Use --no-resume ou execute o monitor com --clean após confirmar o freeze SHA."
+                "Use --recover após verificar os quatro CSVs iniciais, ou rode com --no-resume."
             )
-        try:
-            old_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        except Exception as exc:
-            raise RuntimeError(f"Manifesto inválido em {manifest_path}: {exc}") from exc
-        old_fp = old_manifest.get("config_fingerprint")
-        if old_fp != current_fp:
-            raise RuntimeError(
-                f"Configuração/filtro mudou para {cfg.project_id} (fingerprint {old_fp} -> {current_fp}). "
-                "Não é seguro reutilizar outputs antigos. Rode com --no-resume ou --clean."
-            )
+    manifest = {
+        "pipeline_version": __version__,
+        "cache_schema": CACHE_SCHEMA,
+        "config_fingerprint": current_fp,
+        "workers": workers,
+        "resume": resume,
+        "status": "running",
+    }
+    _write_manifest(manifest_path, manifest)
+
+    clone_or_update(cfg)
     cache_root = ensure_dir(out / ".cache" / current_fp)
 
     audit_path = out / "00_audit.csv"
@@ -156,12 +174,6 @@ def run_project(
     if qualitative is None:
         qualitative_template(candidates).to_csv(qualitative_path, index=False)
 
-    manifest = {
-        "pipeline_version": __version__,
-        "cache_schema": CACHE_SCHEMA,
-        "config_fingerprint": current_fp,
-        "workers": workers,
-        "resume": resume,
-    }
-    (out / "pipeline_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    manifest["status"] = "completed"
+    _write_manifest(manifest_path, manifest)
     return out
