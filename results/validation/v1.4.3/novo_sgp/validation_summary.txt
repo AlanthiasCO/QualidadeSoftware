@@ -1,0 +1,28 @@
+VALIDACAO DA PIPELINE - novo_sgp
+========================================================================
+Repositorio: /home/james/Documents/Doutorado/Qualidade_de_Software/trabalho/QualidadeSoftware/repos/novo_sgp
+Freeze SHA: c7c06015d2be880c1f5c854cad0c080c4508343a
+Amostras auditadas: 9
+
+CHECAGENS INDEPENDENTES
+- nmod_match: 9/9 (100.0%)
+- churn_match: 9/9 (100.0%)
+- nloc_match: 9/9 (100.0%)
+- ccn_match: 9/9 (100.0%)
+- linhas com Nmod+churn+NLOC+CCN todos coincidentes: 9/9
+
+SENSIBILIDADE: TODOS OS ARQUIVOS vs SOMENTE Nmod>0
+- 2020: ativos 2534/2848 (89.0%), Spearman=1.0000, top10 Jaccard=1.0000
+- 2021: ativos 3778/5431 (69.6%), Spearman=0.9459, top10 Jaccard=0.8806
+- 2022: ativos 3100/6893 (45.0%), Spearman=0.8642, top10 Jaccard=0.8507
+- 2023: ativos 3532/8240 (42.9%), Spearman=0.9101, top10 Jaccard=1.0000
+- 2024: ativos 1071/8713 (12.3%), Spearman=0.8756, top10 Jaccard=0.7419
+- 2025: ativos 922/9351 (9.9%), Spearman=0.8172, top10 Jaccard=0.4198
+- 2026: ativos 34/9364 (0.4%), Spearman=0.7773, top10 Jaccard=0.1429
+
+INTERPRETACAO
+- As janelas historicas usam inicio exclusivo e fim inclusivo: (snapshot anterior, snapshot atual].
+- O commit que forma o snapshot anterior nao e recontado na janela seguinte.
+- A validacao Git consulta o historico completo (--full-history) dos aliases explicitos aprovados pelo mapa conservador de identidades, sem usar --follow.
+- NLOC/CCN devem coincidir exatamente, pois sao recalculados no mesmo SHA com Lizard.
+- A analise de sensibilidade nao substitui o cenario principal; ela testa se a massa de Nmod=0 altera o ranking.

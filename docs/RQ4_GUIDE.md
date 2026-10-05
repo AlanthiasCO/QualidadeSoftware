@@ -6,16 +6,16 @@ Avaliar se arquivos de alta prioridade longitudinal apresentam mais evidências 
 
 ## Amostra inicial
 
-- 25 hotspots;
-- 25 controles;
-- 5 pares por sistema;
-- mesmo sistema e mesma linguagem;
-- pareamento baseado em NLOC e idade do arquivo.
+- até 15 hotspots no conjunto dos cinco sistemas;
+- sem controles pareados obrigatórios;
+- máximo de 3 hotspots por sistema;
+- arquivos presentes em pelo menos 2 snapshots;
+- seleção no decil superior de H mediano por sistema e linguagem.
 
 Arquivo de trabalho:
 
 ```text
-results/rq4/rq4_avaliacao.csv
+outputs/<projeto>/10_rq4_hotspot_candidates.csv
 ```
 
 ## Fontes a inspecionar
@@ -55,4 +55,4 @@ Há registro textual ou decisão técnica que sustente claramente solução inad
 
 ## Critério de encerramento
 
-Após os 25 pares, a equipe avalia suficiência informacional. Se continuarem surgindo categorias ou padrões qualitativos novos relevantes, ampliar a amostra de forma documentada.
+A inspeção termina após até 15 hotspots. Qualquer ampliação exige revisão e justificativa formal da proposta metodológica.

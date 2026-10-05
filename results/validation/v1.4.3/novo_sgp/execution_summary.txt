@@ -1,0 +1,26 @@
+EXECUÇÃO VALIDADA DA PIPELINE
+========================================================================
+Projeto: novo_sgp
+Versão da pipeline: 1.4.3
+Cache schema: v1.4.2
+Freeze SHA: c7c06015d2be880c1f5c854cad0c080c4508343a
+Snapshots: 7
+  - 2020: 94d402079449533583758873d71c43369660c862
+  - 2021: 513471d05e3e1e2857a721521c38554bdf824947
+  - 2022: 69ab9fce3d1c9e193bd0a3a62ba4d63af8e55e1d
+  - 2023: 35ad7efeaa14cdb6521229cc93dbadd441d5235b
+  - 2024: 859063db4122043cf14de0abf54c8137bbccbc47
+  - 2025: 5dc3c95da041f40f0e9cf538984adf380d2b6032
+  - 2026: c7c06015d2be880c1f5c854cad0c080c4508343a
+Observações do mestre: 50840
+Identidades: 10237
+Validação independente:
+  - nmod_match: 9/9
+  - churn_match: 9/9
+  - nloc_match: 9/9
+  - ccn_match: 9/9
+Candidatos da RQ4: 3
+  - novo_sgp: rank 1, file_id=71261a9d39d697cd, path=src/SME.SGP.Aplicacao/CasosDeUso/ConselhoClasse/ObterNotasFrequenciaUseCase.cs
+  - novo_sgp: rank 2, file_id=473acad15c891997, path=src/SME.SGP.Aplicacao/Integracoes/ServicoEOL.cs
+  - novo_sgp: rank 3, file_id=541e5385f3719f66, path=src/SME.SGP.Dados/Repositorios/RepositorioTurmaConsulta.cs
+Status final: SUCESSO

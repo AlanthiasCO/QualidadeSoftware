@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "public-software-hotspots"
-version = "1.4.1"
+version = "1.4.3"
 description = "Pipeline longitudinal de hotspots para priorizacao de inspecao de divida tecnica"
 requires-python = ">=3.11"
 dependencies = [
@@ -25,3 +25,6 @@ hotspots = "hotspots.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
