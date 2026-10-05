@@ -5,20 +5,22 @@ import hashlib
 import json
 import pandas as pd
 
+from . import __version__
 from .config import load_config
 from .repository import clone_or_update
 from .snapshots import build_snapshots
 from .audit import audit_project
 from .git_metrics import mine_git_metrics
+from .identity import complete_identity_map
 from .static_metrics import extract_static_metrics
 from .scoring import build_master, add_hotspot_score
 from .rq1 import analyze_rq1
 from .rq2 import analyze_rq2
 from .rq3 import analyze_rq3
-from .rq4 import build_comparison_pairs, qualitative_template
+from .rq4 import select_qualitative_hotspots, qualitative_template
 from .utils import ensure_dir
 
-CACHE_SCHEMA = "v1.4"
+CACHE_SCHEMA = "v1.4.2"
 
 
 def _config_fingerprint(cfg) -> str:
@@ -110,6 +112,9 @@ def run_project(
         )
         static.to_csv(static_path, index=False)
 
+    identity = complete_identity_map(identity, static)
+    identity.to_csv(identity_path, index=False)
+
     master_path = out / "05_master_hotspots.csv"
     master = _read_csv_if(master_path, resume)
     if master is None:
@@ -140,19 +145,19 @@ def run_project(
         longi.to_csv(longi_path, index=False)
         stability.to_csv(stability_path, index=False)
 
-    pairs_path = out / "10_rq4_comparison_pairs.csv"
-    pairs = _read_csv_if(pairs_path, resume)
-    if pairs is None:
-        pairs = build_comparison_pairs(longi)
-        pairs.to_csv(pairs_path, index=False)
+    candidates_path = out / "10_rq4_hotspot_candidates.csv"
+    candidates = _read_csv_if(candidates_path, resume)
+    if candidates is None:
+        candidates = select_qualitative_hotspots(longi)
+        candidates.to_csv(candidates_path, index=False)
 
     qualitative_path = out / "11_rq4_qualitative_template.csv"
     qualitative = _read_csv_if(qualitative_path, resume)
     if qualitative is None:
-        qualitative_template(pairs).to_csv(qualitative_path, index=False)
+        qualitative_template(candidates).to_csv(qualitative_path, index=False)
 
     manifest = {
-        "pipeline_version": "1.4.0",
+        "pipeline_version": __version__,
         "cache_schema": CACHE_SCHEMA,
         "config_fingerprint": current_fp,
         "workers": workers,

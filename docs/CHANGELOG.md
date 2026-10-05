@@ -1,3 +1,7 @@
+# v1.4.2 - correções do piloto SAPL
+
+Correção da duplicação de eventos nos limites anuais, mapa completo de identidades, manifesto versionado automaticamente, testes próprios e RQ4 alinhada ao limite de até 15 hotspots.
+
 # Changelog
 
 # v1.4.1 - ajuste residual de filtros de teste

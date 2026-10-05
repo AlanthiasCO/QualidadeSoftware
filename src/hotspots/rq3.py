@@ -6,7 +6,14 @@ from scipy.stats import spearmanr
 
 
 def analyze_rq3(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    longitudinal = df.groupby(["project_id", "language", "file_id"], as_index=False).agg(
+    ordered = df.sort_values(
+        ["project_id", "language", "file_id", "year"]
+    )
+    longitudinal = ordered.groupby(
+        ["project_id", "language", "file_id"],
+        as_index=False,
+    ).agg(
+        path=("path", "last"),
         snapshots=("year", "nunique"),
         first_year=("year", "min"),
         last_year=("year", "max"),

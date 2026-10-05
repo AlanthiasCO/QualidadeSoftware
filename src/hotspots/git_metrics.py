@@ -176,6 +176,12 @@ def mine_git_metrics(
         return pd.DataFrame(), pd.DataFrame()
 
     ev = pd.concat(nonempty, ignore_index=True)
+    # PyDriller treats the ``since`` boundary as inclusive at second precision.
+    # Consequently, a commit that closes one snapshot can also be returned for
+    # the following window even though its start is advanced by one microsecond.
+    # Keep the scientific windows unchanged and remove only identical events
+    # repeated across adjacent checkpoints before aggregating churn.
+    ev = ev.drop_duplicates(subset=EVENT_COLUMNS).reset_index(drop=True)
     ev["commit_date"] = pd.to_datetime(ev["commit_date"], utc=True)
 
     # Reconstruct longitudinal identity globally, preserving baseline behavior.
