@@ -1,0 +1,12 @@
+{
+  "pairs_total": 25,
+  "pairs_valid": 25,
+  "pairs_incomplete": 0,
+  "incomplete_pairs": [],
+  "hotspot_higher_issue_density": 9,
+  "control_higher_issue_density": 11,
+  "ties": 5,
+  "discordant_pairs": 20,
+  "exact_two_sided_sign_test_p": 0.823803,
+  "note": "Exploratory paired direction test on valid matched pairs only; issue density is compared only within each matched pair, not as a common cross-tool scale. Missing paths are recovered from the latest Git revision in which the exact sampled path existed."
+}
