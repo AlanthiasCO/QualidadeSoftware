@@ -126,13 +126,13 @@ results/final/v143/consolidado_rq4_pares_v143.csv
 
 O gargalo atual é a **análise estática pareada**. A equipe deve:
 
-1. reexecutar e validar a pipeline v1.4.3 nos cinco sistemas;
-2. congelar os 25 pares hotspot-controle;
-3. executar analisadores estáticos nos 50 arquivos;
+1. executar o SonarQube nos cinco repositórios e SHAs congelados;
+2. devolver os resultados e logs conforme `docs/SONARQUBE_EXECUTION_GUIDE.md`;
+3. validar o estado de análise dos 50 arquivos;
 4. normalizar ocorrências por NLOC;
 5. comparar hotspots e controles com testes pareados;
 6. executar análises de sensibilidade;
-7. fechar Resultados, Discussão e Ameaças à Validade.
+7. fechar RQ4, Discussão e Ameaças à Validade.
 
 Veja `docs/TODO.md` e `docs/RQ4_GUIDE.md`.
 

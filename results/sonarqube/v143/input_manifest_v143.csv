@@ -1,0 +1,51 @@
+pair_id,project_id,system_name,group,language,branch,freeze_sha,file_id,path,h_median,nloc_median,snapshots,analysis_status
+novo_sgp-P01,novo_sgp,Novo SGP,hotspot,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,71261a9d39d697cd,src/SME.SGP.Aplicacao/CasosDeUso/ConselhoClasse/ObterNotasFrequenciaUseCase.cs,0.9993687593251463,603.0,7,pending
+novo_sgp-P01,novo_sgp,Novo SGP,control,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,3aeabfa17e2c88e2,src/SME.SGP.Infra/Constantes/ConstantesMenuPermissao.cs,0.1542588208644383,329.0,4,pending
+novo_sgp-P02,novo_sgp,Novo SGP,hotspot,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,473acad15c891997,src/SME.SGP.Aplicacao/Integracoes/ServicoEOL.cs,0.9978932584269664,869.0,3,pending
+novo_sgp-P02,novo_sgp,Novo SGP,control,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,eeac3d9734b33a0d,src/SME.SGP.Dados/Mapeamentos/RegistrarMapeamentos.cs,0.3893701208426906,249.0,7,pending
+novo_sgp-P03,novo_sgp,Novo SGP,hotspot,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,541e5385f3719f66,src/SME.SGP.Dados/Repositorios/RepositorioTurmaConsulta.cs,0.9975728155339806,1002.0,5,pending
+novo_sgp-P03,novo_sgp,Novo SGP,control,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,c0d9c58300d8c393,src/SME.SGP.Infra/Enumerados/Permissao.cs,0.1565607956368302,1834.0,7,pending
+novo_sgp-P04,novo_sgp,Novo SGP,hotspot,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,ba2b2d921c70fc42,src/SME.SGP.Dados/Repositorios/RepositorioAulaConsulta.cs,0.9970985057304512,1115.0,5,pending
+novo_sgp-P04,novo_sgp,Novo SGP,control,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,27866094e055cca0,src/SME.SGP.Infra.Consts/ServicosEolConstants.cs,0.3848319673420385,134.0,4,pending
+novo_sgp-P05,novo_sgp,Novo SGP,hotspot,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,d9bcd6c021fb4304,src/SME.SGP.Dominio.Servicos/ServicoFechamentoTurmaDisciplina.cs,0.9968398876404494,590.0,7,pending
+novo_sgp-P05,novo_sgp,Novo SGP,control,CSharp,development,c7c06015d2be880c1f5c854cad0c080c4508343a,096b91a80020a7ea,src/SME.SGP.Infra.Mensageria/Rotas/RotasRabbitSgp.cs,0.1548798465345039,123.0,6,pending
+painel_esus-P01,painel_esus,Painel e-SUS APS,hotspot,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,da570d75951ed5f5,painel-esus/src/main/adapters/nominal_list_adapter.py,0.9943219794344472,677.5,2,pending
+painel_esus-P01,painel_esus,Painel e-SUS APS,control,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,2cc7a0b731f7ca44,painel-esus/src/infra/create_base/polars/scripts_dados/tb_equipe.py,0.1906876606683804,455.5,2,pending
+painel_esus-P02,painel_esus,Painel e-SUS APS,hotspot,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,e5d28d9ea87767ac,painel-esus/src/infra/db/repositories/demographics_info_v2.py,0.9430960796915168,220.0,2,pending
+painel_esus-P02,painel_esus,Painel e-SUS APS,control,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,2b91010e14f3ca3d,painel-esus/src/infra/db/repositories/sqls/pessoa/lista_nominal.py,0.1906876606683804,213.0,2,pending
+painel_esus-P03,painel_esus,Painel e-SUS APS,hotspot,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,39907dcbbf48218f,painel-esus/src/infra/db/repositories/children/children_repository.py,0.9418460796915168,148.5,2,pending
+painel_esus-P03,painel_esus,Painel e-SUS APS,control,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,c82446c8fe0a65fe,painel-esus/src/infra/db/repositories/sqls/tabelas.py,0.1906876606683804,185.0,2,pending
+painel_esus-P04,painel_esus,Painel e-SUS APS,hotspot,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,5fd0be5fb1eca80a,painel-esus/src/main/adapters/records_adapter.py,0.940348650385604,111.0,2,pending
+painel_esus-P04,painel_esus,Painel e-SUS APS,control,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,4255d27796226cfd,painel-esus/src/infra/db/repositories/sqls/smoking/smoking_base.py,0.1906876606683804,82.0,2,pending
+painel_esus-P05,painel_esus,Painel e-SUS APS,hotspot,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,979a57312809af6d,painel-esus/src/infra/db/repositories/disease/nominal_list/diabetes_nominal_list_repository.py,0.934133997429306,142.5,2,pending
+painel_esus-P05,painel_esus,Painel e-SUS APS,control,Python,main,d21fe44562fd73c4ae46261a40496079b6e94f15,55ab6eb1a3ccb9c5,painel-esus/src/infra/db/repositories/sqls/atendimento_individual_cid_ciaps_nascimento.py,0.1906876606683804,79.0,2,pending
+sapl-P01,sapl,SAPL,hotspot,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,c4bec0aa3f27a78d,sapl/sessao/views.py,0.9877450980392156,4223.0,7,pending
+sapl-P01,sapl,SAPL,control,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,b0ebfe374d33cfe0,sapl/legacy/models.py,0.2360432616356786,876.0,2,pending
+sapl-P02,sapl,SAPL,hotspot,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,11b2afe97076f159,sapl/materia/views.py,0.9698492462311558,2333.0,7,pending
+sapl-P02,sapl,SAPL,control,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,b5ea40e821c853b1,sapl/settings.py,0.25,310.0,7,pending
+sapl-P03,sapl,SAPL,hotspot,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,2b1ea23ae76b50cb,sapl/base/views.py,0.9597989949748744,1227.0,7,pending
+sapl-P03,sapl,SAPL,control,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,bea9e89b15b496d1,sapl/relatorios/templates/pdf_sessao_plenaria_preparar_pysc.py,0.2462311557788944,239.0,7,pending
+sapl-P04,sapl,SAPL,hotspot,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,710c9fb76ba1bbc3,sapl/relatorios/views.py,0.953846153846154,2095.0,7,pending
+sapl-P04,sapl,SAPL,control,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,1b2b956c75f568bc,sapl/sessao/urls.py,0.2462311557788944,205.0,7,pending
+sapl-P05,sapl,SAPL,hotspot,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,b38f2cf8d9bb2f72,sapl/utils.py,0.95260663507109,872.0,7,pending
+sapl-P05,sapl,SAPL,control,Python,3.1.x,55f02aa6397bc613ad5b471b799519e02e53dde5,b09ebf272337e792,sapl/relatorios/templates/pdf_detalhe_materia_preparar_pysc.py,0.2462311557788944,202.0,7,pending
+siga-P01,siga,SIGA,hotspot,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,6737edbb6d9184af,siga-ex/src/main/java/br/gov/jfrj/siga/ex/bl/ExBL.java,0.9997513674788664,6721.5,6,pending
+siga-P01,siga,SIGA,control,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,014ae6cd046cd5e2,sigasr/src/main/java/br/gov/jfrj/siga/sr/model/SrSolicitacao.java,0.0817344500261684,2691.5,6,pending
+siga-P02,siga,SIGA,hotspot,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,2c6a4d56c0f57b71,sigaex/src/main/java/br/gov/jfrj/siga/vraptor/ExMovimentacaoController.java,0.9976257178744996,4798.5,6,pending
+siga-P02,siga,SIGA,control,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,c97c9f337a8ed3a1,sigagc/src/main/java/br/gov/jfrj/siga/gc/util/diff_match_patch.java,0.3987044353170423,1697.0,6,pending
+siga-P03,siga,SIGA,hotspot,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,d2348e058cbd5378,sigaex/src/main/java/br/gov/jfrj/siga/vraptor/ExDocumentoController.java,0.9972332531963206,2502.5,6,pending
+siga-P03,siga,SIGA,control,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,ac9e4dd1287dbbfe,sigasr/src/main/java/br/gov/jfrj/siga/sr/reports/SrRelPrazo.java,0.3987044353170423,1385.0,6,pending
+siga-P04,siga,SIGA,hotspot,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,c8ff150541242122,siga-ex/src/main/java/br/gov/jfrj/siga/hibernate/ExDao.java,0.9957689534768656,2182.0,6,pending
+siga-P04,siga,SIGA,control,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,31b7708d6b7eb409,sigasr/src/main/java/br/gov/jfrj/siga/sr/vraptor/SolicitacaoController.java,0.0817344500261684,1070.5,6,pending
+siga-P05,siga,SIGA,hotspot,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,7165f24b4d590bf6,siga-cp/src/main/java/br/gov/jfrj/siga/dp/dao/CpDao.java,0.9950345704590216,2591.0,6,pending
+siga-P05,siga,SIGA,control,Java,develop,c65f287e84f1a0626c79310da0245bc8abb3175c,e3bc7b2fecc1f4cb,sigatp/src/main/java/br/gov/jfrj/siga/tp/vraptor/MissaoController.java,0.0817344500261684,1011.0,6,pending
+sigi-P01,sigi,SIGI,hotspot,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,c85b8fe8f692c4d7,sigi/apps/convenios/models.py,0.9730392156862744,866.0,7,pending
+sigi-P01,sigi,SIGI,control,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,89b2fe9c83b10cea,sigi/apps/convenios/reports.py,0.2447459951991378,237.5,2,pending
+sigi-P02,sigi,SIGI,hotspot,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,ce44b53bba4681d0,sigi/apps/eventos/admin.py,0.9681647940074908,1580.0,7,pending
+sigi-P02,sigi,SIGI,control,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,3f31b4cbfb6621d2,sigi/settings.py,0.2739463601532567,204.0,7,pending
+sigi-P03,sigi,SIGI,hotspot,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,e8c4484217913e4f,sigi/apps/casas/views.py,0.9635036496350364,597.0,7,pending
+sigi-P03,sigi,SIGI,control,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,11a12bda9603082a,sigi/apps/relatorios/reports.py,0.2739463601532567,113.0,7,pending
+sigi-P04,sigi,SIGI,hotspot,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,1cf477cc6f7c09f9,sigi/apps/casas/admin.py,0.95985401459854,509.0,7,pending
+sigi-P04,sigi,SIGI,control,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,c3a073ae3ac4b2c0,sigi/apps/home/urls.py,0.2739463601532567,83.0,7,pending
+sigi-P05,sigi,SIGI,hotspot,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,b3c7cc81c03f8e3d,sigi/apps/servicos/dashboards.py,0.9478776529338326,394.5,2,pending
+sigi-P05,sigi,SIGI,control,Python,master,129a9dc1225e09d304cbbc9001c48d47aff11b5e,079aea8483c1136d,sigi/apps/diagnosticos/urls.py,0.2739463601532567,59.0,7,pending

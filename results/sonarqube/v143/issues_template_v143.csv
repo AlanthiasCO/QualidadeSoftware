@@ -1,0 +1,1 @@
+analysis_id,project_id,freeze_sha,sonarqube_project_key,sonarqube_version,scanner_version,quality_profile,analysis_date,pair_id,group,path,analysis_status,rule_key,rule_name,issue_type,severity,status,line,effort,message

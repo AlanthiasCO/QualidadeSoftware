@@ -26,25 +26,25 @@
 
 ## RQ1–RQ3 — redação
 
-- [ ] Selecionar tabelas e figuras que entram no artigo
-- [ ] Redigir resposta final da RQ1
-- [ ] Redigir resposta final da RQ2
-- [ ] Redigir resposta final da RQ3
+- [x] Selecionar tabelas e figuras que entram no artigo
+- [x] Redigir resposta final da RQ1
+- [x] Redigir resposta final da RQ2
+- [x] Redigir resposta final da RQ3
 
 ## Metodologia
 
-- [ ] Atualizar texto de proposta para estudo executado
-- [ ] Inserir SHAs, branches e datas de freeze
-- [ ] Inserir filtros efetivamente usados
+- [x] Atualizar texto de proposta para estudo executado nas RQ1--RQ3
+- [x] Inserir SHAs, branches e datas de freeze
+- [x] Inserir filtros efetivamente usados
 - [x] Registrar pipeline v1.4.3
-- [ ] Descrever análise de sensibilidade
+- [x] Descrever análises de sensibilidade previstas para a RQ4
 - [ ] Inserir protocolo efetivamente executado na RQ4
 
 ## Resultados e discussão
 
-- [ ] Redigir Resultados RQ1
-- [ ] Redigir Resultados RQ2
-- [ ] Redigir Resultados RQ3
+- [x] Redigir Resultados RQ1
+- [x] Redigir Resultados RQ2
+- [x] Redigir Resultados RQ3
 - [ ] Redigir Resultados RQ4
 - [ ] Integrar RQ1–RQ4 na Discussão
 - [ ] Atualizar Ameaças à Validade
@@ -60,6 +60,7 @@
 - [x] Resultados quantitativos finais
 - [ ] Resultados finais da RQ4
 - [ ] Resultados e configurações dos analisadores estáticos
+- [x] Preparar manifesto e roteiro de execução do SonarQube
 - [ ] README final de reprodução
 
 ## Revisão e submissão
