@@ -1,101 +1,101 @@
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 
 
-CANDIDATE_COLUMNS = [
-    "project_id",
-    "selection_rank",
-    "language",
-    "file_id",
-    "path",
-    "snapshots",
-    "first_year",
-    "last_year",
-    "h_median",
-    "h_iqr",
-    "h_min",
-    "h_max",
-    "nloc_median",
-    "selection_rule",
+PAIR_COLUMNS = [
+    "pair_id", "project_id", "language", "matched_distance", "group",
+    "file_id", "path", "snapshots", "first_year", "last_year",
+    "h_median", "nloc_median", "selection_rule",
 ]
 
 
-def select_qualitative_hotspots(
+def select_static_analysis_pairs(
     longitudinal: pd.DataFrame,
-    max_per_project: int = 3,
+    max_pairs_per_project: int = 5,
     high_quantile: float = 0.90,
+    low_quantile: float = 0.50,
     min_snapshots: int = 2,
 ) -> pd.DataFrame:
-    """Select up to three persistent hotspots per project for RQ4."""
-
+    """Select deterministic hotspot-control pairs for automated analysis."""
     if longitudinal.empty:
-        return pd.DataFrame(columns=CANDIDATE_COLUMNS)
+        return pd.DataFrame(columns=PAIR_COLUMNS)
 
-    eligible = longitudinal[
-        longitudinal["snapshots"] >= min_snapshots
-    ].copy()
+    rows: list[dict] = []
+    for project, project_rows in longitudinal.groupby("project_id", sort=True):
+        hotspot_frames: list[pd.DataFrame] = []
+        control_pools: dict[str, pd.DataFrame] = {}
+        for language, group in project_rows.groupby("language", sort=True):
+            eligible = group[group["snapshots"] >= min_snapshots].copy()
+            if len(eligible) < 2:
+                continue
+            high_cut = eligible["h_median"].quantile(high_quantile)
+            low_cut = eligible["h_median"].quantile(low_quantile)
+            hotspots = eligible[eligible["h_median"] >= high_cut].copy()
+            controls = eligible[eligible["h_median"] <= low_cut].copy()
+            if hotspots.empty or controls.empty:
+                continue
+            for column in ["nloc_median", "first_year"]:
+                scale = float(controls[column].std(ddof=0))
+                if not np.isfinite(scale) or scale == 0:
+                    scale = 1.0
+                center = float(controls[column].mean())
+                controls[f"z_{column}"] = (controls[column] - center) / scale
+                hotspots[f"z_{column}"] = (hotspots[column] - center) / scale
+            hotspot_frames.append(hotspots)
+            control_pools[str(language)] = controls
 
-    if eligible.empty:
-        return pd.DataFrame(columns=CANDIDATE_COLUMNS)
+        if not hotspot_frames:
+            continue
+        project_hotspots = pd.concat(hotspot_frames, ignore_index=True).sort_values(
+            ["h_median", "nloc_median", "file_id"],
+            ascending=[False, False, True],
+        )
+        used_controls: dict[str, set[str]] = {
+            language: set() for language in control_pools
+        }
+        pair_number = 0
 
-    eligible["high_cut"] = eligible.groupby(
-        ["project_id", "language"]
-    )["h_median"].transform(
-        lambda values: values.quantile(high_quantile)
-    )
+        for _, hotspot in project_hotspots.iterrows():
+            if pair_number >= max_pairs_per_project:
+                break
+            language = str(hotspot["language"])
+            controls = control_pools[language]
+            available = controls[
+                ~controls["file_id"].isin(used_controls[language])
+            ].copy()
+            if available.empty:
+                continue
+            distance = np.sqrt(
+                (available["z_nloc_median"] - hotspot["z_nloc_median"]) ** 2
+                + (available["z_first_year"] - hotspot["z_first_year"]) ** 2
+            )
+            control = available.assign(_distance=distance).sort_values(
+                ["_distance", "file_id"], ascending=[True, True]
+            ).iloc[0]
+            used_controls[language].add(str(control["file_id"]))
+            pair_number += 1
+            pair_id = f"{project}-P{pair_number:02d}"
+            rule = (
+                f"hotspot no quantil >= {high_quantile:.2f}; controle no quantil "
+                f"<= {low_quantile:.2f}; pareamento por NLOC mediano e primeiro ano"
+            )
+            for label, item in [("hotspot", hotspot), ("control", control)]:
+                rows.append({
+                    "pair_id": pair_id,
+                    "project_id": project,
+                    "language": language,
+                    "matched_distance": float(control["_distance"]),
+                    "group": label,
+                    "file_id": item["file_id"],
+                    "path": item["path"],
+                    "snapshots": int(item["snapshots"]),
+                    "first_year": int(item["first_year"]),
+                    "last_year": int(item["last_year"]),
+                    "h_median": float(item["h_median"]),
+                    "nloc_median": float(item["nloc_median"]),
+                    "selection_rule": rule,
+                })
 
-    candidates = eligible[
-        eligible["h_median"] >= eligible["high_cut"]
-    ].copy()
-
-    candidates = candidates.sort_values(
-        [
-            "project_id",
-            "h_median",
-            "h_max",
-            "snapshots",
-            "file_id",
-        ],
-        ascending=[True, False, False, False, True],
-    )
-
-    selected = candidates.groupby(
-        "project_id",
-        group_keys=False,
-    ).head(max_per_project).copy()
-
-    selected["selection_rank"] = (
-        selected.groupby("project_id").cumcount() + 1
-    )
-
-    percentile = round((1.0 - high_quantile) * 100)
-    selected["selection_rule"] = (
-        f"top {percentile}% de H mediano por projeto e linguagem; "
-        f"mínimo de {min_snapshots} snapshots; "
-        f"máximo de {max_per_project} casos por projeto"
-    )
-
-    return selected[CANDIDATE_COLUMNS].reset_index(drop=True)
-
-
-def qualitative_template(candidates: pd.DataFrame) -> pd.DataFrame:
-    columns = CANDIDATE_COLUMNS + [
-        "artifact_type",
-        "artifact_reference",
-        "evidence_excerpt_or_summary",
-        "context_notes",
-        "reviewer_1_class",
-        "reviewer_2_class",
-        "agreement",
-        "consensus_class",
-    ]
-
-    if candidates.empty:
-        return pd.DataFrame(columns=columns)
-
-    result = candidates.copy()
-    for column in columns[len(CANDIDATE_COLUMNS):]:
-        result[column] = ""
-
-    return result[columns]
+    return pd.DataFrame(rows, columns=PAIR_COLUMNS)

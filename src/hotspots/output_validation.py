@@ -101,20 +101,28 @@ def validate_identity_coverage(master: pd.DataFrame, identity: pd.DataFrame) -> 
 def validate_rq4_candidates(candidates: pd.DataFrame) -> None:
     _require_columns(
         candidates,
-        ["project_id", "file_id", "path"],
-        "10_rq4_hotspot_candidates.csv",
+        ["pair_id", "project_id", "file_id", "path", "group"],
+        "10_rq4_static_analysis_pairs.csv",
     )
     if candidates.empty:
         return
 
     counts = candidates.groupby("project_id", dropna=False).size()
-    over_limit = counts[counts > 3]
+    over_limit = counts[counts > 10]
     if not over_limit.empty:
         details = ", ".join(
             f"{project}={int(count)}" for project, count in over_limit.items()
         )
         raise OutputValidationError(
-            f"mais de três candidatos da RQ4 por projeto: {details}"
+            f"mais de cinco pares da RQ4 por projeto: {details}"
+        )
+
+    invalid_pairs = candidates.groupby("pair_id")["group"].agg(list).apply(
+        lambda groups: sorted(groups) != ["control", "hotspot"]
+    )
+    if invalid_pairs.any():
+        raise OutputValidationError(
+            f"pares incompletos ou inválidos: {invalid_pairs[invalid_pairs].index.tolist()}"
         )
 
     blank_path = candidates["path"].isna() | candidates["path"].astype(str).str.strip().eq("")
@@ -169,7 +177,7 @@ def validate_project_outputs(
     snapshots = _read_csv(output_dir / "01_snapshots.csv")
     identity = _read_csv(output_dir / "03_file_identity.csv")
     master = _read_csv(output_dir / "05_master_hotspots.csv")
-    candidates = _read_csv(output_dir / "10_rq4_hotspot_candidates.csv")
+    candidates = _read_csv(output_dir / "10_rq4_static_analysis_pairs.csv")
     validation_details = _read_csv(validation_dir / "validation_details.csv")
 
     _require_columns(audit, ["project_id", "freeze_sha"], "00_audit.csv")
@@ -200,10 +208,9 @@ def validate_project_outputs(
         for column, (matched, total) in independent.items()
     ]
     candidate_lines = [
-        f"  - {row.project_id}: rank {getattr(row, 'selection_rank', '?')}, "
-        f"file_id={row.file_id}, path={row.path}"
+        f"  - {row.pair_id}: grupo={row.group}, file_id={row.file_id}, path={row.path}"
         for row in candidates.itertuples(index=False)
-    ] or ["  - nenhum candidato elegível"]
+    ] or ["  - nenhum par elegível"]
 
     summary = "\n".join(
         [
@@ -219,7 +226,7 @@ def validate_project_outputs(
             f"Identidades: {identity['file_id'].nunique()}",
             "Validação independente:",
             *independent_lines,
-            f"Candidatos da RQ4: {len(candidates)}",
+            f"Arquivos na amostra pareada da RQ4: {len(candidates)}",
             *candidate_lines,
             "Status final: SUCESSO",
             "",

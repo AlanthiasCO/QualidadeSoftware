@@ -1,0 +1,5 @@
+analysis,metric,old_rows,new_rows,matched_rows,changed_rows,max_absolute_difference
+rq1,gini,87,87,87,30,0.02912608906014391
+rq2,spearman_rho,58,58,58,23,0.0038120075688872213
+rq2,partial_spearman_rho_control_nloc,58,58,58,24,0.002888476075059501
+rq3,rank_spearman,24,24,24,10,0.004933534325808009

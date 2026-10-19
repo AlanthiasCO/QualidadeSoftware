@@ -1,0 +1,26 @@
+VALIDACAO DA PIPELINE - siga
+========================================================================
+Repositorio: /home/jemison/Documents/Doutorado/Qualidade de Software/QualidadeSoftware/repos/siga
+Freeze SHA: c65f287e84f1a0626c79310da0245bc8abb3175c
+Amostras auditadas: 9
+
+CHECAGENS INDEPENDENTES
+- nmod_match: 9/9 (100.0%)
+- churn_match: 9/9 (100.0%)
+- nloc_match: 9/9 (100.0%)
+- ccn_match: 9/9 (100.0%)
+- linhas com Nmod+churn+NLOC+CCN todos coincidentes: 9/9
+
+SENSIBILIDADE: TODOS OS ARQUIVOS vs SOMENTE Nmod>0
+- 2020: ativos 660/1274 (51.8%), Spearman=0.8955, top10 Jaccard=0.8333
+- 2021: ativos 891/1671 (53.3%), Spearman=0.9260, top10 Jaccard=0.8947
+- 2022: ativos 501/1905 (26.3%), Spearman=0.8834, top10 Jaccard=0.6721
+- 2023: ativos 288/2011 (14.3%), Spearman=0.8014, top10 Jaccard=0.7576
+- 2024: ativos 91/2017 (4.5%), Spearman=0.8933, top10 Jaccard=0.5385
+
+INTERPRETACAO
+- As janelas historicas usam inicio exclusivo e fim inclusivo: (snapshot anterior, snapshot atual].
+- O commit que forma o snapshot anterior nao e recontado na janela seguinte.
+- A validacao Git consulta o historico completo (--full-history) dos aliases explicitos aprovados pelo mapa conservador de identidades, sem usar --follow.
+- NLOC/CCN devem coincidir exatamente, pois sao recalculados no mesmo SHA com Lizard.
+- A analise de sensibilidade nao substitui o cenario principal; ela testa se a massa de Nmod=0 altera o ranking.

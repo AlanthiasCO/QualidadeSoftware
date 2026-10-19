@@ -1,0 +1,32 @@
+EXECUÇÃO VALIDADA DA PIPELINE
+========================================================================
+Projeto: siga
+Versão da pipeline: 1.4.3
+Cache schema: v1.4.2
+Freeze SHA: c65f287e84f1a0626c79310da0245bc8abb3175c
+Snapshots: 6
+  - 2020: 2c4f48269cd268b38ca06c99aa7a9d2e13f2bb9c
+  - 2021: 146da225f5666ee5c57bcfa744b7df63800a638d
+  - 2022: 9938b5c80ce31a92808663daa58d98573c95c219
+  - 2023: 7978d3b0d21a749294de73e972e9059098329f40
+  - 2024: 3b1004ff38094883d259f935293fe9aa1a600094
+  - 2025: c65f287e84f1a0626c79310da0245bc8abb3175c
+Observações do mestre: 10895
+Identidades: 2232
+Validação independente:
+  - nmod_match: 9/9
+  - churn_match: 9/9
+  - nloc_match: 9/9
+  - ccn_match: 9/9
+Arquivos na amostra pareada da RQ4: 10
+  - siga-P01: grupo=hotspot, file_id=6737edbb6d9184af, path=siga-ex/src/main/java/br/gov/jfrj/siga/ex/bl/ExBL.java
+  - siga-P01: grupo=control, file_id=014ae6cd046cd5e2, path=sigasr/src/main/java/br/gov/jfrj/siga/sr/model/SrSolicitacao.java
+  - siga-P02: grupo=hotspot, file_id=2c6a4d56c0f57b71, path=sigaex/src/main/java/br/gov/jfrj/siga/vraptor/ExMovimentacaoController.java
+  - siga-P02: grupo=control, file_id=c97c9f337a8ed3a1, path=sigagc/src/main/java/br/gov/jfrj/siga/gc/util/diff_match_patch.java
+  - siga-P03: grupo=hotspot, file_id=d2348e058cbd5378, path=sigaex/src/main/java/br/gov/jfrj/siga/vraptor/ExDocumentoController.java
+  - siga-P03: grupo=control, file_id=ac9e4dd1287dbbfe, path=sigasr/src/main/java/br/gov/jfrj/siga/sr/reports/SrRelPrazo.java
+  - siga-P04: grupo=hotspot, file_id=c8ff150541242122, path=siga-ex/src/main/java/br/gov/jfrj/siga/hibernate/ExDao.java
+  - siga-P04: grupo=control, file_id=31b7708d6b7eb409, path=sigasr/src/main/java/br/gov/jfrj/siga/sr/vraptor/SolicitacaoController.java
+  - siga-P05: grupo=hotspot, file_id=7165f24b4d590bf6, path=siga-cp/src/main/java/br/gov/jfrj/siga/dp/dao/CpDao.java
+  - siga-P05: grupo=control, file_id=e3bc7b2fecc1f4cb, path=sigatp/src/main/java/br/gov/jfrj/siga/tp/vraptor/MissaoController.java
+Status final: SUCESSO

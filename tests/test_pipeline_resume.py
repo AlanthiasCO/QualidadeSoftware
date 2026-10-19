@@ -96,7 +96,7 @@ def test_manifest_is_completed_only_after_all_stages(monkeypatch, tmp_path):
     )
     master = pd.DataFrame([{"project_id": "demo", "year": 2026, "file_id": "f1"}])
     longitudinal = pd.DataFrame([{"project_id": "demo", "file_id": "f1"}])
-    candidates = pd.DataFrame([{"project_id": "demo", "file_id": "f1"}])
+    pairs = pd.DataFrame([{"project_id": "demo", "file_id": "f1"}])
 
     monkeypatch.setattr(pipeline, "audit_project", lambda config: audit)
     monkeypatch.setattr(pipeline, "build_snapshots", lambda config: snapshots)
@@ -120,8 +120,7 @@ def test_manifest_is_completed_only_after_all_stages(monkeypatch, tmp_path):
         "analyze_rq3",
         lambda current: (longitudinal, pd.DataFrame([{"ok": 1}])),
     )
-    monkeypatch.setattr(pipeline, "select_qualitative_hotspots", lambda current: candidates)
-    monkeypatch.setattr(pipeline, "qualitative_template", lambda current: current)
+    monkeypatch.setattr(pipeline, "select_static_analysis_pairs", lambda current: pairs)
 
     pipeline.run_project("unused.yml", tmp_path / "outputs", workers=4, resume=False)
 

@@ -1,6 +1,6 @@
 VALIDACAO DA PIPELINE - novo_sgp
 ========================================================================
-Repositorio: /home/james/Documents/Doutorado/Qualidade_de_Software/trabalho/QualidadeSoftware/repos/novo_sgp
+Repositorio: /home/jemison/Documents/Doutorado/Qualidade de Software/QualidadeSoftware/repos/novo_sgp
 Freeze SHA: c7c06015d2be880c1f5c854cad0c080c4508343a
 Amostras auditadas: 9
 

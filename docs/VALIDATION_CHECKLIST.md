@@ -36,8 +36,9 @@
 - [ ] Estabilidade usa apenas arquivos presentes nos dois snapshots.
 
 ## RQ4
-- [ ] Lista quantitativa congelada antes da leitura qualitativa.
-- [ ] Controles selecionados antes da leitura dos artefatos.
+- [ ] Lista quantitativa congelada antes da análise estática.
+- [ ] Controles selecionados antes da execução dos analisadores.
 - [ ] Mesmo software e linguagem no pareamento.
-- [ ] Dois avaliadores aplicam o mesmo codebook.
-- [ ] Divergencias e decisoes consensuais sao registradas.
+- [ ] Cada par possui exatamente um hotspot e um controle.
+- [ ] Falhas de análise não são tratadas como zero ocorrências.
+- [ ] Versões, regras e configurações das ferramentas são registradas.

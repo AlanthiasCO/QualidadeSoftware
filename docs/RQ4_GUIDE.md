@@ -1,58 +1,52 @@
-# Guia operacional — RQ4
+# Guia operacional — análise estática pareada
 
 ## Objetivo
 
-Avaliar se arquivos de alta prioridade longitudinal apresentam mais evidências contextuais compatíveis com dívida técnica do que arquivos comparáveis de baixa prioridade.
+Avaliar se arquivos de alta prioridade longitudinal apresentam maior densidade
+de ocorrências detectadas por análise estática do que controles comparáveis.
+A etapa não diagnostica dívida técnica e não depende de inspeção manual.
 
-## Amostra inicial
+## Amostra
 
-- até 15 hotspots no conjunto dos cinco sistemas;
-- sem controles pareados obrigatórios;
-- máximo de 3 hotspots por sistema;
+- até 5 pares por sistema e 25 pares no total;
+- hotspot e controle do mesmo sistema e linguagem;
 - arquivos presentes em pelo menos 2 snapshots;
-- seleção no decil superior de H mediano por sistema e linguagem.
+- hotspots no quantil superior de H mediano;
+- controles na metade inferior de H mediano;
+- controle mais próximo por NLOC mediano e primeiro ano observado;
+- cada controle pode ser utilizado uma única vez.
 
-Arquivo de trabalho:
+A pipeline grava a amostra em:
 
 ```text
-outputs/<projeto>/10_rq4_hotspot_candidates.csv
+outputs/<projeto>/10_rq4_static_analysis_pairs.csv
 ```
 
-## Fontes a inspecionar
+## Coleta automatizada
 
-Para cada arquivo, procurar:
+Executar analisadores adequados a cada linguagem e registrar ferramenta, versão,
+regra, severidade, tipo, arquivo, linha e esforço estimado quando disponível.
+Falhas de compilação ou de análise devem ser distintas de zero ocorrências.
 
-1. comentários de código;
-2. mensagens de commit;
-3. issues;
-4. pull requests;
-5. registros de refatoração.
+## Desfecho principal
 
-Termos como `TODO`, `FIXME`, `HACK`, `workaround`, `legacy`, `temporary` e `refactor` são pontos de entrada, não evidência suficiente isoladamente.
+Para cada arquivo:
 
-## Classes
+```text
+densidade = total de ocorrências / NLOC * 1000
+```
 
-### Nível 1 — hotspot quantitativo
+Para cada par:
 
-Há apenas sinal quantitativo; não foi encontrada evidência contextual suficiente.
+```text
+diferença = densidade do hotspot - densidade do controle
+```
 
-### Nível 2 — hotspot com evidência contextual
+Relatar pares favoráveis ao hotspot, favoráveis ao controle e empates, mediana
+das diferenças, teste exato de sinais e tamanho de efeito pareado.
 
-Há artefatos indicando manutenção problemática, retrabalho, refatoração, limitação técnica relevante ou trabalho técnico adiado.
+## Sensibilidade
 
-### Nível 3 — evidência explícita de dívida técnica
-
-Há registro textual ou decisão técnica que sustente claramente solução inadequada, provisória ou deliberadamente postergada com custo futuro.
-
-## Procedimento dos avaliadores
-
-1. Cada avaliador preenche sua classificação independentemente.
-2. Não sobrescrever a coluna do outro avaliador.
-3. Toda classificação 2 ou 3 deve ter referência rastreável: SHA, issue, PR, URL ou caminho/linha do comentário.
-4. Termo isolado não basta; registrar o contexto.
-5. Depois das avaliações independentes, preencher `agreement`.
-6. Divergências devem ser discutidas e registradas em `consensus_class` e `consensus_notes`.
-
-## Critério de encerramento
-
-A inspeção termina após até 15 hotspots. Qualquer ampliação exige revisão e justificativa formal da proposta metodológica.
+Repetir a comparação excluindo regras cosméticas, considerando severidades
+maiores, restringindo a regras de complexidade/manutenibilidade e excluindo
+arquivos cuja análise não tenha sido concluída corretamente.

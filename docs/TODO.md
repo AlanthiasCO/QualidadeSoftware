@@ -2,7 +2,7 @@
 
 ## Etapa quantitativa
 
-- [x] Congelar base quantitativa v1.4.1
+- [x] Congelar base quantitativa v1.4.3
 - [x] Arquivar outputs finais dos cinco sistemas
 - [x] Registrar SHAs e branches
 - [x] Registrar ambiente e dependências
@@ -11,29 +11,18 @@
 - [x] Concluir RQ2
 - [x] Concluir RQ3
 
-## RQ4 — preparação
+## RQ4 — análise estática pareada
 
-- [x] Definir até 15 hotspots
-- [x] Remover controles pareados obrigatórios
-- [x] Limitar a 3 hotspots por sistema
-- [ ] Revisar manualmente os hotspots selecionados
-- [ ] Fechar codebook operacional
-- [x] Criar ficha dos hotspots selecionados
-
-## RQ4 — inspeção qualitativa
-
-- [ ] Avaliador 1 inspeciona os hotspots selecionados
-- [ ] Avaliador 2 inspeciona os hotspots selecionados
-- [ ] Registrar comentários de código relevantes
-- [ ] Registrar commits relevantes
-- [ ] Registrar issues e pull requests relevantes
-- [ ] Registrar registros de refatoração
-- [ ] Registrar URLs/SHAs das evidências
-- [ ] Classificar cada arquivo em nível 1, 2 ou 3
-- [ ] Calcular concordância entre avaliadores
-- [ ] Resolver divergências por consenso
-- [ ] Sintetizar as evidências dos hotspots
-- [ ] Avaliar suficiência informacional
+- [x] Implementar seleção de até 5 pares por sistema
+- [x] Parear dentro do mesmo sistema e linguagem
+- [x] Parear por NLOC mediano e primeiro ano observado
+- [x] Reexecutar a pipeline v1.4.3 nos cinco sistemas
+- [x] Congelar os 25 pares definitivos
+- [ ] Executar os analisadores estáticos nos 50 arquivos
+- [ ] Consolidar regras, severidades e status de execução
+- [ ] Calcular ocorrências por mil linhas
+- [ ] Executar comparação pareada e teste exato de sinais
+- [ ] Executar análises de sensibilidade
 
 ## RQ1–RQ3 — redação
 
@@ -47,7 +36,7 @@
 - [ ] Atualizar texto de proposta para estudo executado
 - [ ] Inserir SHAs, branches e datas de freeze
 - [ ] Inserir filtros efetivamente usados
-- [ ] Registrar pipeline v1.4.2
+- [x] Registrar pipeline v1.4.3
 - [ ] Descrever análise de sensibilidade
 - [ ] Inserir protocolo efetivamente executado na RQ4
 
@@ -70,7 +59,7 @@
 - [x] Registro do ambiente
 - [x] Resultados quantitativos finais
 - [ ] Resultados finais da RQ4
-- [ ] Decisões dos avaliadores
+- [ ] Resultados e configurações dos analisadores estáticos
 - [ ] README final de reprodução
 
 ## Revisão e submissão

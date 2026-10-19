@@ -56,7 +56,7 @@ A analise de sensibilidade `todos os arquivos` vs `somente Nmod > 0` manteve o m
 8. RQ1: Gini e Lorenz.
 9. RQ2: Spearman e Spearman parcial controlando NLOC.
 10. RQ3: mediana/IQR de H e estabilidade de ranking.
-11. RQ4: selecao de ate 3 hotspots por sistema, totalizando no maximo 15 casos, seguida de inspecao contextual por pelo menos dois avaliadores.
+11. Etapa final: ate 5 pares hotspot-controle por sistema, analisados automaticamente por ferramentas estaticas e comparados pela densidade de ocorrencias por NLOC.
 
 ## Mudancas futuras
 

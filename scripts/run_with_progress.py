@@ -23,8 +23,7 @@ EXPECTED = [
     ("07_rq2_associations.csv", "RQ2: associações / Spearman"),
     ("08_rq3_longitudinal_files.csv", "RQ3: persistência longitudinal"),
     ("09_rq3_ranking_stability.csv", "RQ3: estabilidade entre snapshots"),
-    ("10_rq4_hotspot_candidates.csv", "RQ4: seleção de hotspots"),
-    ("11_rq4_qualitative_template.csv", "RQ4: template qualitativo"),
+    ("10_rq4_static_analysis_pairs.csv", "RQ4: pares para análise estática"),
 ]
 
 PROGRESS_RE = re.compile(r"^\[PROGRESS\]\s+(.*)$")

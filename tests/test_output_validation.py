@@ -94,17 +94,21 @@ def test_identity_map_must_cover_every_master_file_id():
         validate_identity_coverage(valid_master(), identity)
 
 
-def test_rq4_rejects_more_than_three_candidates_and_blank_paths():
+def test_rq4_rejects_more_than_five_pairs_and_blank_paths():
     candidates = pd.DataFrame(
         [
-            {"project_id": "demo", "file_id": f"f-{index}", "path": f"src/{index}.py"}
-            for index in range(4)
+            {
+                "pair_id": f"demo-P{pair:02d}", "project_id": "demo",
+                "group": group, "file_id": f"f-{pair}-{group}",
+                "path": f"src/{pair}_{group}.py",
+            }
+            for pair in range(6) for group in ["hotspot", "control"]
         ]
     )
-    with pytest.raises(OutputValidationError, match="mais de três"):
+    with pytest.raises(OutputValidationError, match="mais de cinco pares"):
         validate_rq4_candidates(candidates)
 
-    candidates = candidates.iloc[:3].copy()
+    candidates = candidates.iloc[:2].copy()
     candidates.loc[0, "path"] = "  "
     with pytest.raises(OutputValidationError, match="caminho vazio"):
         validate_rq4_candidates(candidates)
@@ -155,12 +159,20 @@ def test_valid_project_writes_complete_summary_data(tmp_path):
         [
             {
                 "project_id": "demo",
-                "selection_rank": 1,
+                "pair_id": "demo-P01",
+                "group": "hotspot",
                 "file_id": "file-1",
                 "path": "src/example.py",
+            },
+            {
+                "project_id": "demo",
+                "pair_id": "demo-P01",
+                "group": "control",
+                "file_id": "file-2",
+                "path": "src/control.py",
             }
         ]
-    ).to_csv(output_dir / "10_rq4_hotspot_candidates.csv", index=False)
+    ).to_csv(output_dir / "10_rq4_static_analysis_pairs.csv", index=False)
     pd.DataFrame(
         [
             {
@@ -180,5 +192,5 @@ def test_valid_project_writes_complete_summary_data(tmp_path):
     assert "Snapshots: 1" in summary
     assert "Observações do mestre: 1" in summary
     assert "Identidades: 1" in summary
-    assert "Candidatos da RQ4: 1" in summary
+    assert "Arquivos na amostra pareada da RQ4: 2" in summary
     assert "Status final: SUCESSO" in summary

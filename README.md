@@ -4,10 +4,11 @@ Pipeline reproduzível para o estudo longitudinal de hotspots em software públi
 
 ## Estado atual do projeto
 
-**Versão científica atual:** `v1.4.1`  
-**Etapa quantitativa:** concluída e congelada  
+**Versão científica atual:** `v1.4.3`
+
+**Etapa quantitativa:** reexecutada, validada e consolidada
 **RQ1–RQ3:** análises quantitativas concluídas  
-**RQ4:** amostra preparada; inspeção qualitativa pelos avaliadores é o próximo passo
+**Etapa final:** migração para comparação automatizada pareada em andamento
 
 Os cinco casos congelados são:
 
@@ -110,27 +111,27 @@ python .\scripts\run_with_progress.py --config configs/novo_sgp.yml --output out
 A consolidação oficial está em:
 
 ```text
-results/final/consolidacao_final_resultados_v141.xlsx
-results/final/relatorio_final_v141.md
+results/final/v143/
+results/final/v143/manifest.json
+results/final/v143/RELATORIO_COMPARACAO.md
 ```
 
-A amostra inicial da RQ4 está em:
+A amostra oficial da análise estática está em:
 
 ```text
-results/final/consolidado_rq4_amostra_v141.csv
-results/rq4/rq4_avaliacao.csv
+results/final/v143/consolidado_rq4_pares_v143.csv
 ```
 
 ## Próximo trabalho da equipe
 
-O gargalo atual é a **RQ4 — inspeção qualitativa**. A equipe deve:
+O gargalo atual é a **análise estática pareada**. A equipe deve:
 
-1. revisar os 25 pares hotspot-controle;
-2. inspecionar comentários, commits, issues, PRs e registros de refatoração;
-3. classificar independentemente os 50 arquivos por dois avaliadores;
-4. resolver divergências por consenso;
-5. comparar hotspots e controles;
-6. avaliar suficiência informacional;
+1. reexecutar e validar a pipeline v1.4.3 nos cinco sistemas;
+2. congelar os 25 pares hotspot-controle;
+3. executar analisadores estáticos nos 50 arquivos;
+4. normalizar ocorrências por NLOC;
+5. comparar hotspots e controles com testes pareados;
+6. executar análises de sensibilidade;
 7. fechar Resultados, Discussão e Ameaças à Validade.
 
 Veja `docs/TODO.md` e `docs/RQ4_GUIDE.md`.
@@ -145,7 +146,7 @@ metadata/pip_freeze.txt
 metadata/freeze_manifest.csv
 ```
 
-A versão congelada usada nos resultados finais é `v1.4.1`.
+A versão congelada usada nos resultados finais é `v1.4.3`.
 
 ## Regra de colaboração
 

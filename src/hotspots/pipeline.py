@@ -17,7 +17,7 @@ from .scoring import build_master, add_hotspot_score
 from .rq1 import analyze_rq1
 from .rq2 import analyze_rq2
 from .rq3 import analyze_rq3
-from .rq4 import select_qualitative_hotspots, qualitative_template
+from .rq4 import select_static_analysis_pairs
 from .utils import ensure_dir
 
 CACHE_SCHEMA = "v1.4.2"
@@ -163,16 +163,11 @@ def run_project(
         longi.to_csv(longi_path, index=False)
         stability.to_csv(stability_path, index=False)
 
-    candidates_path = out / "10_rq4_hotspot_candidates.csv"
-    candidates = _read_csv_if(candidates_path, resume)
-    if candidates is None:
-        candidates = select_qualitative_hotspots(longi)
-        candidates.to_csv(candidates_path, index=False)
-
-    qualitative_path = out / "11_rq4_qualitative_template.csv"
-    qualitative = _read_csv_if(qualitative_path, resume)
-    if qualitative is None:
-        qualitative_template(candidates).to_csv(qualitative_path, index=False)
+    pairs_path = out / "10_rq4_static_analysis_pairs.csv"
+    pairs = _read_csv_if(pairs_path, resume)
+    if pairs is None:
+        pairs = select_static_analysis_pairs(longi)
+        pairs.to_csv(pairs_path, index=False)
 
     manifest["status"] = "completed"
     _write_manifest(manifest_path, manifest)

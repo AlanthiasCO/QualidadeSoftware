@@ -1,0 +1,27 @@
+VALIDACAO DA PIPELINE - painel_esus
+========================================================================
+Repositorio: /home/jemison/Documents/Doutorado/Qualidade de Software/QualidadeSoftware/repos/painel_esus
+Freeze SHA: d21fe44562fd73c4ae46261a40496079b6e94f15
+Amostras auditadas: 3
+
+CHECAGENS INDEPENDENTES
+- nmod_match: 3/3 (100.0%)
+- churn_match: 3/3 (100.0%)
+- nloc_match: 3/3 (100.0%)
+- ccn_match: 3/3 (100.0%)
+- linhas com Nmod+churn+NLOC+CCN todos coincidentes: 3/3
+
+SENSIBILIDADE: TODOS OS ARQUIVOS vs SOMENTE Nmod>0
+- 2024: ativos 2/2 (100.0%), Spearman=1.0000, top10 Jaccard=1.0000
+- 2024: ativos 381/389 (97.9%), Spearman=1.0000, top10 Jaccard=1.0000
+- 2024: ativos 20/20 (100.0%), Spearman=1.0000, top10 Jaccard=1.0000
+- 2025: ativos 63/64 (98.4%), Spearman=1.0000, top10 Jaccard=1.0000
+- 2025: ativos 235/400 (58.8%), Spearman=0.9850, top10 Jaccard=1.0000
+- 2025: ativos 20/31 (64.5%), Spearman=1.0000, top10 Jaccard=1.0000
+
+INTERPRETACAO
+- As janelas historicas usam inicio exclusivo e fim inclusivo: (snapshot anterior, snapshot atual].
+- O commit que forma o snapshot anterior nao e recontado na janela seguinte.
+- A validacao Git consulta o historico completo (--full-history) dos aliases explicitos aprovados pelo mapa conservador de identidades, sem usar --follow.
+- NLOC/CCN devem coincidir exatamente, pois sao recalculados no mesmo SHA com Lizard.
+- A analise de sensibilidade nao substitui o cenario principal; ela testa se a massa de Nmod=0 altera o ranking.

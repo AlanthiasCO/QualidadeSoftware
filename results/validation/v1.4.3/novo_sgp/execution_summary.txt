@@ -19,8 +19,15 @@ Validação independente:
   - churn_match: 9/9
   - nloc_match: 9/9
   - ccn_match: 9/9
-Candidatos da RQ4: 3
-  - novo_sgp: rank 1, file_id=71261a9d39d697cd, path=src/SME.SGP.Aplicacao/CasosDeUso/ConselhoClasse/ObterNotasFrequenciaUseCase.cs
-  - novo_sgp: rank 2, file_id=473acad15c891997, path=src/SME.SGP.Aplicacao/Integracoes/ServicoEOL.cs
-  - novo_sgp: rank 3, file_id=541e5385f3719f66, path=src/SME.SGP.Dados/Repositorios/RepositorioTurmaConsulta.cs
+Arquivos na amostra pareada da RQ4: 10
+  - novo_sgp-P01: grupo=hotspot, file_id=71261a9d39d697cd, path=src/SME.SGP.Aplicacao/CasosDeUso/ConselhoClasse/ObterNotasFrequenciaUseCase.cs
+  - novo_sgp-P01: grupo=control, file_id=3aeabfa17e2c88e2, path=src/SME.SGP.Infra/Constantes/ConstantesMenuPermissao.cs
+  - novo_sgp-P02: grupo=hotspot, file_id=473acad15c891997, path=src/SME.SGP.Aplicacao/Integracoes/ServicoEOL.cs
+  - novo_sgp-P02: grupo=control, file_id=eeac3d9734b33a0d, path=src/SME.SGP.Dados/Mapeamentos/RegistrarMapeamentos.cs
+  - novo_sgp-P03: grupo=hotspot, file_id=541e5385f3719f66, path=src/SME.SGP.Dados/Repositorios/RepositorioTurmaConsulta.cs
+  - novo_sgp-P03: grupo=control, file_id=c0d9c58300d8c393, path=src/SME.SGP.Infra/Enumerados/Permissao.cs
+  - novo_sgp-P04: grupo=hotspot, file_id=ba2b2d921c70fc42, path=src/SME.SGP.Dados/Repositorios/RepositorioAulaConsulta.cs
+  - novo_sgp-P04: grupo=control, file_id=27866094e055cca0, path=src/SME.SGP.Infra.Consts/ServicosEolConstants.cs
+  - novo_sgp-P05: grupo=hotspot, file_id=d9bcd6c021fb4304, path=src/SME.SGP.Dominio.Servicos/ServicoFechamentoTurmaDisciplina.cs
+  - novo_sgp-P05: grupo=control, file_id=096b91a80020a7ea, path=src/SME.SGP.Infra.Mensageria/Rotas/RotasRabbitSgp.cs
 Status final: SUCESSO

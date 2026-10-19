@@ -1,0 +1,33 @@
+EXECUÇÃO VALIDADA DA PIPELINE
+========================================================================
+Projeto: sapl
+Versão da pipeline: 1.4.3
+Cache schema: v1.4.2
+Freeze SHA: 55f02aa6397bc613ad5b471b799519e02e53dde5
+Snapshots: 7
+  - 2020: 522769dcdbd7dff05fd80d9196cc2620cb10980f
+  - 2021: 42cdc0b0602db0a6d5c7957a445ff06c26dd2ace
+  - 2022: 71f445fcc95d35ff485374552a5c9a9d5e5d3e64
+  - 2023: 162bc6e0bf69740549cad065749c36c6a7136fc6
+  - 2024: 85a35885719ee49bd5a7affe7150deae4efa6b10
+  - 2025: c926b75c05e63b214184e1a292565df56d80e8dd
+  - 2026: 55f02aa6397bc613ad5b471b799519e02e53dde5
+Observações do mestre: 1411
+Identidades: 240
+Validação independente:
+  - nmod_match: 9/9
+  - churn_match: 9/9
+  - nloc_match: 9/9
+  - ccn_match: 9/9
+Arquivos na amostra pareada da RQ4: 10
+  - sapl-P01: grupo=hotspot, file_id=c4bec0aa3f27a78d, path=sapl/sessao/views.py
+  - sapl-P01: grupo=control, file_id=b0ebfe374d33cfe0, path=sapl/legacy/models.py
+  - sapl-P02: grupo=hotspot, file_id=11b2afe97076f159, path=sapl/materia/views.py
+  - sapl-P02: grupo=control, file_id=b5ea40e821c853b1, path=sapl/settings.py
+  - sapl-P03: grupo=hotspot, file_id=2b1ea23ae76b50cb, path=sapl/base/views.py
+  - sapl-P03: grupo=control, file_id=bea9e89b15b496d1, path=sapl/relatorios/templates/pdf_sessao_plenaria_preparar_pysc.py
+  - sapl-P04: grupo=hotspot, file_id=710c9fb76ba1bbc3, path=sapl/relatorios/views.py
+  - sapl-P04: grupo=control, file_id=1b2b956c75f568bc, path=sapl/sessao/urls.py
+  - sapl-P05: grupo=hotspot, file_id=b38f2cf8d9bb2f72, path=sapl/utils.py
+  - sapl-P05: grupo=control, file_id=b09ebf272337e792, path=sapl/relatorios/templates/pdf_detalhe_materia_preparar_pysc.py
+Status final: SUCESSO

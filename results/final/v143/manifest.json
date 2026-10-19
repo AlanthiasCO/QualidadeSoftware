@@ -1,0 +1,35 @@
+{
+  "pipeline_version": "1.4.3",
+  "projects": [
+    "novo_sgp",
+    "sapl",
+    "siga",
+    "sigi",
+    "painel_esus"
+  ],
+  "master_observations": 65568,
+  "unique_files": 12908,
+  "pairs": 25,
+  "pair_files": 50,
+  "generated_files": [
+    "consolidado_casos_v143.csv",
+    "consolidado_master_v143.csv",
+    "consolidado_rq1_detalhe_v143.csv",
+    "consolidado_rq1_resumo_v143.csv",
+    "consolidado_rq2_detalhe_v143.csv",
+    "consolidado_rq2_resumo_v143.csv",
+    "consolidado_rq3_longitudinal_v143.csv",
+    "consolidado_rq3_estabilidade_v143.csv",
+    "consolidado_rq3_resumo_v143.csv",
+    "consolidado_rq4_pares_long_v143.csv",
+    "consolidado_rq4_pares_v143.csv",
+    "comparacao_v141_v143.csv",
+    "RELATORIO_COMPARACAO.md",
+    "figures/rq1_gini_ccn_v143.png",
+    "figures/rq1_gini_churn_v143.png",
+    "figures/rq1_gini_nmod_v143.png",
+    "figures/rq2_partial_nmod_ccn_v143.png",
+    "figures/rq3_ranking_stability_v143.png",
+    "figures/rq4_pairs_h_v143.png"
+  ]
+}

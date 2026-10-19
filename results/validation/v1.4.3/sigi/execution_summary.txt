@@ -1,0 +1,33 @@
+EXECUÇÃO VALIDADA DA PIPELINE
+========================================================================
+Projeto: sigi
+Versão da pipeline: 1.4.3
+Cache schema: v1.4.2
+Freeze SHA: 129a9dc1225e09d304cbbc9001c48d47aff11b5e
+Snapshots: 7
+  - 2020: aa296ac45976180519e2481cd8862227e064bccc
+  - 2021: a90d91018468835ecaea89c4e3b3fa8303aff896
+  - 2022: f235ca95b03e84fe79b544241826bd8c49a80030
+  - 2023: ab2580311ae4e3516ec944e24539b8789f14d952
+  - 2024: 0333a6c684ab60f2855552f50f407fbe6c68c23e
+  - 2025: ff2c504d4b47b37e6c74ca54a05a8a86e0c857a6
+  - 2026: 129a9dc1225e09d304cbbc9001c48d47aff11b5e
+Observações do mestre: 1516
+Identidades: 313
+Validação independente:
+  - nmod_match: 9/9
+  - churn_match: 9/9
+  - nloc_match: 9/9
+  - ccn_match: 9/9
+Arquivos na amostra pareada da RQ4: 10
+  - sigi-P01: grupo=hotspot, file_id=c85b8fe8f692c4d7, path=sigi/apps/convenios/models.py
+  - sigi-P01: grupo=control, file_id=89b2fe9c83b10cea, path=sigi/apps/convenios/reports.py
+  - sigi-P02: grupo=hotspot, file_id=ce44b53bba4681d0, path=sigi/apps/eventos/admin.py
+  - sigi-P02: grupo=control, file_id=3f31b4cbfb6621d2, path=sigi/settings.py
+  - sigi-P03: grupo=hotspot, file_id=e8c4484217913e4f, path=sigi/apps/casas/views.py
+  - sigi-P03: grupo=control, file_id=11a12bda9603082a, path=sigi/apps/relatorios/reports.py
+  - sigi-P04: grupo=hotspot, file_id=1cf477cc6f7c09f9, path=sigi/apps/casas/admin.py
+  - sigi-P04: grupo=control, file_id=c3a073ae3ac4b2c0, path=sigi/apps/home/urls.py
+  - sigi-P05: grupo=hotspot, file_id=b3c7cc81c03f8e3d, path=sigi/apps/servicos/dashboards.py
+  - sigi-P05: grupo=control, file_id=079aea8483c1136d, path=sigi/apps/diagnosticos/urls.py
+Status final: SUCESSO

@@ -1,0 +1,28 @@
+EXECUÇÃO VALIDADA DA PIPELINE
+========================================================================
+Projeto: painel_esus
+Versão da pipeline: 1.4.3
+Cache schema: v1.4.2
+Freeze SHA: d21fe44562fd73c4ae46261a40496079b6e94f15
+Snapshots: 2
+  - 2024: 00cc4bc9bf2ea7a678cc8ba827aa8b11c6d17488
+  - 2025: d21fe44562fd73c4ae46261a40496079b6e94f15
+Observações do mestre: 906
+Identidades: 836
+Validação independente:
+  - nmod_match: 3/3
+  - churn_match: 3/3
+  - nloc_match: 3/3
+  - ccn_match: 3/3
+Arquivos na amostra pareada da RQ4: 10
+  - painel_esus-P01: grupo=hotspot, file_id=da570d75951ed5f5, path=painel-esus/src/main/adapters/nominal_list_adapter.py
+  - painel_esus-P01: grupo=control, file_id=2cc7a0b731f7ca44, path=painel-esus/src/infra/create_base/polars/scripts_dados/tb_equipe.py
+  - painel_esus-P02: grupo=hotspot, file_id=e5d28d9ea87767ac, path=painel-esus/src/infra/db/repositories/demographics_info_v2.py
+  - painel_esus-P02: grupo=control, file_id=2b91010e14f3ca3d, path=painel-esus/src/infra/db/repositories/sqls/pessoa/lista_nominal.py
+  - painel_esus-P03: grupo=hotspot, file_id=39907dcbbf48218f, path=painel-esus/src/infra/db/repositories/children/children_repository.py
+  - painel_esus-P03: grupo=control, file_id=c82446c8fe0a65fe, path=painel-esus/src/infra/db/repositories/sqls/tabelas.py
+  - painel_esus-P04: grupo=hotspot, file_id=5fd0be5fb1eca80a, path=painel-esus/src/main/adapters/records_adapter.py
+  - painel_esus-P04: grupo=control, file_id=4255d27796226cfd, path=painel-esus/src/infra/db/repositories/sqls/smoking/smoking_base.py
+  - painel_esus-P05: grupo=hotspot, file_id=979a57312809af6d, path=painel-esus/src/infra/db/repositories/disease/nominal_list/diabetes_nominal_list_repository.py
+  - painel_esus-P05: grupo=control, file_id=55ab6eb1a3ccb9c5, path=painel-esus/src/infra/db/repositories/sqls/atendimento_individual_cid_ciaps_nascimento.py
+Status final: SUCESSO
