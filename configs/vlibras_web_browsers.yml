@@ -1,0 +1,13 @@
+project_id: vlibras_web_browsers
+name: VLibras Web Browsers
+repo_url: https://github.com/spbgovbr-vlibras/vlibras-web-browsers.git
+local_path: repos/vlibras_web_browsers
+branch: dev
+freeze_sha: d292d369419196b6e8ba826d674f5d3b4bcefa9a 
+start_year: 2020
+end_year: 2026
+extensions: [.js, .ts, .tsx]
+exclude_paths: [node_modules, vendor, dist, build, app]
+exclude_tests: true
+test_markers: [test, tests, teste, testes, spec, specs]
+exclude_migrations: false

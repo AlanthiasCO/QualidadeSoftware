@@ -1,0 +1,9 @@
+﻿project_id,language,year,files_all,files_active,active_pct,spearman_h_all_vs_active,top10_jaccard
+vlibras_web_browsers,JavaScript,2020,34,3,0.08823529411764706,0.8660254037844387,0.0
+vlibras_web_browsers,JavaScript,2021,34,3,0.08823529411764706,,1.0
+vlibras_web_browsers,JavaScript,2022,34,29,0.8529411764705882,0.963456661043596,1.0
+vlibras_web_browsers,JavaScript,2023,44,43,0.9772727272727273,0.9994555101797736,1.0
+vlibras_web_browsers,JavaScript,2024,50,27,0.54,0.8753111668186303,1.0
+vlibras_web_browsers,JavaScript,2025,52,23,0.4423076923076923,0.9097519951612832,0.5
+vlibras_web_browsers,JavaScript,2026,14,14,1.0,1.0,1.0
+vlibras_web_browsers,TypeScript,2026,185,185,1.0,0.9999999999999999,1.0

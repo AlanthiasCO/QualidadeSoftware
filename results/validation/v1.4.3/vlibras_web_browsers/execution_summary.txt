@@ -1,0 +1,33 @@
+EXECUÇÃO VALIDADA DA PIPELINE
+========================================================================
+Projeto: vlibras_web_browsers
+Versão da pipeline: 1.4.3
+Cache schema: v1.4.2
+Freeze SHA: d292d369419196b6e8ba826d674f5d3b4bcefa9a
+Snapshots: 7
+  - 2020: 8cf8f740607b052f90bf9012eb2b6b0abd152514
+  - 2021: 7237206fe7ee79ef1a743db5484b241c9d9b976d
+  - 2022: 8465064ada8246af053fef3ead99ff4ca222800e
+  - 2023: a62c2c272e65491bbc46726107dc380da3003682
+  - 2024: 43249f10c3324496167b130cd393efc7d16f2268
+  - 2025: 87157833044c88f617135ec712893954baf52e8b
+  - 2026: d292d369419196b6e8ba826d674f5d3b4bcefa9a
+Observações do mestre: 447
+Identidades: 398
+Validação independente:
+  - nmod_match: 9/9
+  - churn_match: 9/9
+  - nloc_match: 9/9
+  - ccn_match: 9/9
+Arquivos na amostra pareada da RQ4: 10
+  - vlibras_web_browsers-P01: grupo=hotspot, file_id=fb2c4dc6ba1919bd, path=plugin/Plugin.js
+  - vlibras_web_browsers-P01: grupo=control, file_id=e910ad6d5a907bf5, path=webpack.config.js
+  - vlibras_web_browsers-P02: grupo=hotspot, file_id=d634c35270a37f3f, path=plugin/components/Controls/index.js
+  - vlibras_web_browsers-P02: grupo=control, file_id=e91ac97a1d232e7e, path=widget/server.js
+  - vlibras_web_browsers-P03: grupo=hotspot, file_id=476e0edbc11cdff6, path=plugin/components/AuxiliaryControls/Guide/index.js
+  - vlibras_web_browsers-P03: grupo=control, file_id=923e8c401a16ca10, path=plugin/assets/icons/index.js
+  - vlibras_web_browsers-P04: grupo=hotspot, file_id=1a62247c8f4d79b2, path=plugin/components/Dictionary/index.js
+  - vlibras_web_browsers-P04: grupo=control, file_id=04e27fc6c896091b, path=safari.safariextension/background.js
+  - vlibras_web_browsers-P05: grupo=hotspot, file_id=cb6eabad8d056731, path=plugin/components/AuxiliaryControls/Guide/MainScreen/index.js
+  - vlibras_web_browsers-P05: grupo=control, file_id=b8dfdb1352b4c5e0, path=plugin/components/MessageBox/index.js
+Status final: SUCESSO

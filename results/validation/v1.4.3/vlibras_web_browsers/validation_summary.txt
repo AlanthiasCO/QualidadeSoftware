@@ -1,0 +1,29 @@
+VALIDACAO DA PIPELINE - vlibras_web_browsers
+========================================================================
+Repositorio: /home/domini/QualidadeSoftware/repos/vlibras_web_browsers
+Freeze SHA: d292d369419196b6e8ba826d674f5d3b4bcefa9a
+Amostras auditadas: 9
+
+CHECAGENS INDEPENDENTES
+- nmod_match: 9/9 (100.0%)
+- churn_match: 9/9 (100.0%)
+- nloc_match: 9/9 (100.0%)
+- ccn_match: 9/9 (100.0%)
+- linhas com Nmod+churn+NLOC+CCN todos coincidentes: 9/9
+
+SENSIBILIDADE: TODOS OS ARQUIVOS vs SOMENTE Nmod>0
+- 2020: ativos 3/34 (8.8%), Spearman=0.8660, top10 Jaccard=0.0000
+- 2021: ativos 3/34 (8.8%), Spearman=NA, top10 Jaccard=1.0000
+- 2022: ativos 29/34 (85.3%), Spearman=0.9635, top10 Jaccard=1.0000
+- 2023: ativos 43/44 (97.7%), Spearman=0.9995, top10 Jaccard=1.0000
+- 2024: ativos 27/50 (54.0%), Spearman=0.8753, top10 Jaccard=1.0000
+- 2025: ativos 23/52 (44.2%), Spearman=0.9098, top10 Jaccard=0.5000
+- 2026: ativos 14/14 (100.0%), Spearman=1.0000, top10 Jaccard=1.0000
+- 2026: ativos 185/185 (100.0%), Spearman=1.0000, top10 Jaccard=1.0000
+
+INTERPRETACAO
+- As janelas historicas usam inicio exclusivo e fim inclusivo: (snapshot anterior, snapshot atual].
+- O commit que forma o snapshot anterior nao e recontado na janela seguinte.
+- A validacao Git consulta o historico completo (--full-history) dos aliases explicitos aprovados pelo mapa conservador de identidades, sem usar --follow.
+- NLOC/CCN devem coincidir exatamente, pois sao recalculados no mesmo SHA com Lizard.
+- A analise de sensibilidade nao substitui o cenario principal; ela testa se a massa de Nmod=0 altera o ranking.
