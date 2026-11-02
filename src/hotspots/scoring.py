@@ -2,10 +2,13 @@ from __future__ import annotations
 
 import pandas as pd
 
+from .identity import validate_snapshot_file_id_uniqueness
+
 
 def build_master(git_metrics: pd.DataFrame, static_metrics: pd.DataFrame) -> pd.DataFrame:
     if static_metrics.empty:
         return static_metrics.copy()
+    validate_snapshot_file_id_uniqueness(static_metrics, "métricas estáticas")
     gm = git_metrics.copy()
     if gm.empty:
         out = static_metrics.copy()
@@ -15,6 +18,7 @@ def build_master(git_metrics: pd.DataFrame, static_metrics: pd.DataFrame) -> pd.
     out = static_metrics.merge(gm[keep], on=["project_id", "year", "file_id"], how="left")
     for col in ["nmod", "added", "deleted", "churn"]:
         out[col] = out[col].fillna(0).astype(int)
+    validate_snapshot_file_id_uniqueness(out, "mestre de hotspots")
     return out
 
 

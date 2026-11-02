@@ -41,33 +41,64 @@ def parse_git_log_numstat(text: str) -> tuple[int, int, int]:
     commits: set[str] = set()
     added = 0
     deleted = 0
+    current_commit: str | None = None
     for line in text.splitlines():
         if line.startswith("@@COMMIT@@"):
-            commits.add(line.replace("@@COMMIT@@", "", 1).strip())
+            current_commit = line.replace("@@COMMIT@@", "", 1).strip() or None
             continue
         parts = line.split("\t")
-        if len(parts) >= 3:
+        if len(parts) >= 3 and current_commit is not None:
             a, d = parts[0], parts[1]
-            if a.isdigit():
+            # Binary entries use non-numeric markers (normally "-") and do not
+            # provide line churn. Only a numeric numstat line proves that the
+            # sampled identity was modified by this commit.
+            if a.isdigit() and d.isdigit():
+                commits.add(current_commit)
                 added += int(a)
-            if d.isdigit():
                 deleted += int(d)
     return len(commits), added, deleted
 
 
-def recompute_git_metrics(repo: Path, path: str, start_iso: str, end_iso: str, freeze_sha: str) -> tuple[int, int, int, int]:
-    # --follow restringe a um arquivo e tenta preservar renomes. O freeze SHA limita a historia ao corpus congelado.
+def identity_aliases(
+    identity: pd.DataFrame,
+    file_id: str,
+    current_path: str,
+) -> list[str]:
+    """Return deterministic aliases approved by the conservative identity map."""
+    aliases: set[str] = set()
+    if not identity.empty and {"file_id", "path"}.issubset(identity.columns):
+        matched = identity[identity["file_id"].astype(str) == str(file_id)]
+        aliases.update(
+            path.strip()
+            for path in matched["path"].dropna().astype(str)
+            if path.strip()
+        )
+    if not aliases:
+        aliases.add(current_path)
+    return sorted(aliases)
+
+
+def recompute_git_metrics(
+    repo: Path,
+    paths: list[str],
+    start_iso: str,
+    end_iso: str,
+    freeze_sha: str,
+) -> tuple[int, int, int, int]:
+    aliases = sorted({path for path in paths if path})
+    if not aliases:
+        raise ValueError("A consulta Git exige pelo menos um caminho de identidade")
     out = git(
         repo,
         "log",
         freeze_sha,
-        "--follow",
+        "--full-history",
         f"--since={start_iso}",
         f"--until={end_iso}",
         "--format=@@COMMIT@@%H",
         "--numstat",
         "--",
-        path,
+        *aliases,
     )
     nmod, added, deleted = parse_git_log_numstat(out)
     return nmod, added, deleted, added + deleted
@@ -142,7 +173,15 @@ def previous_window_start(snapshots: pd.DataFrame, year: int, start_year: int) -
     return prev.isoformat()
 
 
-def validate_rows(master: pd.DataFrame, snapshots: pd.DataFrame, repo: Path, freeze_sha: str, start_year: int, sample_years: list[int]) -> pd.DataFrame:
+def validate_rows(
+    master: pd.DataFrame,
+    snapshots: pd.DataFrame,
+    identity: pd.DataFrame,
+    repo: Path,
+    freeze_sha: str,
+    start_year: int,
+    sample_years: list[int],
+) -> pd.DataFrame:
     sample = sample_rows(master, sample_years, per_year=3)
     rows: list[dict[str, Any]] = []
     snap_by_year = snapshots.set_index(snapshots["year"].astype(int))
@@ -156,9 +195,16 @@ def validate_rows(master: pd.DataFrame, snapshots: pd.DataFrame, repo: Path, fre
         end_iso = pd.to_datetime(snap["snapshot_date"], utc=True).isoformat()
         start_iso = previous_window_start(snapshots, year, start_year)
         path = str(r["path"])
+        aliases = identity_aliases(identity, str(r["file_id"]), path)
 
         try:
-            gnmod, gadd, gdel, gchurn = recompute_git_metrics(repo, path, start_iso, end_iso, freeze_sha)
+            gnmod, gadd, gdel, gchurn = recompute_git_metrics(
+                repo,
+                aliases,
+                start_iso,
+                end_iso,
+                freeze_sha,
+            )
             git_error = ""
         except Exception as e:
             gnmod = gadd = gdel = gchurn = None
@@ -177,6 +223,7 @@ def validate_rows(master: pd.DataFrame, snapshots: pd.DataFrame, repo: Path, fre
             "year": year,
             "file_id": r["file_id"],
             "path": path,
+            "git_paths": ";".join(aliases),
             "h": float(r["h"]),
             "window_start": start_iso,
             "window_end": end_iso,
@@ -275,7 +322,7 @@ def write_summary(path: Path, project: str, details: pd.DataFrame, sens: pd.Data
         "INTERPRETACAO",
         "- As janelas historicas usam inicio exclusivo e fim inclusivo: (snapshot anterior, snapshot atual].",
         "- O commit que forma o snapshot anterior nao e recontado na janela seguinte.",
-        "- Diferencas em Git podem ocorrer em casos de renome complexo; por isso o relatorio detalhado deve ser inspecionado.",
+        "- A validacao Git consulta o historico completo (--full-history) dos aliases explicitos aprovados pelo mapa conservador de identidades, sem usar --follow.",
         "- NLOC/CCN devem coincidir exatamente, pois sao recalculados no mesmo SHA com Lizard.",
         "- A analise de sensibilidade nao substitui o cenario principal; ela testa se a massa de Nmod=0 altera o ranking.",
     ]
@@ -303,7 +350,8 @@ def main() -> int:
     master_file = out / "05_master_hotspots.csv"
     snap_file = out / "01_snapshots.csv"
     audit_file = out / "00_audit.csv"
-    for f in [master_file, snap_file, audit_file]:
+    identity_file = out / "03_file_identity.csv"
+    for f in [master_file, snap_file, audit_file, identity_file]:
         if not f.exists():
             raise SystemExit(f"Arquivo necessario nao encontrado: {f}")
     if not repo.exists():
@@ -312,8 +360,10 @@ def main() -> int:
     master = pd.read_csv(master_file)
     snapshots = pd.read_csv(snap_file)
     audit = pd.read_csv(audit_file)
+    identity = pd.read_csv(identity_file)
     ensure_columns(master, ["project_id", "year", "file_id", "path", "language", "nmod", "churn", "nloc", "ccn", "h"], master_file)
     ensure_columns(snapshots, ["year", "sha", "snapshot_date"], snap_file)
+    ensure_columns(identity, ["project_id", "path", "file_id"], identity_file)
 
     freeze_sha = str(audit.iloc[0].get("freeze_sha", "")).strip() if not audit.empty else ""
     if not freeze_sha or freeze_sha.lower() == "nan":
@@ -322,7 +372,15 @@ def main() -> int:
         freeze_sha = git(repo, "rev-parse", f"origin/{cfg['branch']}")
 
     print(f"[1/4] Validando amostra Git e Lizard para {project_id}...")
-    details = validate_rows(master, snapshots, repo, freeze_sha, int(cfg.get("start_year", 2020)), args.years)
+    details = validate_rows(
+        master,
+        snapshots,
+        identity,
+        repo,
+        freeze_sha,
+        int(cfg.get("start_year", 2020)),
+        args.years,
+    )
     details.to_csv(val / "validation_details.csv", index=False, encoding="utf-8-sig")
 
     print("[2/4] Calculando sensibilidade H(all files) vs H(active files)...")

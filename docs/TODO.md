@@ -13,17 +13,17 @@
 
 ## RQ4 — preparação
 
-- [x] Definir 25 hotspots
-- [x] Definir 25 controles pareados
-- [x] Manter 5 pares por sistema
-- [ ] Revisar manualmente os 25 pareamentos
+- [x] Definir até 15 hotspots
+- [x] Remover controles pareados obrigatórios
+- [x] Limitar a 3 hotspots por sistema
+- [ ] Revisar manualmente os hotspots selecionados
 - [ ] Fechar codebook operacional
-- [x] Criar ficha colaborativa dos 50 arquivos
+- [x] Criar ficha dos hotspots selecionados
 
 ## RQ4 — inspeção qualitativa
 
-- [ ] Avaliador 1 inspeciona os 50 arquivos
-- [ ] Avaliador 2 inspeciona os 50 arquivos
+- [ ] Avaliador 1 inspeciona os hotspots selecionados
+- [ ] Avaliador 2 inspeciona os hotspots selecionados
 - [ ] Registrar comentários de código relevantes
 - [ ] Registrar commits relevantes
 - [ ] Registrar issues e pull requests relevantes
@@ -32,7 +32,7 @@
 - [ ] Classificar cada arquivo em nível 1, 2 ou 3
 - [ ] Calcular concordância entre avaliadores
 - [ ] Resolver divergências por consenso
-- [ ] Comparar hotspots e controles
+- [ ] Sintetizar as evidências dos hotspots
 - [ ] Avaliar suficiência informacional
 
 ## RQ1–RQ3 — redação
@@ -47,7 +47,7 @@
 - [ ] Atualizar texto de proposta para estudo executado
 - [ ] Inserir SHAs, branches e datas de freeze
 - [ ] Inserir filtros efetivamente usados
-- [ ] Registrar pipeline v1.4.1
+- [ ] Registrar pipeline v1.4.2
 - [ ] Descrever análise de sensibilidade
 - [ ] Inserir protocolo efetivamente executado na RQ4
 

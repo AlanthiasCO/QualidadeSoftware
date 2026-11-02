@@ -1,0 +1,10 @@
+﻿year,file_id,path,h,window_start,window_end,pipeline_nmod,git_nmod,nmod_match,pipeline_added,git_added,added_match,pipeline_deleted,git_deleted,deleted_match,pipeline_churn,git_churn,churn_match,pipeline_nloc,lizard_nloc,nloc_match,pipeline_ccn,lizard_ccn,ccn_match,git_error
+2021,ae96e5ef03794e53,sapl/api/core/schema.py,0.2464454976303317,2020-12-21T16:01:54+00:00,2021-12-13T13:48:10+00:00,1,1,True,5,5,True,0,0,True,5,5,True,3,3,True,0,0,True,
+2021,16ac6d5684c34cc5,sapl/redireciona_urls/views.py,0.7156398104265402,2020-12-21T16:01:54+00:00,2021-12-13T13:48:10+00:00,1,1,True,72,72,True,41,41,True,113,113,True,687,687,True,65,65,True,
+2021,c4bec0aa3f27a78d,sapl/sessao/views.py,0.9834123222748816,2020-12-21T16:01:54+00:00,2021-12-13T13:48:10+00:00,12,12,True,220,220,True,71,71,True,291,291,True,3816,3816,True,661,661,True,
+2023,55ca87487c9d09c4,sapl/base/urls.py,0.2462311557788944,2022-12-06T15:51:09+00:00,2023-12-31T02:48:26+00:00,1,1,True,5,5,True,61,61,True,66,66,True,112,112,True,0,0,True,
+2023,66435c88a8993743,sapl/api/serializers.py,0.8417085427135679,2022-12-06T15:51:09+00:00,2023-12-31T02:48:26+00:00,1,1,True,1,1,True,1,1,True,2,2,True,240,240,True,45,45,True,
+2023,c4bec0aa3f27a78d,sapl/sessao/views.py,0.9899497487437184,2022-12-06T15:51:09+00:00,2023-12-31T02:48:26+00:00,7,7,True,22,22,True,8,8,True,30,30,True,4223,4223,True,756,756,True,
+2025,927a4f11006a4510,sapl/api/urls.py,0.230392156862745,2024-10-03T16:21:35+00:00,2025-12-14T19:01:47+00:00,1,1,True,2,2,True,5,5,True,7,7,True,28,28,True,0,0,True,
+2025,37f34439e61a74e7,docker/startup_scripts/solr_cli.py,0.8161764705882353,2024-10-03T16:21:35+00:00,2025-12-14T19:01:47+00:00,1,1,True,11,11,True,7,7,True,18,18,True,249,249,True,35,35,True,
+2025,c4bec0aa3f27a78d,sapl/sessao/views.py,0.9877450980392156,2024-10-03T16:21:35+00:00,2025-12-14T19:01:47+00:00,6,6,True,67,67,True,32,32,True,99,99,True,4279,4279,True,766,766,True,

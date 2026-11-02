@@ -16,6 +16,8 @@ outputs/
 outputs_*/
 logs/
 validation/
+!results/validation/
+!results/validation/**
 freeze_quantitativo_*/
 .cache/
 

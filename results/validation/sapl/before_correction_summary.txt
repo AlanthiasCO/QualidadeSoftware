@@ -1,0 +1,28 @@
+VALIDACAO DA PIPELINE - sapl
+========================================================================
+Repositorio: /home/james/Documents/Doutorado/Qualidade_de_Software/trabalho/QualidadeSoftware/repos/sapl
+Freeze SHA: 55f02aa6397bc613ad5b471b799519e02e53dde5
+Amostras auditadas: 9
+
+CHECAGENS INDEPENDENTES
+- nmod_match: 9/9 (100.0%)
+- churn_match: 8/9 (88.9%)
+- nloc_match: 9/9 (100.0%)
+- ccn_match: 9/9 (100.0%)
+- linhas com Nmod+churn+NLOC+CCN todos coincidentes: 8/9
+
+SENSIBILIDADE: TODOS OS ARQUIVOS vs SOMENTE Nmod>0
+- 2020: ativos 71/195 (36.4%), Spearman=0.9609, top10 Jaccard=1.0000
+- 2021: ativos 78/211 (37.0%), Spearman=0.9813, top10 Jaccard=1.0000
+- 2022: ativos 74/196 (37.8%), Spearman=0.9722, top10 Jaccard=1.0000
+- 2023: ativos 38/199 (19.1%), Spearman=0.8960, top10 Jaccard=1.0000
+- 2024: ativos 21/199 (10.6%), Spearman=0.8644, top10 Jaccard=1.0000
+- 2025: ativos 50/204 (24.5%), Spearman=0.9134, top10 Jaccard=1.0000
+- 2026: ativos 24/207 (11.6%), Spearman=0.8995, top10 Jaccard=1.0000
+
+INTERPRETACAO
+- As janelas historicas usam inicio exclusivo e fim inclusivo: (snapshot anterior, snapshot atual].
+- O commit que forma o snapshot anterior nao e recontado na janela seguinte.
+- Diferencas em Git podem ocorrer em casos de renome complexo; por isso o relatorio detalhado deve ser inspecionado.
+- NLOC/CCN devem coincidir exatamente, pois sao recalculados no mesmo SHA com Lizard.
+- A analise de sensibilidade nao substitui o cenario principal; ela testa se a massa de Nmod=0 altera o ranking.

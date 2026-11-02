@@ -9,7 +9,7 @@ FILES = [
     "02_git_metrics.csv", "03_file_identity.csv", "04_static_metrics.csv",
     "05_master_hotspots.csv", "06_rq1_gini.csv", "06b_rq1_lorenz_points.csv",
     "07_rq2_associations.csv", "08_rq3_longitudinal_files.csv",
-    "09_rq3_ranking_stability.csv", "10_rq4_comparison_pairs.csv",
+    "09_rq3_ranking_stability.csv", "10_rq4_hotspot_candidates.csv",
 ]
 
 

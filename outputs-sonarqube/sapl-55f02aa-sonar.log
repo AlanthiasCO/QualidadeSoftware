@@ -1,0 +1,109 @@
+INFO: Starting the analysis...
+INFO: Starting SonarScanner Engine...
+INFO: Java 21.0.11 Eclipse Adoptium (64-bit)
+INFO: Load global settings
+INFO: Load global settings (done) | time=45ms
+INFO: Server id: 243B8A4D-AaDQuFfa8TWN0xqt6zoD
+INFO: Loading required plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=8ms
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=15ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=9ms
+INFO: Project key: SAPL---An-lise-SonarQube
+INFO: Base dir: /home/james/Documents/Doutorado/Qualidade_de_Software/trabalho/QualidadeSoftware/repos/sapl
+INFO: Working dir: /home/james/Documents/Doutorado/Qualidade_de_Software/trabalho/QualidadeSoftware/repos/sapl/.sonar
+INFO: Load project settings for component key: 'SAPL---An-lise-SonarQube'
+INFO: Load project settings for component key: 'SAPL---An-lise-SonarQube' (done) | time=9ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=26ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=183ms
+INFO: Load analysis cache
+INFO: Load analysis cache | time=96ms
+INFO: Preprocessing files...
+INFO: 1 language detected in 210 preprocessed files (done) | time=152ms
+INFO: 903 files ignored because of inclusion/exclusion patterns
+INFO: 25 directories skipped because of exclusion patterns (content not counted)
+INFO: 0 files ignored because of scm ignore settings
+INFO: Loading plugins for detected languages
+INFO: Load/download plugins
+INFO: Load/download plugins (done) | time=4ms
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=69ms
+INFO: Indexing files...
+INFO: Project configuration:
+INFO:   Included sources: **/*.py
+INFO:   Excluded sources: **/test/**, **/tests/**, **/teste/**, **/testes/**, **/spec/**, **/specs/**, **/test_*.py, **/*_test.py, **/migrations/**, **/node_modules/**, **/vendor/**, **/static/vendor/**, **/dist/**, **/build/**
+INFO:   Excluded sources for coverage: sapl/wsgi.py, manage.py, setup.py, test_*.py, ipython_log.py*, **/migrations/*.py
+INFO: 210 files indexed (done) | time=15ms
+INFO: Quality profile for py: Sonar way
+INFO: ------------- Run sensors on module SAPL---An-lise-SonarQube
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=12ms
+INFO: Sensor IaC YAML File Type Classification Sensor [iac]
+INFO: Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=3ms
+INFO: Sensor IaC hadolint report Sensor [iac]
+INFO: Sensor IaC hadolint report Sensor [iac] (done) | time=0ms
+INFO: Sensor Java Config Sensor [iac]
+INFO: There are no files to be analyzed for the Java language
+INFO: Sensor Java Config Sensor [iac] (done) | time=0ms
+INFO: Sensor IaC Docker Sensor [iac]
+INFO: There are no files to be analyzed for the Docker language
+INFO: Sensor IaC Docker Sensor [iac] (done) | time=3ms
+INFO: Sensor Python Sensor [python]
+WARNING: Your code is analyzed as compatible with all Python 3 versions by default. You can get a more precise analysis by setting the Python version or version range in your configuration via the parameter "sonar.python.version"
+INFO: Starting global symbols computation
+INFO: 210 source files to be analyzed
+INFO: 210/210 source files have been analyzed
+INFO: Finished step global symbols computation in 1567ms
+INFO: Starting rules execution
+INFO: 210 source files to be analyzed
+WARNING: Test files were detected using a path heuristic because "sonar.tests" is not set. To improve the analysis accuracy, it is recommended to configure it, e.g.: "sonar.tests=src/test".
+INFO: 210/210 source files have been analyzed
+INFO: Finished step rules execution in 4323ms
+INFO: The Python analyzer was able to leverage cached data from previous analyses for 0 out of 210 files. These files were not parsed.
+INFO: Sensor Python Sensor [python] (done) | time=6235ms
+INFO: Sensor Cobertura Sensor for Python coverage [python]
+INFO: Sensor Cobertura Sensor for Python coverage [python] (done) | time=18ms
+INFO: Sensor PythonXUnitSensor [python]
+INFO: Sensor PythonXUnitSensor [python] (done) | time=17ms
+INFO: Sensor Python Dependency Sensor [python]
+INFO: Sensor Python Dependency Sensor [python] (done) | time=2ms
+INFO: Sensor TextAndSecretsSensor [text]
+INFO: Available processors: 16
+INFO: Using 16 threads for analysis.
+INFO: The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test", "tests", "mock" or "mocks"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+INFO: Start fetching files for the text and secrets analysis
+INFO: Using Git CLI to retrieve dirty files
+INFO: Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+INFO: Starting the text and secrets analysis
+INFO: 210 source files to be analyzed for the text and secrets analysis
+INFO: 210/210 source files have been analyzed for the text and secrets analysis
+INFO: Skipped 3 file(s) in the secrets analysis due to automatic test file detection
+INFO: Sensor TextAndSecretsSensor [text] (done) | time=276ms
+INFO: ------------- Run sensors on project
+INFO: Sensor IaC Project Sensor [iac]
+INFO: Sensor IaC Project Sensor [iac] (done) | time=0ms
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=31ms
+INFO: ------------- Gather SCA dependencies on project
+INFO: Dependency analysis skipped
+INFO: CPD Executor 66 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 144 files
+INFO: CPD Executor CPD calculation finished (done) | time=74ms
+INFO: SCM revision ID '55f02aa6397bc613ad5b471b799519e02e53dde5'
+INFO: Analysis report generated in 95ms, dir size=7.1 MB
+INFO: Analysis report compressed in 356ms, zip size=3.7 MB
+INFO: Analysis report uploaded in 136ms
+INFO: ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=SAPL---An-lise-SonarQube
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at http://localhost:9000/api/ce/task?id=98c79136-7600-4af5-82ae-7138b5b08181
+INFO: Analysis total time: 8.791 s
+INFO: SonarScanner Engine completed successfully
