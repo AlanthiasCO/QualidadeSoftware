@@ -8,6 +8,8 @@ Pipeline reproduzível para o estudo longitudinal de hotspots em software públi
 
 **Consolidação do paper final:** consulte `results/paper_final/`. Essa pasta separa valores verificados a partir dos dados versionados de valores declarados no manuscrito cuja fonte final ainda precisa ser recuperada ou reproduzida.
 
+As instruções de validação e as limitações do pacote estão em `REPRODUCIBILITY.md`.
+
 **Etapa quantitativa:** reexecutada, validada e consolidada
 **RQ1–RQ3:** análises quantitativas concluídas  
 **Etapa final:** migração para comparação automatizada pareada em andamento

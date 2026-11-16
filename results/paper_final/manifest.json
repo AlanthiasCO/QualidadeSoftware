@@ -11,6 +11,8 @@
   ],
   "excluded_historical_case": "painel_esus",
   "paper_source": "paper_reference/paper.tex",
+  "reproducibility_guide": "REPRODUCIBILITY.md",
+  "tested_environment": "results/paper_final/environment_tested.txt",
   "quantitative_source": "results/final/v143",
   "definitive_stability_source": "results/analise_sem_esus/rq1",
   "definitive_pair_sample": "results/analise_sem_esus/rq4/amostra_pares_congelada.csv",

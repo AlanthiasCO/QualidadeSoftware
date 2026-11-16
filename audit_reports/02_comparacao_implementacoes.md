@@ -50,4 +50,4 @@ Os arquivos de validação registram 9/9 coincidências para amostras dos sistem
 
 O código a preservar é o de `docs-analises` (idêntico ao núcleo de `integration/v143-automated`/`vlibras` nos módulos principais), incluindo testes e utilitários originados em `e8639f9`, `15a5cd2` e `31d9612`. O script `consolidate_v143.py` não representa sozinho o corpus final: sua lista fixa ainda contém Painel e-SUS e não VLibras. `plot_rq1_sem_esus.py` corrige apenas a consolidação de estabilidade; falta uma consolidação geral do corpus definitivo.
 
-Não foram executados testes nem a pipeline completa; portanto, não há declaração de reprodução bem-sucedida.
+Durante a auditoria inicial não foram executados testes nem a pipeline completa. Na preparação posterior da branch `paper-final/v143`, a suíte automatizada foi executada em ambiente virtual limpo e concluiu com 44 testes aprovados. A pipeline completa sobre os cinco repositórios externos não foi reexecutada; portanto, não há declaração de reprodução integral bem-sucedida.

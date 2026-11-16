@@ -36,3 +36,7 @@ Usar `origin/docs-analises` (`9436e0e`) como base técnica da futura branch fina
 ## Critério de saída da futura consolidação
 
 Uma branch final só deve ser chamada reprodutível quando uma execução limpa gerar os cinco sistemas definitivos, as medianas publicadas e os artefatos de RQ3/estática com dados-fonte auditáveis, seguida de comparação automática com os valores do paper. Até lá, a formulação correta é “implementação e resultados parciais/localizados”, não “reprodução bem-sucedida”.
+
+## Progresso posterior à auditoria
+
+A branch local `paper-final/v143` foi criada a partir de `9436e0e`. Ela inclui manifesto, registro de proveniência, tabelas fiéis ao paper, verificadores, checksums, guia de reprodução e CI. A suíte automatizada passou com 44 testes. Permanecem pendentes os datasets-fonte contextual e estático finais e a reexecução completa sobre os cinco repositórios externos.

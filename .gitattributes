@@ -1,0 +1,5 @@
+results/paper_final/** text eol=lf
+paper_reference/*.tex text eol=lf
+scripts/*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf

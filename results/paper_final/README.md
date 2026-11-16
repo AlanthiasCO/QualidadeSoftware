@@ -29,6 +29,9 @@ Execute:
 
 ```bash
 python scripts/verify_paper_final.py
+python scripts/verify_paper_final_checksums.py
 ```
 
 O verificador confirma a consistência estrutural e imprime as lacunas sem transformar resultados declarados em resultados reproduzidos.
+
+As instruções completas e os limites científicos estão em `REPRODUCIBILITY.md`.

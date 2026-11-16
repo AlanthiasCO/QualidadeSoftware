@@ -1,0 +1,15 @@
+Validation date: 2026-11-15
+Operating system: Windows 10 10.0.19045 SP0, 64 bit
+Python: 3.14.6
+Pipeline: public-software-hotspots 1.4.3
+PyDriller: 2.12
+Lizard: 1.26.0
+pandas: 3.1.1
+NumPy: 2.5.5
+SciPy: 1.18.1
+matplotlib: 3.11.2
+PyYAML: 6.0.3
+pytest: 9.2.0
+Automated tests: 44 passed
+Scientific verifier: paper_faithful_with_known_gaps
+Full reproduction verified: no

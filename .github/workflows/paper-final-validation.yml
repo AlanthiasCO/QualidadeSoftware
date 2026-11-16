@@ -1,0 +1,24 @@
+name: Validate paper-final artifacts
+
+on:
+  push:
+    branches: [paper-final/v143]
+  pull_request:
+
+jobs:
+  test-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install project and test dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Run automated tests
+        run: python -m pytest -q
+      - name: Verify final-paper consolidation
+        run: python scripts/verify_paper_final.py
+      - name: Verify final-package checksums
+        run: python scripts/verify_paper_final_checksums.py
