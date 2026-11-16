@@ -6,6 +6,8 @@ Pipeline reproduzível para o estudo longitudinal de hotspots em software públi
 
 **Versão científica atual:** `v1.4.3`
 
+**Consolidação do paper final:** consulte `results/paper_final/`. Essa pasta separa valores verificados a partir dos dados versionados de valores declarados no manuscrito cuja fonte final ainda precisa ser recuperada ou reproduzida.
+
 **Etapa quantitativa:** reexecutada, validada e consolidada
 **RQ1–RQ3:** análises quantitativas concluídas  
 **Etapa final:** migração para comparação automatizada pareada em andamento

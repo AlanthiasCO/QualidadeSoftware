@@ -1,0 +1,7 @@
+project_id,system_name,priority_with_evidence,priority_total,control_with_evidence,control_total,status,source
+novo_sgp,Novo SGP,0,5,0,5,declared_in_paper,paper_reference/paper.tex:392
+sapl,SAPL,4,5,2,5,declared_in_paper,paper_reference/paper.tex:393
+siga,SIGA,3,5,1,5,declared_in_paper,paper_reference/paper.tex:394
+sigi,SIGI,0,5,0,5,declared_in_paper,paper_reference/paper.tex:395
+vlibras_web_browsers,VLibras Web Browsers,0,5,0,5,declared_in_paper,paper_reference/paper.tex:396
+TOTAL,Total,7,25,3,25,declared_in_paper,paper_reference/paper.tex:398; exact paired p=0.289

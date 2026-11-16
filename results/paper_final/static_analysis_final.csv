@@ -1,0 +1,7 @@
+project_id,system_name,hotspot_higher,control_higher,ties,classified_pairs,unclassified_pairs,status,source
+novo_sgp,Novo SGP,0,0,5,5,0,declared_in_paper,paper_reference/paper.tex:417
+sapl,SAPL,1,4,0,5,0,declared_in_paper,paper_reference/paper.tex:418
+siga,SIGA,1,4,0,5,0,declared_in_paper,paper_reference/paper.tex:419
+sigi,SIGI,3,2,0,5,0,declared_in_paper,paper_reference/paper.tex:420
+vlibras_web_browsers,VLibras Web Browsers,0,0,0,0,5,declared_in_paper,paper_reference/paper.tex:421
+TOTAL,Total,5,10,5,20,5,declared_in_paper,paper_reference/paper.tex:406; exact two-sided sign p=0.302

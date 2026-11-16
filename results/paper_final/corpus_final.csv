@@ -1,0 +1,6 @@
+project_id,system_name,period,snapshots,unique_files,observations,languages,status,source
+novo_sgp,Novo SGP,2020-2026,7,9637,50840,CSharp,declared_in_paper,paper_reference/paper.tex:121
+sapl,SAPL,2020-2026,7,239,1411,Python,verified_from_versioned_data,paper_reference/paper.tex:122
+siga,SIGA,2020-2025,6,2115,10895,Java,declared_in_paper,paper_reference/paper.tex:123
+sigi,SIGI,2020-2026,7,299,1516,Python,verified_from_versioned_data,paper_reference/paper.tex:124
+vlibras_web_browsers,VLibras Web Browsers,2020-2026,7,398,447,JavaScript/TypeScript,declared_in_paper,paper_reference/paper.tex:125

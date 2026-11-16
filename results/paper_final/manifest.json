@@ -1,0 +1,35 @@
+{
+  "title": "Longitudinal Analysis of Hotspots in Brazilian Public Software: A Prioritization Strategy for Technical Debt Inspection (2020–2026)",
+  "pipeline_version": "1.4.3",
+  "cache_schema": "v1.4.2",
+  "corpus": [
+    "novo_sgp",
+    "sapl",
+    "siga",
+    "sigi",
+    "vlibras_web_browsers"
+  ],
+  "excluded_historical_case": "painel_esus",
+  "paper_source": "paper_reference/paper.tex",
+  "quantitative_source": "results/final/v143",
+  "definitive_stability_source": "results/analise_sem_esus/rq1",
+  "definitive_pair_sample": "results/analise_sem_esus/rq4/amostra_pares_congelada.csv",
+  "priority_score": "H(f,t) = min(R_N(f,t), R_C(f,t))",
+  "longitudinal_priority": "median of observed H scores per file",
+  "reproducibility": {
+    "paper_faithful_consolidation": true,
+    "full_reproduction_verified": false,
+    "verified_components": [
+      "pipeline implementation version",
+      "five-system scope",
+      "RQ2 median Spearman values",
+      "25-pair sample structure"
+    ],
+    "unverified_components": [
+      "contextual coding source for 7/25 and 3/25",
+      "final static-analysis dataset for 5/10/5 over 20 classified pairs",
+      "reconciliation of corpus file-count differences",
+      "reconciliation of VLibras Plugin.js H value"
+    ]
+  }
+}

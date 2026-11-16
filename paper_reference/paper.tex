@@ -1,0 +1,484 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\sloppy
+
+\newcommand{\Nmod}{\ensuremath{N_{\mathrm{mod}}}}
+\newcommand{\NLOC}{\ensuremath{N_{\mathrm{LOC}}}}
+\newcommand{\CCN}{\ensuremath{CCN}}
+
+\title{Longitudinal Analysis of Hotspots in Brazilian Public Software: A Prioritization Strategy for Technical Debt Inspection (2020--2026)}
+
+\author{Alan Mathias\inst{1}, Domini Acco\inst{1}, Guilherme Tombini\inst{1}, Jemison Santos\inst{1}}
+
+\address{Universidade Estadual de Maringá (UEM)\\
+Av. Colombo, 5790 -- Zona 07 -- 87020-900 -- Maringá -- PR -- Brasil\\
+\email{pg2026009962@uem.br}\\
+\email{pg20261017594@uem.br}\\
+\email{pg20261018223@uem.br}\\
+\email{pg2026007135@uem.br}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Technical debt cannot be reliably diagnosed by a single code metric, which makes exhaustive inspection costly in large systems. This paper investigates whether change recurrence and structural complexity can be combined to prioritize files for technical-debt inspection in Brazilian public software. We conduct a longitudinal multi-case study with five public systems and annual snapshots between 2020 and 2026. For each source file, we extract modification frequency, churn, lines of code, and cyclomatic complexity. Priority is represented by the continuous score $H=\min(R_N,R_C)$, which combines the relative positions of modification frequency and complexity without defining hotspots through a fixed percentage threshold. We analyze ranking stability over time and compare 25 high-priority files with 25 size- and history-aware controls through contextual inspection. Explicit contextual evidence was found in 28\% of high-priority files and 12\% of controls, but the paired comparison was inconclusive ($p=0.289$). A complementary static-analysis comparison classified 20 of the 25 pairs, finding higher issue density in 5 hotspots and 10 controls, with 5 ties ($p=0.302$); the five VLibras pairs were not classified. The results support longitudinal hotspots as a search-space reduction mechanism, not as an automatic diagnosis of technical debt.
+\end{abstract}
+
+\begin{resumo}
+\textbf{Contexto:} A manutenção e a evolução de sistemas de software tendem a requerer estratégias que ajudem a identificar regiões do código que precisam de atenção. A dívida técnica não pode ser identificada de forma confiável apenas por métricas isoladas, e a inspeção de todo o código pode exigir um esforço elevado.
+\textbf{Objetivo:} Investigar se a combinação longitudinal entre recorrência de modificações e complexidade estrutural pode auxiliar na priorização da inspeção de possíveis evidências de dívida técnica em softwares públicos brasileiros.
+\textbf{Métodos:} Foi realizado um estudo longitudinal multi-caso com cinco softwares públicos brasileiros, considerando snapshots anuais entre 2020 e 2026. Foram analisadas métricas de modificações, \textit{churn}, linhas de código e complexidade ciclomática. Para a priorização foi utilizado um escore contínuo e sua estabilidade foi avaliada pela correlação de Spearman. Também foram comparados 25 arquivos prioritários com 25 controles pareados, por meio de inspeção contextual e análise estática complementar.
+\textbf{Resultados:} As correlações medianas de Spearman variaram entre 0,822 e 0,929. Foram encontradas evidências contextuais explícitas em 28\% dos arquivos prioritários e 12\% dos controles, mas a diferença não foi estatisticamente conclusiva (p = 0,289). Na análise estática de 20 pares, cinco apresentaram maior densidade de ocorrências nos prioritários, dez nos controles e cinco empataram em p = 0,302.
+\textbf{Conclusões:} A abordagem permite organizar a inspeção com base em prioridades longitudinalmente estáveis, mas não comprova maior presença de dívida técnica nos arquivos priorizados. Assim, pode orientar a investigação, sem substituir a avaliação contextual.
+\end{resumo}
+
+\section{Introdução}
+
+A dívida técnica descreve compromissos técnicos que podem favorecer objetivos de curto prazo, mas aumentar custos de manutenção e evolução no futuro. Estudos de mapeamento sistemático mostram que o conceito abrange múltiplos tipos e que sua identificação depende de indicadores e evidências que precisam ser interpretados no contexto do sistema \cite{li2015mapping,alves2016identification}. Por isso, uma métrica isolada de código não deve ser tratada como diagnóstico automático de dívida técnica.
+
+A manutenção de sistemas de longa duração depende de sua capacidade de permanecer compreensível, modificável e evolutiva. Na literatura de sustentabilidade técnica, manutenibilidade, evolutividade e dívida técnica aparecem fortemente relacionadas, e a análise de software combina características estruturais com informações do histórico de mudança \cite{venters2023sustainable}. Estudos empíricos mostram também que áreas com maior churn tendem a concentrar risco de defeitos e esforço de manutenção, o que justifica considerar a intensidade de mudança como sinal evolutivo relevante \cite{nagappan2005churn}.
+
+Nesse cenário, o conceito de \emph{hotspot} é utilizado neste trabalho como um mecanismo de priorização. Um hotspot é uma região do código que combina sinais de atividade evolutiva e complexidade, mas não é automaticamente classificada como dívida técnica. A interpretação final exige evidência contextual, tal como comentários de código, mensagens de commit, issues, pull requests e registros de refatoração. Essa posição é coerente com estudos sobre dívida técnica arquitetural e Self-Admitted Technical Debt (SATD), que demonstram a importância de combinar medidas quantitativas com evidência registrada pelos próprios desenvolvedores \cite{sutoyo2025tracing,potdar2014satd,li2023satd}.
+
+A pesquisa é situada no contexto de \textbf{software público brasileiro} por razões substantivas e metodológicas. O Software Público Brasileiro foi concebido como mecanismo de compartilhamento de soluções voltadas à modernização da administração pública e à racionalização de recursos de tecnologia da informação \cite{govsoftwarepublico,alves2009spb,pereira2019spb}. Esse contexto ganhou relevância adicional com a institucionalização do governo digital: a Lei n. 14.129/2021 associa transformação digital, modernização e eficiência à prestação de serviços públicos \cite{leigovernodigital}. Portanto, a capacidade de manter e evoluir software utilizado pelo Estado não é apenas um problema interno de engenharia, mas um componente da continuidade e da qualidade de infraestruturas e serviços digitais públicos. Ao mesmo tempo, a disponibilidade pública do código e do histórico de desenvolvimento oferece uma oportunidade metodológica de estudar sistemas reais de forma auditável e reprodutível. A escolha desse domínio, assim, não se baseia apenas em conveniência de acesso: combina relevância pública, diversidade organizacional e possibilidade de replicação independente.
+
+O objetivo geral é \textbf{investigar se hotspots persistentes de mudança e complexidade constituem uma estratégia útil para priorizar a inspeção de evidências de dívida técnica em softwares públicos brasileiros}. O estudo não pretende produzir um ``score de dívida técnica''. Seu objetivo é testar um procedimento de redução do espaço de busca para inspeção aprofundada.
+
+As questões de pesquisa são:
+
+\begin{description}
+    \item[RQ1.] Como recorrência de modificação e complexidade estrutural são combinadas para produzir uma prioridade de inspeção?
+    \item[RQ2.] Quão estável é essa prioridade ao longo da evolução dos sistemas?
+    \item[RQ3.] Arquivos de alta prioridade apresentam mais evidências contextuais compatíveis com dívida técnica do que arquivos comparáveis de baixa prioridade?
+\end{description}
+
+As três questões caracterizam, respectivamente, a operacionalização da prioridade, sua estabilidade temporal e sua utilidade como mecanismo de direcionamento da inspeção contextual.
+
+As principais contribuições deste trabalho são: (i) a operacionalização de um procedimento de priorização longitudinal de arquivos, combinando recorrência de modificações e complexidade estrutural; (ii) a caracterização empírica da estabilidade temporal dessa priorização em cinco sistemas públicos brasileiros; e (iii) uma avaliação exploratória da relação entre arquivos priorizados, evidências contextuais compatíveis com dívida técnica e ocorrências identificadas por análise estática. Essas contribuições delimitam o alcance do estudo, sem pressupor que os indicadores quantitativos constituam diagnóstico automático de dívida técnica.
+
+\section{Trabalhos relacionados}
+
+\subsection{Dívida técnica: conceito, tipos e identificação}
+
+\cite{li2015mapping} realizaram um mapeamento sistemático de 94 estudos e organizaram a literatura de dívida técnica em tipos e atividades de gerenciamento. O trabalho evidencia que o termo dívida técnica é utilizado de diferentes formas e que sua interpretação exige delimitação conceitual clara.
+
+De forma complementar, \cite{alves2016identification} analisaram 100 estudos com foco nos tipos de dívida, indicadores utilizados para identificá-la e estratégias de gerenciamento. Para a presente pesquisa, esse resultado é importante porque sustenta a distinção entre \emph{indicador de dívida} e \emph{dívida técnica propriamente dita}. As métricas deste estudo são tratadas como sinais quantitativos que orientam a inspeção, e não como prova autossuficiente de dívida.
+
+\subsection{Mudança, churn, complexidade e manutenção}
+
+A atividade de mudança do código é uma dimensão recorrente na literatura de manutenção. \cite{graves2000changehistory} mostraram, em um sistema grande e de longa duração, que medidas derivadas do histórico de mudanças continham informação relevante sobre incidência de falhas e que a frequência de mudanças podia ser mais informativa que o tamanho isolado do módulo. \cite{moser2008changemetrics} compararam métricas de processo e atributos estáticos para predição de defeitos e também encontraram valor informativo nas métricas de mudança. Esses resultados não implicam que um arquivo frequentemente alterado possua dívida técnica; sustentam, porém, o uso de \Nmod{} como medida de \emph{exposição recorrente à manutenção}.
+
+O churn representa um constructo diferente: a magnitude da transformação realizada no arquivo. \cite{nagappan2005churn} demonstraram que medidas de churn, especialmente quando relacionadas ao tamanho e ao período de desenvolvimento, apresentam associação com densidade de defeitos. A distinção entre frequência e magnitude é importante porque muitos ajustes pequenos e poucas reescritas extensas representam histórias de manutenção diferentes, ainda que possam produzir volumes agregados semelhantes. \cite{hassan2009changecomplexity} reforça a relevância de propriedades do processo de mudança para a caracterização de risco de manutenção.
+
+A complexidade ciclomática deriva da medida proposta por \cite{mccabe1976complexity}, baseada na estrutura do fluxo de controle. Neste estudo, \CCN{} operacionaliza a dimensão de \emph{complexidade lógica}; não é tratada como diagnóstico autônomo de baixa qualidade ou dívida técnica. Sua função é complementar as métricas históricas com uma dimensão estrutural: código frequentemente modificado pode ser simples, enquanto código complexo pode permanecer estável e raramente exigir intervenção. A priorização conjunta busca justamente a região em que alta exposição à mudança coincide com maior complexidade estrutural.
+
+Por fim, \NLOC{} é tratado principalmente como variável de controle e não como componente da prioridade. Arquivos maiores possuem maior oportunidade para conter estruturas de controle e para acumular mudanças; por isso, relações entre mudança e complexidade podem refletir parcialmente tamanho. O controle explícito de \NLOC{} reduz essa explicação alternativa nas análises de associação \cite{nagappan2005churn,sutoyo2025tracing}.
+
+\subsection{Evolução longitudinal e dívida técnica arquitetural}
+
+\cite{sutoyo2025tracing} investigam o ciclo de vida de dívida técnica arquitetural combinando histórico Git, frequência de modificações, tamanho, complexidade e evidências contextuais. O estudo é particularmente relevante para esta proposta por utilizar PyDriller para mineração do histórico e Lizard para complexidade, além de demonstrar que o tamanho do arquivo precisa ser considerado ao interpretar relações entre mudança e complexidade. A presente pesquisa incorpora essa preocupação por meio de \NLOC{} como variável de controle.
+
+O trabalho também evidencia que métricas quantitativas não são suficientes para caracterizar dívida técnica de forma autônoma. Por essa razão, a presente proposta utiliza as métricas apenas para identificar regiões prioritárias e reserva a caracterização de dívida técnica para a etapa de inspeção contextual.
+
+\subsection{Self-Admitted Technical Debt e triangulação contextual}
+
+A etapa qualitativa desta proposta é apoiada pela literatura de Self-Admitted Technical Debt. \cite{potdar2014satd} mostraram que desenvolvedores registram explicitamente trabalho incompleto, soluções temporárias e necessidades de retrabalho em comentários de código. Isso estabelece uma base para utilizar evidência textual como sinal contextual de dívida técnica.
+
+\cite{li2023satd} ampliam essa perspectiva ao estudar SATD em quatro fontes: comentários, mensagens de commit, pull requests e sistemas de issues. Essa abordagem fundamenta diretamente a triangulação adotada neste trabalho, que procura evidência contextual nesses mesmos tipos de artefatos, sem transformar palavras-chave isoladas em diagnóstico automático.
+
+Embora estudos anteriores demonstrem a relevância do histórico de modificações e da complexidade estrutural para a manutenção de software, permanece pertinente investigar a estabilidade temporal de estratégias que combinam esses indicadores e sua relação com evidências contextuais de dívida técnica. Neste trabalho, essa questão é examinada em sistemas públicos brasileiros com diferentes características tecnológicas e evolutivas, por meio de uma abordagem longitudinal e de uma avaliação exploratória com arquivos de controle.
+
+\section{Percurso Metodológico}
+
+\subsection{Desenho e corpus}
+
+A pesquisa é um estudo empírico longitudinal multi-caso, baseado em mineração de repositórios Git e inspeção contextual. A descoberta dos projetos partiu de fontes públicas, incluindo o diretório GitHub Government Community \cite{githubgovernment}, e foi ampliada para organizações públicas brasileiras. O processo resultou em 77 itens inspecionados, 45 softwares catalogados, 21 candidatos elegíveis ao núcleo analítico e cinco sistemas selecionados.
+
+A seleção final foi intencional, buscando diversidade de porte, domínio, maturidade, tecnologia e contexto institucional. Esse tipo de escolha é compatível com estudos de caso e com recomendações de amostragem em engenharia de software, desde que os critérios de seleção e os limites de generalização sejam explicitados \cite{runeson2009casestudy,baltes2022sampling}. A unidade quantitativa de análise é o arquivo de código-fonte \emph{first-party}; dependências de terceiros, artefatos gerados, arquivos de build e testes são excluídos conforme as regras de cada projeto.
+
+\begin{table}[H]
+\centering
+\caption{Corpus longitudinal analisado.}
+\label{tab:corpus}
+\small
+\begin{tabular}{lrrrrl}
+\toprule
+\textbf{Sistema} & \textbf{Período} & \textbf{Anos} & \textbf{Arq. únicos} & \textbf{Obs. arq.-ano} & \textbf{Linguagem} \\
+\midrule
+Novo SGP & 2020--2026 & 7 & 9.637 & 50.840 & C\# \\
+SAPL & 2020--2026 & 7 & 239 & 1.411 & Python \\
+SIGA & 2020--2025 & 6 & 2.115 & 10.895 & Java \\
+SIGI & 2020--2026 & 7 & 299 & 1.516 & Python \\
+VLibras Web Browsers & 2020--2026 & 7 & 398 & 447 & JavaScript/TypeScript \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+A análise do VLibras foi realizada com sete snapshots anuais (2020--2026), abrangendo 398 arquivos únicos e 447 observações arquivo--ano. As métricas foram submetidas à validação independente por amostragem, com resultados coincidentes nas verificações realizadas. Os registros de execução e a identificação dos pares selecionados estão disponíveis no repositório público da pesquisa.
+
+\subsection{Como o conjunto de dados foi obtido}
+
+A construção do conjunto de dados iniciou com o diretório GitHub Government Community \cite{githubgovernment}, utilizado como ponto de partida para descobrir organizações públicas brasileiras com presença em plataformas abertas de desenvolvimento. A busca foi expandida para organizações governamentais federais, estaduais e municipais, órgãos dos poderes Executivo, Legislativo e Judiciário, empresas públicas de tecnologia e projetos vinculados ao ecossistema de Software Público Brasileiro.
+
+O garimpo foi realizado de forma assistida por ferramentas de inteligência artificial com acesso à internet, utilizadas para apoiar a localização, leitura inicial e organização dos repositórios. Essa etapa funcionou como mecanismo de descoberta e triagem. As decisões metodológicas de inclusão e exclusão foram posteriormente consolidadas em bases estruturadas contendo o software, órgão responsável, esfera, poder, domínio, repositórios associados, linguagem, licença, atividade e evidências verificáveis.
+
+O processo de triagem resultou no seguinte funil:
+
+\begin{center}
+\textbf{77 itens/projetos inspecionados $\rightarrow$ 32 excluídos $\rightarrow$ 45 softwares catalogados $\rightarrow$ 21 candidatos do núcleo A $\rightarrow$ 5 casos selecionados.}
+\end{center}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.88\linewidth]{figura_01_funil_corpus_uniforme.png}
+    \caption{Processo de identificação, triagem e seleção dos sistemas do corpus longitudinal.}
+    \label{fig:funil-corpus}
+\end{figure}
+
+A contagem final utiliza \textbf{software como unidade de análise}, e não repositório. Isso evita inflar artificialmente a amostra quando frontend, backend ou outros componentes de um mesmo sistema estão separados em repositórios distintos.
+
+\subsection{Critérios de elegibilidade}
+
+Foram estabelecidos nove critérios para formação do corpus:
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{5.3cm} >{\raggedright\arraybackslash}p{8cm}}
+\toprule
+\textbf{ID} & \textbf{Critério} & \textbf{Finalidade} \\
+\midrule
+C1 & Ser uma aplicação de software efetiva & Excluir APIs isoladas, datasets, bibliotecas, scripts, documentação, ETLs e artefatos que não constituam uma aplicação. \\
+C2 & Possuir vínculo verificável com instituição pública brasileira & Delimitar a população estudada. \\
+C3 & Código-fonte publicamente acessível & Permitir inspeção e replicação independente. \\
+C4 & Possuir atividade relevante desde 2020 & Garantir histórico recente de evolução. \\
+C5 & Histórico Git preservado & Permitir mineração longitudinal. \\
+C6 & Volume mínimo de desenvolvimento & Evitar projetos sem histórico suficiente para análise. \\
+C7 & Linguagem suportada pelas ferramentas do estudo & Garantir extração uniforme das métricas mínimas. \\
+C8 & Licenciamento adequado & Garantir acesso, inspeção e reprodutibilidade acadêmica. \\
+C9 & Ausência de dependência excessiva em relação a outro caso da amostra & Evitar tratar forks ou derivados próximos como observações independentes. \\
+\bottomrule
+\end{longtable}
+
+O critério de ``histórico suficiente'' não é definido por um número universal de commits. Para a análise longitudinal, exige-se histórico Git preservado, código first-party analisável e observações em mais de um snapshot anual, condição mínima lógica para estudar variação temporal. Volume de commits, duração do histórico e quantidade de contribuidores são registrados como características descritivas dos casos e considerados na seleção, mas não funcionam como limiares teóricos de inclusão.
+
+\subsection{Formação do corpus analítico}
+
+Dos 45 softwares inicialmente catalogados, 21 foram classificados como candidatos ao núcleo principal da análise após a aplicação dos critérios de elegibilidade. A partir desse conjunto, foi realizada uma estratificação dos casos segundo características relacionadas ao porte do sistema, extensão do histórico de desenvolvimento, contexto institucional, proximidade tecnológica e maturidade do projeto.
+
+\begin{table}[H]
+\centering
+\caption{Estratificação dos candidatos elegíveis em três grupos analíticos.}
+\label{tab:estratificacao}
+\small
+\begin{tabular}{|p{1cm}|p{2.0cm}|p{3.0cm}|p{3.0cm}|}
+\hline
+\textbf{Grupo} & \textbf{Sistemas} & \textbf{Característica} & \textbf{Função analítica} \\
+\hline
+CG1 & Novo SGP; SIGA; PGD Petrvs. &
+Grande porte e histórico extenso. &
+Maior volume e complexidade. \\
+\hline
+CG2 & SAPL; SIGI. &
+Mesmo ecossistema institucional e tecnológico. &
+Contraste controlado. \\
+\hline
+CG3 & VLibras Web Browsers. &
+Desenvolvimento recente e domínio especializado. &
+Variação de maturidade e domínio. \\
+\hline
+\end{tabular}
+\end{table}
+
+O primeiro grupo (CG1) reúne sistemas de grande porte, com arquitetura ampla e histórico de desenvolvimento extenso, representado pelo Novo SGP, SIGA e PGD Petrvs. O sistema PGD Petrvs permaneceu como candidato elegível não incorporado ao corpus final. Essa decisão busca evitar a concentração excessiva de casos com características semelhantes de grande porte e histórico extenso.
+
+O segundo grupo (CG2) é composto pelo SAPL e pelo SIGI, sistemas associados ao ecossistema do Interlegis e que apresentam proximidade tecnológica e institucional. Nesse caso, a semelhança não é utilizada como critério de exclusão, mas como oportunidade para estabelecer um contraste controlado.
+
+O terceiro grupo (CG3) é constituído pelo VLibras Web Browsers, caracterizado por desenvolvimento recente e por atuação em um domínio especializado de acessibilidade e tradução automática de Libras. Sua inclusão introduz uma dimensão de contraste em relação aos sistemas de histórico mais longo dos demais grupos.
+
+Dessa forma, a composição total procura equilibrar a diversidade de domínio e contexto institucional com a existência de casos semelhantes, evitando que a seleção seja determinada exclusivamente pelo tamanho do repositório ou pela popularidade na plataforma GitHub.
+
+\subsection{Preparação e filtragem dos arquivos}
+
+A análise foi restrita a arquivos de código-fonte first-party. Foram excluídos arquivos generated/vendor, dependências de terceiros, artefatos de build, arquivos minificados e demais arquivos que não representavam código mantido pela equipe do sistema. A classificação foi executada antes do cálculo das métricas.
+
+Os testes automatizados foram excluídos do ranking principal de hotspots. A lista de linguagens incluídas foi fixada por projeto antes da execução da análise e limitada às linguagens first-party suportadas pelo Lizard.
+
+Renomes de arquivos foram tratados por um procedimento conservador de identidade longitudinal, com aliases de caminhos aprovados e verificação sobre o histórico Git sempre que possível, preservando a identidade longitudinal do artefato. Essa regra evita que um arquivo renomeado seja interpretado como um novo arquivo e tenha sua persistência artificialmente reduzida.
+
+\subsection{Extração de métricas, normalização por postos e cálculo do escore de prioridade}
+
+Foram utilizados snapshots anuais entre 2020 e 2026, conforme a disponibilidade de histórico de cada sistema. A mineração usa Git e PyDriller \cite{pydriller}; tamanho e complexidade são obtidos com Lizard \cite{lizard}. Nas janelas anuais de modificações, o instante do snapshot anterior é excluído e o instante do snapshot atual é incluído, para evitar dupla contagem de commits nos limites entre períodos. A implementação quantitativa de referência é a versão v1.4.3, com validação independente por amostragem das quatro métricas. Para cada arquivo são consideradas quatro medidas: \Nmod{} (número de modificações na janela), churn, \NLOC{} (tamanho no snapshot) e \CCN{} (complexidade ciclomática). O escore de prioridade utiliza apenas \Nmod{} e \CCN{}.
+
+A \Nmod{} representa recorrência de intervenção; churn representa a magnitude da transformação; \CCN{} representa complexidade do fluxo de controle; e \NLOC{} funciona como variável de controle associada ao tamanho. Essa separação evita interpretar quatro métricas correlacionadas como quatro evidências independentes de dívida técnica.
+
+Para evitar um corte arbitrário como ``top 20\%'', \Nmod{} e \CCN{} são convertidos em posições relativas dentro de cada combinação sistema--linguagem--snapshot. Sejam $R_N(f,t)$ e $R_C(f,t)$ os postos relativos, reescalados no intervalo $[0,1]$. Define-se:
+
+\begin{equation}
+H(f,t)=\min\left(R_N(f,t),R_C(f,t)\right).
+\end{equation}
+
+O mínimo implementa uma regra conjuntiva: prioridade elevada exige que o arquivo esteja simultaneamente bem posicionado em recorrência de mudança e complexidade. Para resumir a prioridade ao longo do histórico de cada arquivo, utiliza-se a mediana dos valores observados:
+
+\begin{equation}
+\widetilde{H}(f)=\operatorname{mediana}_{t} H(f,t).
+\end{equation}
+
+Assim, $H$ e $\widetilde H$ são escores de priorização, não classificadores de dívida técnica.
+
+Os artefatos de validação da pipeline incluem uma análise de sensibilidade entre o universo de arquivos first-party e o subconjunto com \Nmod{} positivo. Essa verificação não equivale a uma comparação empírica do operador mínimo com agregações alternativas, como a média geométrica; tal comparação não é reivindicada como resultado neste artigo.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figura_02_fluxo_metodologico_uniforme.png}
+    \caption{Fluxo metodológico da extração de métricas à análise dos resultados.}
+    \label{fig:fluxo-metodologico}
+\end{figure}
+
+\subsection{Procedimento para as questões de pesquisa}
+
+\textbf{RQ1 -- priorização.} O escore $H$ é calculado em cada snapshot e $\widetilde H$ resume a prioridade longitudinal. Os arquivos são ordenados por $\widetilde H$, de modo que valores maiores indiquem maior combinação de recorrência de mudança e complexidade relativa. Não há um percentual fixo que defina o constructo de hotspot.
+
+\textbf{RQ2 -- estabilidade longitudinal.} A estabilidade do ranking $H$ entre snapshots consecutivos é estimada pela correlação de postos de Spearman, considerando apenas arquivos presentes nos dois momentos. O objetivo é verificar se a lista de prioridades pode ser tratada como estática ou precisa ser recalculada ao longo do tempo.
+
+\textbf{RQ3 -- evidência contextual.} Para a inspeção foram formados 25 pares, cinco por sistema, com um arquivo da região de alta prioridade e um controle de menor prioridade. O pareamento foi realizado dentro do mesmo sistema e linguagem, considerando proximidade em tamanho (\NLOC{}) e quantidade de snapshots observados. Os cortes usados apenas para compor essa amostra são operacionais e não definem hotspot. O código do último snapshot observado foi submetido a triagem de \texttt{TODO}/\texttt{FIXME}; ocorrências positivas foram lidas no contexto da implementação. O desfecho principal é binário: presença ou ausência de evidência explícita de manutenção pendente, necessidade de refatoração, risco conhecido ou implementação incompleta. As proporções pareadas são comparadas por teste binomial exato sobre pares discordantes.
+
+\subsection{Triangulação qualitativa}
+
+Após a etapa quantitativa, a inspeção qualitativa seguirá amostragem intencional sequencial a partir dos arquivos com maior prioridade longitudinal em cada software. Para cada arquivo serão inspecionados comentários de código, mensagens de commit, issues, pull requests e registros de refatoração relacionados às janelas em que apresentou prioridade elevada.
+
+A busca textual utilizará termos associados a trabalho técnico adiado ou solução deliberadamente provisória, como TODO, FIXME, HACK, \emph{workaround}, \emph{legacy}, \emph{temporary} e \emph{refactor}. Esses termos funcionam como pontos de entrada para leitura contextual; uma ocorrência isolada não será considerada prova de dívida técnica.
+
+A evidência será classificada em três níveis:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{hotspot quantitativo}: identificado exclusivamente pelas métricas;
+    \item \textbf{hotspot com evidência contextual}: há artefatos indicando manutenção problemática, retrabalho, refatoração ou limitação técnica relevante;
+    \item \textbf{evidência explícita de dívida técnica}: há registro textual ou decisão técnica que sustente claramente a existência de uma solução inadequada, provisória ou deliberadamente postergada com custo futuro.
+\end{enumerate}
+
+O protocolo de classificação qualitativa prevê revisão cruzada por dois avaliadores e registro de divergências e consenso. Os resultados binários reportados neste artigo devem ser interpretados como triagem contextual exploratória; não se reporta aqui uma estatística de concordância interavaliadores.
+
+\subsection{Grupo de comparação}
+
+Para cada arquivo de alta prioridade selecionado para inspeção foi escolhido um arquivo de menor prioridade do mesmo sistema e linguagem. A documentação da amostra pareada registra proximidade de tamanho e de histórico de observação; o procedimento de correspondência e a distância obtida por par devem ser consultados na base de replicação. O pareamento precedeu a inspeção contextual, de modo a evitar a escolha dos controles em função das evidências observadas.
+
+Esse desenho responde à RQ3 ao avaliar se a estratégia de priorização direciona a inspeção para regiões com maior presença de evidências contextuais de dívida técnica, em vez de demonstrar apenas que alguns arquivos altamente ranqueados contêm tais evidências.
+
+\subsection{Análise estática complementar e normalização por linhas de código}
+
+Além da inspeção contextual empregada na RQ3, foi conduzida uma análise estática complementar a partir da amostra original de 25 pares (25 arquivos de alta prioridade e 25 controles), com resultados comparáveis reportados para 20 pares. Essa etapa teve como objetivo verificar se arquivos priorizados pelo escore longitudinal também apresentavam maior concentração de ocorrências detectadas por ferramentas automatizadas de qualidade e manutenção de código.
+
+Não houve nova seleção de arquivos com base nos resultados das ferramentas estáticas. A comparação reporta somente os 20 pares com resultado classificado; os cinco pares de VLibras não estão contabilizados na Tabela~\ref{tab:static-paired}. Para cada par, hotspot e controle pertencem ao mesmo sistema e linguagem e foram previamente pareados considerando tamanho e quantidade de snapshots observados.
+
+As ferramentas foram selecionadas de acordo com a linguagem dos arquivos. Para Python, foram utilizados Pylint e Radon; para Java, PMD; para C\#, os analisadores disponíveis no ecossistema .NET/Roslyn; e, para JavaScript/TypeScript, ESLint e verificações do ecossistema Node.js. O Pylint foi utilizado para identificar ocorrências classificadas como erros, avisos, refatorações e convenções, enquanto o Radon forneceu métricas de complexidade ciclomática e índice de manutenibilidade. O PMD foi empregado para identificar ocorrências relacionadas a design, boas práticas, possíveis erros, desempenho e complexidade. Para C\#, a inspeção foi realizada durante a restauração e compilação dos respectivos projetos com os analisadores .NET habilitados.
+
+Como arquivos maiores tendem a apresentar maior quantidade absoluta de ocorrências, foi calculada a densidade de achados por mil linhas de código:
+
+\begin{equation}
+D_{\mathrm{issues}}(f)=\frac{\mathrm{issues}(f)}{\mathrm{LOC}(f)}\times 1000.
+\end{equation}
+
+A comparação foi realizada exclusivamente dentro de cada par. Para cada par, registrou-se se a densidade era maior no hotspot, maior no controle ou igual entre os dois arquivos. Como PMD, Pylint, Roslyn e ESLint possuem conjuntos de regras e escalas distintas, valores absolutos não foram comparados diretamente entre linguagens ou ferramentas.
+
+Alguns arquivos pertencentes à amostra original já não estavam presentes no HEAD atual dos respectivos repositórios. Para preservar a amostra previamente definida e evitar substituições \emph{post hoc}, nesses casos foi recuperada a revisão Git mais recente em que o caminho exato do arquivo ainda existia. O arquivo foi analisado nessa revisão, e o identificador da revisão utilizada foi registrado no pacote de replicação.
+
+A direção dos pares discordantes foi avaliada por teste exato bilateral de sinais. Essa análise é exploratória e verifica apenas se uma das duas classes de arquivos tende a apresentar maior densidade de ocorrências dentro dos pares, não constituindo teste direto da presença de dívida técnica.
+
+\subsection{Reprodutibilidade}
+
+Os scripts, as configurações, os registros de validação e os resultados da pesquisa estão disponíveis no repositório público do projeto (\url{https://github.com/AlanthiasCO/QualidadeSoftware}). A documentação permite identificar as versões utilizadas e distinguir as análises quantitativas concluídas das etapas complementares ainda em desenvolvimento.
+
+A reprodução dos resultados requer o uso consistente da versão de referência, das regras de filtragem e dos dados correspondentes à mesma execução. O corpus final compreende Novo SGP, SAPL, SIGA, SIGI e VLibras Web Browsers; dados de projetos considerados em etapas anteriores não foram incorporados aos resultados aqui apresentados.
+
+\section{Ameaças à validade}
+\paragraph{Modelo de medição.} \Nmod{}, \CCN{} e $H$ não medem dívida técnica diretamente. Neste trabalho, essas variáveis são utilizadas exclusivamente para priorização. A evidência contextual baseada em comentários também é incompleta: ausência de marcadores não implica ausência de dívida, e a presença de \texttt{TODO}, \texttt{FIXME} ou termos semelhantes exige interpretação no contexto da implementação.
+
+A análise estática também não constitui medida direta de dívida técnica. PMD, Pylint, Radon, Roslyn e ESLint possuem regras, categorias e escalas distintas. Por esse motivo, suas contagens absolutas não são utilizadas como escala comum entre sistemas ou linguagens. A densidade de ocorrências é comparada apenas dentro de cada par formado no mesmo sistema e linguagem.
+
+\paragraph{Validade interna.} Arquivos maiores podem apresentar mais ocorrências simplesmente por conterem mais código. Para reduzir esse efeito, os controles foram pareados considerando \NLOC{} e quantidade de snapshots, e a análise estática adicional utiliza densidade de ocorrências por mil linhas de código.
+
+Alguns arquivos da amostra já não estavam disponíveis no HEAD atual dos repositórios. Nesses casos, foi recuperada a revisão Git mais recente em que o caminho exato ainda existia, preservando a identidade dos arquivos originalmente amostrados. Essa estratégia evita substituição \emph{post hoc}, embora introduza diferenças temporais entre alguns arquivos analisados.
+
+Em um dos arquivos C\# recuperados historicamente, a restauração das dependências foi concluída, mas a compilação da revisão histórica retornou erro. Como esse caso foi registrado como empate de zero ocorrências e não integra os pares discordantes utilizados no teste de sinais, sua exclusão não altera a contagem de direções entre os pares discordantes. Entretanto, a falha de compilação não equivale à ausência comprovada de ocorrências, e o resultado deve ser interpretado com cautela.
+
+\paragraph{Cobertura analítica.} A comparação estática classifica 20 dos 25 pares originalmente selecionados, não permitindo inferir a distribuição de densidades para os cinco pares de VLibras. A triagem contextual baseada em marcadores explícitos pode deixar de reconhecer dívida não documentada. A eficácia da fila de inspeção em termos de tempo, ganho em relação a baselines e precisão nos primeiros arquivos permanece por avaliar.
+
+\paragraph{Validade externa.} Os cinco sistemas constituem amostra intencional e não representam estatisticamente todo o universo de software público brasileiro. A generalização pretendida é analítica e se restringe ao comportamento do procedimento em sistemas com diferentes domínios, tecnologias, portes e históricos de evolução \cite{baltes2022sampling}.
+
+\paragraph{Confiabilidade.} Repositórios, identificadores de revisão, filtros, scripts, arquivos de configuração, amostra pareada e resultados intermediários foram preservados no pacote de replicação. Os resultados da análise estática registram também a ferramenta utilizada, o modo de resolução do arquivo e a revisão de origem, permitindo distinguir arquivos avaliados no HEAD daqueles recuperados historicamente.
+
+
+\section{Resultados}
+
+\subsection{RQ1 -- prioridade de inspeção}
+A aplicação de $H$ gera um ranking contínuo em cada snapshot e, por meio de $\widetilde H$, uma prioridade longitudinal por arquivo. Isso permite ordenar o código sem declarar que uma fronteira percentual específica separa ``hotspots'' de ``não hotspots''. A Tabela~\ref{tab:rq1} apresenta, para tornar o resultado concreto, o arquivo com maior $\widetilde H$ entre os cinco arquivos de alta prioridade selecionados para inspeção em cada sistema.
+
+\begin{table}[H]
+\centering
+\caption{Exemplos de arquivos de alta prioridade utilizados na inspeção contextual.}
+\label{tab:rq1}
+\small
+\begin{tabular}{lp{7.2cm}r}
+\toprule
+\textbf{Sistema} & \textbf{Arquivo} & \textbf{$\widetilde H$} \\
+\midrule
+Novo SGP & \texttt{ObterNotasFrequenciaUseCase.cs} & 0,999 \\
+SAPL & \texttt{sessao/views.py} & 0,980 \\
+SIGA & \texttt{ExMovimentacaoController.java} & 0,997 \\
+SIGI & \texttt{convenios/models.py} & 0,964 \\
+VLibras Web Browsers & \texttt{plugin/Plugin.js} & 0,898 \\
+\bottomrule
+\end{tabular}
+\end{table}
+A RQ1, portanto, não procura demonstrar que esses arquivos possuem dívida técnica. Ela estabelece apenas uma ordem de inspeção baseada na interseção contínua entre recorrência de mudança e complexidade estrutural.
+
+\subsection{RQ2 -- estabilidade longitudinal da prioridade}
+Os resultados desta análise foram obtidos da consolidação longitudinal do corpus definitivo, disponível no repositório público da pesquisa.
+
+A estabilidade do ranking foi elevada nas medianas dos cinco sistemas (Tabela~\ref{tab:rq2}), variando de 0,822 (Novo SGP) a 0,929 (SIGI). SAPL (0,927) e SIGA (0,910) também apresentaram medianas acima de 0,90; no VLibras Web Browsers, a mediana foi 0,854. Foram registradas seis transições válidas em Novo SGP, SAPL e SIGI, e cinco em SIGA e VLibras. Essas medianas resumem as transições observadas e não eliminam variações entre anos ou mudanças na composição dos arquivos analisados.
+
+\begin{table}[H]
+\centering
+\caption{RQ2 -- estabilidade de $H$ entre snapshots consecutivos.}
+\label{tab:rq2}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Sistema} & \textbf{Spearman mediano} & \textbf{Transições válidas} \\
+\midrule
+Novo SGP & 0,822 & 6 \\
+SAPL & 0,927 & 6 \\
+SIGA & 0,910 & 5 \\
+SIGI & 0,929 & 6 \\
+VLibras Web Browsers & 0,854 & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figura_03_estabilidade_rq2_uniforme.png}
+    \caption{Estabilidade longitudinal da prioridade: correlação mediana de Spearman entre snapshots consecutivos.}
+    \label{fig:estabilidade-rq2}
+\end{figure}
+
+As medianas elevadas indicam persistência considerável das posições relativas entre arquivos presentes em snapshots consecutivos. Contudo, essa medida não avalia diretamente os arquivos que entram ou saem do corpus entre anos, nem garante que a lista de prioridades permaneça inalterada. Por isso, a atualização do ranking continua recomendável à medida que os sistemas evoluem, especialmente diante de mudanças na composição tecnológica, como a introdução da base TypeScript no VLibras.
+
+\subsection{RQ3 -- evidência contextual nos arquivos priorizados}
+Os resultados contextuais apresentados nesta subseção correspondem a uma triagem exploratória. A documentação sistemática das classificações e sua revisão independente permanecem necessárias para uma validação mais abrangente.
+
+A inspeção encontrou evidência contextual explícita em 7 dos 25 arquivos de alta prioridade (28\%) e em 3 dos 25 controles (12\%). Houve seis pares com evidência apenas no arquivo prioritário e dois apenas no controle; o teste exato sobre os pares discordantes resultou em $p=0{,}289$. A diferença observada segue a direção esperada, mas a amostra não permite concluir que arquivos prioritários apresentem evidência com frequência estatisticamente distinta dos controles.
+
+\begin{table}[H]
+\centering
+\caption{RQ3 -- presença de evidência contextual nos 25 pares inspecionados.}
+\label{tab:rq3}
+\small
+\begin{tabular}{lrr}
+\toprule
+\textbf{Sistema} & \textbf{Alta prioridade} & \textbf{Controle} \\
+\midrule
+Novo SGP & 0/5 & 0/5 \\
+SAPL & 4/5 & 2/5 \\
+SIGA & 3/5 & 1/5 \\
+SIGI & 0/5 & 0/5 \\
+VLibras Web Browsers & 0/5 & 0/5 \\
+\midrule
+Total & 7/25 (28\%) & 3/25 (12\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O sinal ficou concentrado em SAPL e SIGA. Entre os casos encontrados aparecem comentários que identificam \texttt{HACK}, necessidade de refatoração, risco conhecido de erro, tratamento de exceção pendente e métodos incompletos ou \emph{stubs}. No VLibras Web Browsers, os cinco hotspots pareados (\texttt{plugin/Plugin.js}, \texttt{Controls/index.js}, \texttt{Guide/index.js}, \texttt{Dictionary/index.js} e \texttt{Guide/MainScreen/index.js}) e seus controles não apresentaram evidência contextual explícita nos artefatos examinados, o que é compatível com a concentração do sinal nos dois sistemas do ecossistema Interlegis. A RQ3 fornece, portanto, evidência direcional de utilidade para inspeção, mas não permite afirmar que arquivos prioritários ``contêm dívida técnica''.
+
+\subsection{Análise estática complementar e normalização por linhas de código}
+Na análise estática complementar, há resultados comparáveis registrados para 20 dos 25 pares originalmente amostrados; os cinco pares de VLibras não estão classificados na tabela. Entre os 20 pares com resultado, em cinco pares, o arquivo de alta prioridade apresentou maior densidade de ocorrências; em dez, a maior densidade foi observada no controle; e cinco pares resultaram em empate. Considerando os 15 pares discordantes, o teste exato bilateral de sinais resultou em $p=0{,}302$.
+
+\begin{table}[H]
+\centering
+\caption{Comparação pareada da densidade de ocorrências da análise estática (20 pares classificados de 25 originalmente selecionados).}
+\label{tab:static-paired}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Sistema} & \textbf{Hotspot maior} & \textbf{Controle maior} & \textbf{Empate} \\
+\midrule
+Novo SGP & 0 & 0 & 5 \\
+SAPL & 1 & 4 & 0 \\
+SIGA & 1 & 4 & 0 \\
+SIGI & 3 & 2 & 0 \\
+VLibras Web Browsers & -- & -- & -- \\
+\midrule
+Total (20 pares classificados) & 5 & 10 & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Nos 20 pares classificados, os resultados não indicam uma tendência de maior densidade de ocorrências estáticas nos arquivos de alta prioridade. A ausência de classificação dos cinco pares de VLibras limita a abrangência desta comparação. A distribuição entre hotspots e controles foi aproximadamente equilibrada, e a comparação pareada não apresentou evidência de diferença sistemática entre os grupos.
+
+Esse resultado não significa ausência de problemas estruturais nos arquivos priorizados. Em casos individuais, foram encontrados sinais expressivos. No SIGA, por exemplo, \texttt{ExMovimentacaoController.java} foi classificado pelo PMD como possível \emph{God Class}, apresentou acoplamento entre objetos igual a 102 e complexidade ciclomática total de 893, com máximo individual igual a 53.
+
+Entretanto, arquivos controle do mesmo sistema também apresentaram evidências estruturais relevantes. \texttt{SrSolicitacao.java}, por exemplo, foi igualmente classificado como possível \emph{God Class}, com acoplamento igual a 94 e complexidade ciclomática total de 895. Outro controle, \texttt{SrRelPrazo.java}, apresentou um método com complexidade cognitiva de 488 e complexidade ciclomática de 135.
+
+No VLibras Web Browsers, o hotspot \texttt{plugin/Plugin.js} concentra recorrência de mudança e complexidade ao longo de praticamente todos os snapshots, enquanto a base TypeScript introduzida em 2026 traz arquivos com \CCN{} elevada, como \texttt{src/widget/components/ui/dialog.tsx} ($\CCN=67$) e \texttt{src/widget/components/ui/dropdown.tsx} ($\CCN=64$). Esses exemplos estruturais de VLibras não integram a comparação pareada de densidades apresentada na Tabela~\ref{tab:static-paired}.
+
+Assim, a análise estática evidencia que problemas estruturais podem ocorrer tanto em arquivos de alta prioridade quanto em controles. O resultado reforça que a quantidade ou densidade de ocorrências produzidas por analisadores estáticos não equivale diretamente à quantidade de dívida técnica de um arquivo.
+
+\section{Discussão}
+A principal contribuição deste estudo é operacional: utilizar recorrência de modificação e complexidade estrutural para produzir uma fila contínua de inspeção. O escore $H$ não pretende diagnosticar dívida técnica, mas reduzir o espaço de busca e indicar arquivos que merecem investigação mais detalhada.
+
+Os resultados da RQ2 mostram elevada estabilidade mediana das posições relativas dos arquivos compartilhados entre snapshots consecutivos, com coeficientes de Spearman entre 0,822 e 0,929 nos cinco sistemas. Essa estabilidade não implica permanência da composição do conjunto de arquivos, nem dispensa a atualização do ranking. No VLibras Web Browsers, a mediana foi 0,854, e a entrada da base TypeScript em 2026 constitui uma mudança tecnológica relevante que recomenda nova execução da priorização.
+
+Na RQ3, arquivos de alta prioridade apresentaram evidência contextual explícita em 28\% dos casos, contra 12\% dos controles. A diferença foi observada na direção esperada, mas permaneceu inconclusiva na comparação pareada ($p=0{,}289$). Assim, a evidência contextual sugere possível utilidade do ranking como filtro de investigação, mas não demonstra que arquivos de alta prioridade contenham dívida técnica com frequência superior aos controles.
+
+A comparação contextual reportada deve ser interpretada como uma triagem exploratória de evidências explícitas nos artefatos examinados, não como comprovação de dívida técnica nem como substituta de uma codificação qualitativa independente e integralmente rastreável. O registro sistemático das evidências e a revisão cruzada de classificações constituem passos necessários para ampliar a confiabilidade dessa etapa.
+
+A análise estática complementar oferece uma perspectiva distinta, embora restrita aos 20 pares classificados, e ajuda a delimitar essa interpretação. Ao contrário da diferença observada na inspeção contextual, a densidade de ocorrências estáticas não favoreceu os hotspots: cinco pares apresentaram maior densidade no arquivo prioritário, dez no controle e cinco resultaram em empate. O teste exato de sinais não indicou diferença entre as direções ($p=0{,}302$).
+
+Esse resultado é relevante porque mostra que a prioridade longitudinal e a quantidade de ocorrências produzidas por analisadores estáticos representam dimensões distintas. Um arquivo pode combinar elevada recorrência de mudança e elevada complexidade relativa sem necessariamente disparar mais regras de uma ferramenta estática do que um arquivo controle. Da mesma forma, controles podem apresentar problemas estruturais expressivos.
+
+Os casos do SIGA ilustram essa distinção. O hotspot \texttt{ExMovimentacaoController.java} apresentou sinais fortes de complexidade e acoplamento, incluindo indicação de possível \emph{God Class}. Entretanto, arquivos do grupo controle também apresentaram padrões semelhantes ou, em alguns casos, métricas estruturais ainda mais elevadas. No VLibras Web Browsers, o mesmo fenômeno aparece: \texttt{plugin/Plugin.js} é recorrentemente priorizado, mas a base TypeScript de 2026 contém arquivos com \CCN{} alta que não passaram pelo histórico completo de sete snapshots. Portanto, um caso individual com forte convergência entre prioridade e análise estática não pode ser generalizado para toda a amostra.
+
+A leitura conjunta dos resultados oferece perspectivas complementares, com a ressalva de que a comparação estática não cobriu todos os pares originalmente amostrados. A análise longitudinal responde à pergunta sobre \emph{onde inspecionar primeiro}; a evidência contextual verifica se existem registros explícitos compatíveis com trabalho pendente, risco ou necessidade de refatoração; e a análise estática acrescenta indicadores automatizados de qualidade e estrutura. Nenhuma dessas fontes, isoladamente, deve ser tratada como diagnóstico definitivo de dívida técnica.
+
+Do ponto de vista prático, o método pode ser utilizado como mecanismo de triagem em sistemas de grande porte. Em vez de inspecionar indiscriminadamente todo o repositório, uma equipe pode utilizar o ranking longitudinal para selecionar candidatos e, posteriormente, combinar análise humana, comentários, histórico de desenvolvimento, ferramentas estáticas e outros artefatos para decidir se existe dívida técnica relevante e qual sua natureza.
+
+A redução do espaço de busca é aqui entendida como a possibilidade de ordenar e selecionar candidatos à inspeção. O estudo não quantificou diretamente economia de tempo ou esforço, tampouco demonstrou superioridade do escore $H$ perante rankings baseados em métricas isoladas ou outras agregações. Tais benefícios permanecem hipóteses para avaliação comparativa posterior.
+
+\subsection{Perspectivas de evolução da pesquisa}
+
+Os resultados apresentados constituem uma avaliação exploratória da priorização longitudinal de arquivos para inspeção de possíveis evidências de dívida técnica. Como continuidade, pretende-se aprofundar a validação contextual por meio de inspeção independente dos artefatos de desenvolvimento, incluindo comentários de código, mensagens de commit, issues e pull requests, com registro rastreável das classificações e divergências entre avaliadores.
+
+Também se pretende comparar o escore proposto com estratégias alternativas de priorização, como frequência de modificações isolada, complexidade estrutural isolada e outras funções de agregação. Essa comparação poderá utilizar métricas de precisão entre os primeiros arquivos inspecionados e medidas de esforço necessário para identificar evidências relevantes.
+
+Por fim, a ampliação do corpus e a análise de diferentes janelas temporais poderão contribuir para caracterizar a generalização e a sensibilidade dos resultados em outros contextos de desenvolvimento de software.
+
+\section{Conclusão}
+Este trabalho investigou se a combinação longitudinal entre recorrência de modificação e complexidade estrutural pode ser utilizada para priorizar a inspeção de possíveis evidências de dívida técnica em software público brasileiro.
+
+O escore proposto permitiu produzir uma prioridade contínua de inspeção sem definir hotspots por um percentual fixo. A análise longitudinal mostrou medianas elevadas de estabilidade das posições relativas dos arquivos compartilhados entre snapshots, mas isso não assegura a permanência do conjunto priorizado; por isso, recomenda-se recalcular o ranking à medida que o software evolui.
+
+Na inspeção contextual, evidências explícitas foram encontradas em 28\% dos arquivos de alta prioridade e em 12\% dos controles. Embora a diferença tenha ocorrido na direção esperada, a comparação pareada permaneceu inconclusiva ($p=0{,}289$).
+
+A análise estática complementar, restrita a 20 dos 25 pares originalmente selecionados, não mostrou maior densidade de ocorrências nos hotspots. Dos pares classificados, cinco favoreceram os arquivos prioritários, dez favoreceram os controles e cinco apresentaram empate. Entre os pares discordantes, o teste exato de sinais resultou em $p=0{,}302$, não indicando diferença sistemática entre os grupos.
+
+Esses resultados reforçam a distinção central deste estudo: \textbf{hotspots longitudinais não constituem detectores de dívida técnica}. Sua utilidade está em reduzir o espaço de busca e estabelecer uma ordem de inspeção baseada na combinação entre pressão evolutiva e complexidade estrutural. A existência, a natureza e a relevância da dívida técnica dependem de evidências adicionais.
+
+A leitura conjunta de histórico de mudanças, estrutura do código, evidência contextual e análise estática sugere que essas fontes capturam dimensões distintas, respeitadas as limitações de cobertura. Alguns arquivos de alta prioridade apresentam sinais estruturais e contextuais fortes, enquanto outros não; da mesma forma, arquivos controle podem conter problemas estáticos relevantes. O caso do VLibras Web Browsers é ilustrativo: o ranking longitudinal apresenta estabilidade mediana elevada entre as transições observadas, mas a transição tecnológica de 2026 (entrada da base TypeScript) altera a composição do conjunto prioritário e mostra que o método precisa ser reexecutado a cada mudança estrutural relevante.
+
+Assim, a principal conclusão do estudo é que recorrência de modificação e complexidade estrutural podem ser utilizadas para responder à pergunta \emph{``onde inspecionar primeiro?''}, mas não à pergunta \emph{``onde existe dívida técnica?''}. Como continuidade, a investigação pode incorporar commits, issues, pull requests e decisões arquiteturais, além de ampliar a amostra para avaliar se determinados tipos de dívida ou categorias de problemas apresentam maior associação com a prioridade longitudinal.
+
+\bibliographystyle{sbc}
+\bibliography{references}
+\end{document}

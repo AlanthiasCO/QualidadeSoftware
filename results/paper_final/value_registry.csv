@@ -1,0 +1,9 @@
+result_group,value,status,versioned_evidence,known_issue
+pipeline,1.4.3,verified_from_code,pyproject.toml;src/hotspots/__init__.py,Not reexecuted during consolidation
+priority_score,"H=min(R_N,R_C)",verified_from_code,src/hotspots/scoring.py,None
+longitudinal_priority,median H per file,verified_from_code,src/hotspots/rq3.py,None
+corpus_scope,"Novo SGP; SAPL; SIGA; SIGI; VLibras Web Browsers",verified_from_versioned_data,results/analise_sem_esus,Old v143 manifest still contains Painel e-SUS
+rq2_medians,"0.822; 0.927; 0.910; 0.929; 0.854",verified_from_versioned_data,results/analise_sem_esus/rq1/resumo_rq1_sem_esus.csv,None
+rq3_contextual,"7/25 priority; 3/25 controls; p=0.289",declared_in_paper,paper_reference/paper.tex,Versioned evaluation sheets have no completed classifications
+static_analysis,"5 hotspot; 10 control; 5 ties; p=0.302",declared_in_paper,paper_reference/paper.tex,Versioned static dataset is the older 9/11/5 corpus with Painel e-SUS
+csharp_failed_build,ServicoEOL.cs build_returncode=1,verified_from_versioned_data,pmd/results/resultado_rq3_50_arquivos.json,Zero issues cannot be interpreted as proven absence

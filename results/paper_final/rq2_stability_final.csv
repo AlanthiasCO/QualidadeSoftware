@@ -1,0 +1,6 @@
+project_id,system_name,median_spearman,valid_transitions,status,source
+novo_sgp,Novo SGP,0.8220012088179401,6,verified_from_versioned_data,results/analise_sem_esus/rq1/resumo_rq1_sem_esus.csv
+sapl,SAPL,0.9269016349852861,6,verified_from_versioned_data,results/analise_sem_esus/rq1/resumo_rq1_sem_esus.csv
+siga,SIGA,0.910400847822073,5,verified_from_versioned_data,results/analise_sem_esus/rq1/resumo_rq1_sem_esus.csv
+sigi,SIGI,0.9289005044257124,6,verified_from_versioned_data,results/analise_sem_esus/rq1/resumo_rq1_sem_esus.csv
+vlibras_web_browsers,VLibras Web Browsers,0.8535852484575346,5,verified_from_versioned_data,results/analise_sem_esus/rq1/resumo_rq1_sem_esus.csv
